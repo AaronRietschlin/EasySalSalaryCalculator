@@ -67,8 +67,7 @@ public class EasySalHourly extends BaseFragment {
 				mActivity.setButtonClickListener(new ButtonClickListener() {
 					@Override
 					public void calculateButtonClicked() {
-						Toast.makeText(mActivity, "Hourly!", Toast.LENGTH_SHORT)
-								.show();
+						makeCalculation();
 					}
 
 					@Override
@@ -80,6 +79,11 @@ public class EasySalHourly extends BaseFragment {
 		};
 		// This is to allow the buttons to be clicked on first load
 		mActivity.pageChanged(0);
+	}
+	
+	private void makeCalculation(){
+		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(R.string.title_activity_easy_sal_salary_calculator, R.layout.calculate_layout, null);
+		frag.show(mActivity.getSupportFragmentManager(), "Hourly_calcs");
 	}
 
 }

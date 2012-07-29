@@ -47,5 +47,5 @@ public class BaseFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		mActivity = (EasySalSalaryCalculator) getActivity();
 	}
-
+	
 }

@@ -277,11 +277,13 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	public void pageChanged(int position) {
 		TabsPagerAdapter adapter = (TabsPagerAdapter) mPager.getAdapter();
 		BaseFragment fragment = adapter.getItem(position);
-		if (fragment instanceof EasySalDaily) {
-			EasySalDaily frag = (EasySalDaily) fragment;
+		if (fragment instanceof EasySalHourly) {
+			EasySalHourly frag = (EasySalHourly) fragment;
 			frag.getActivity();
 		}
-		fragment.getPageChangedListener().pageChanged();
+		PageChangedListener listener = fragment.getPageChangedListener();
+		if (listener != null)
+			fragment.getPageChangedListener().pageChanged();
 	}
 
 }
