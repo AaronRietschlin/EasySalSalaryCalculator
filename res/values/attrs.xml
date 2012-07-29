@@ -6,5 +6,7 @@
     <attr name="ic_action_theme" format="reference" />
     <attr name="spinner_dropdown_item" format="reference" />
     <attr name="spinner_item" format="reference" />
+    <attr name="myDividerVertical" format="reference" />
+    <attr name="myText" format="reference" />
 
 </resources>
