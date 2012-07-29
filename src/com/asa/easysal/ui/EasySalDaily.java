@@ -6,15 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.asa.easysal.R;
+import com.asa.easysal.Utils;
+import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
+import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
 
-public class EasySalDaily extends Fragment {
-	int mNum;
-	
-	private TextView salaryTv;
-	private TextView hoursWorkedTv;
-	private TextView overtimeTv;
+public class EasySalDaily extends BaseFragment {
+
+	public static final String TAG = "DAILY";
 
 	/**
 	 * Create a new instance of CountingFragment, providing "num" as an
@@ -22,11 +23,6 @@ public class EasySalDaily extends Fragment {
 	 */
 	static EasySalDaily newInstance(int num) {
 		EasySalDaily f = new EasySalDaily();
-
-		// Supply num input as an argument.
-		Bundle args = new Bundle();
-		args.putInt("num", num);
-		f.setArguments(args);
 
 		return f;
 	}
@@ -37,7 +33,6 @@ public class EasySalDaily extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mNum = getArguments() != null ? getArguments().getInt("num") : 1;
 	}
 
 	/**
@@ -46,14 +41,7 @@ public class EasySalDaily extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.calculate_layout, container, false);
-		salaryTv = (TextView) v.findViewById(R.id.main_wage_label);
-		hoursWorkedTv = (TextView) v.findViewById(R.id.main_hours_label);
-		overtimeTv = (TextView) v.findViewById(R.id.main_ot_label);
-
-		salaryTv.setText(R.string.daily_salary);
-		hoursWorkedTv.setText(R.string.daily_hours);
-
+		View v = super.onCreateView(inflater, container, savedInstanceState);
 		return v;
 	}
 
@@ -61,10 +49,36 @@ public class EasySalDaily extends Fragment {
 	public void onResume() {
 		super.onResume();
 
-//		if (!Util.prefsOtOn) {
-//			overtimeTv.setVisibility(View.INVISIBLE);
-//		} else {
-//			overtimeTv.setVisibility(View.VISIBLE);
-//		}
+		// if (!Util.prefsOtOn) {
+		// overtimeTv.setVisibility(View.INVISIBLE);
+		// } else {
+		// overtimeTv.setVisibility(View.VISIBLE);
+		// }
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		
+		salaryTv.setText(R.string.daily_salary);
+		hoursWorkedTv.setText(R.string.daily_hours);
+		
+		mPageChangedListener = new PageChangedListener() {
+			@Override
+			public void pageChanged() {
+				mActivity.setButtonClickListener(new ButtonClickListener() {
+					@Override
+					public void calculateButtonClicked() {
+						Toast.makeText(mActivity, "Daily!", Toast.LENGTH_SHORT)
+								.show();
+					}
+
+					@Override
+					public void resetButtonClicked() {
+						Utils.clearEditTexts(wageField, hoursField);
+					}
+				});
+			}
+		};
 	}
 }

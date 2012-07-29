@@ -1,32 +1,24 @@
 package com.asa.easysal.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.asa.easysal.R;
+import com.asa.easysal.Utils;
+import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
+import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
 
-public class EasySalMonthly extends Fragment {
-	int mNum;
-
-	private TextView salaryTv;
-	private TextView hoursWorkedTv;
-	private TextView overtimeTv;
-
+public class EasySalMonthly extends BaseFragment {
 	/**
 	 * Create a new instance of CountingFragment, providing "num" as an
 	 * argument.
 	 */
 	static EasySalMonthly newInstance(int num) {
 		EasySalMonthly f = new EasySalMonthly();
-
-		// Supply num input as an argument.
-		Bundle args = new Bundle();
-		args.putInt("num", num);
-		f.setArguments(args);
 
 		return f;
 	}
@@ -37,7 +29,6 @@ public class EasySalMonthly extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mNum = getArguments() != null ? getArguments().getInt("num") : 1;
 	}
 
 	/**
@@ -46,15 +37,32 @@ public class EasySalMonthly extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.calculate_layout, container, false);
-		salaryTv = (TextView) v.findViewById(R.id.main_wage_label);
-		hoursWorkedTv = (TextView) v.findViewById(R.id.main_hours_label);
-		overtimeTv = (TextView) v.findViewById(R.id.main_ot_label);
+		return super.onCreateView(inflater, container, savedInstanceState);
+	}
 
-		overtimeTv.setVisibility(View.INVISIBLE);
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
 		salaryTv.setText(R.string.monthly_salary);
 		hoursWorkedTv.setText(R.string.yearly_monthly_hours);
 
-		return v;
+		mPageChangedListener = new PageChangedListener() {
+			@Override
+			public void pageChanged() {
+				mActivity.setButtonClickListener(new ButtonClickListener() {
+					@Override
+					public void calculateButtonClicked() {
+						Toast.makeText(mActivity, "Monthly!",
+								Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void resetButtonClicked() {
+						Utils.clearEditTexts(wageField, hoursField);
+					}
+				});
+			}
+		};
 	}
 }

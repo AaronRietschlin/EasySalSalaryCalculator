@@ -1,9 +1,11 @@
 package com.asa.easysal.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +13,7 @@ import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -27,9 +30,25 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	private ViewPager mPager;
 	private ActionBar mActionBar;
 	private PagerTitleStrip mPagerTitleStrip;
+	private TabsPagerAdapter mAdapter;
 
 	private ArrayAdapter<CharSequence> listAdapter;
 	private SharedPreferences prefs;
+
+	private ButtonClickListener mButtonClickListener;
+
+	private Button resetButton;
+	private Button calculateButton;
+
+	public interface ButtonClickListener {
+		public abstract void calculateButtonClicked();
+
+		public abstract void resetButtonClicked();
+	}
+
+	public interface PageChangedListener {
+		public abstract void pageChanged();
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -45,11 +64,19 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 		mActionBar = getSupportActionBar();
 
 		// Set the Pagers data adapter
-		mPager.setAdapter(new TabsPagerAdapter(getSupportFragmentManager()));
+		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+		mAdapter.addFragment(new EasySalHourly());
+		mAdapter.addFragment(new EasySalDaily());
+		mAdapter.addFragment(new EasySalWeekly());
+		mAdapter.addFragment(new EasySalBiweekly());
+		mAdapter.addFragment(new EasySalMonthly());
+		mAdapter.addFragment(new EasySalYearly());
+		mPager.setAdapter(mAdapter);
 		mPager.setOnPageChangeListener(this);
 
 		if (mPagerTitleStrip == null) {
-			// This is a tablet in landscape mode.
+			// This is a tablet in landscape mode. (Tablet portrait is the only
+			// layout that doesn't have the pagertitle)
 			addTabs(0);
 		} else {
 			// Phone layout
@@ -64,8 +91,28 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 			} else {
 				// This means we are in portrait
 			}
-
 		}
+
+		calculateButton = (Button) findViewById(R.id.button_calculate);
+		resetButton = (Button) findViewById(R.id.button_reset);
+		calculateButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mButtonClickListener.calculateButtonClicked();
+			}
+		});
+		resetButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mButtonClickListener.resetButtonClicked();
+			}
+		});
+
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
 	}
 
 	/**
@@ -122,27 +169,35 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	}
 
 	private class TabsPagerAdapter extends FragmentPagerAdapter {
+		private List<BaseFragment> fragments;
+
 		public TabsPagerAdapter(FragmentManager fm) {
 			super(fm);
+			fragments = new ArrayList<BaseFragment>();
+		}
+
+		public void addFragment(BaseFragment frag) {
+			fragments.add(frag);
 		}
 
 		@Override
-		public Fragment getItem(int position) {
-			switch (position) {
-			case 0:
-				return (new EasySalHourly());
-			case 1:
-				return (new EasySalDaily());
-			case 2:
-				return (new EasySalWeekly());
-			case 3:
-				return (new EasySalBiweekly());
-			case 4:
-				return (new EasySalMonthly());
-			case 5:
-				return (new EasySalYearly());
-			}
-			return null;
+		public BaseFragment getItem(int position) {
+			// switch (position) {
+			// case 0:
+			// return (new EasySalHourly());
+			// case 1:
+			// return (new EasySalDaily());
+			// case 2:
+			// return (new EasySalWeekly());
+			// case 3:
+			// return (new EasySalBiweekly());
+			// case 4:
+			// return (new EasySalMonthly());
+			// case 5:
+			// return (new EasySalYearly());
+			// }
+
+			return fragments.get(position);
 		}
 
 		@Override
@@ -186,6 +241,9 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	public void onPageSelected(int position) {
 		// Set the selected item
 		getSupportActionBar().setSelectedNavigationItem(position);
+
+		// Inform the current fragment that the page was changed.
+		pageChanged(position);
 	}
 
 	@Override
@@ -206,6 +264,24 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		mPager.setCurrentItem(itemPosition);
 		return true;
+	}
+
+	public ButtonClickListener getButtonClickListener() {
+		return mButtonClickListener;
+	}
+
+	public void setButtonClickListener(ButtonClickListener buttonClickListener) {
+		this.mButtonClickListener = buttonClickListener;
+	}
+
+	public void pageChanged(int position) {
+		TabsPagerAdapter adapter = (TabsPagerAdapter) mPager.getAdapter();
+		BaseFragment fragment = adapter.getItem(position);
+		if (fragment instanceof EasySalDaily) {
+			EasySalDaily frag = (EasySalDaily) fragment;
+			frag.getActivity();
+		}
+		fragment.getPageChangedListener().pageChanged();
 	}
 
 }

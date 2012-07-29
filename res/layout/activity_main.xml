@@ -47,7 +47,7 @@
                 android:visibility="gone" />
 
             <Button
-                android:id="@+id/register_button_cancel"
+                android:id="@+id/button_reset"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/register_button_signup"
+                android:id="@+id/button_calculate"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"

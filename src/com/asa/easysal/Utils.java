@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.view.View;
+import android.widget.EditText;
 
 public class Utils {
 
@@ -53,11 +54,25 @@ public class Utils {
 		return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
 	}
 
+	/**
+	 * Tells whether or not the device is in landscape mode.
+	 * 
+	 * @param context
+	 * @return
+	 */
 	public static boolean isLandscape(Context context) {
 		Configuration config = context.getResources().getConfiguration();
 		return (config.orientation == Configuration.ORIENTATION_LANDSCAPE);
 	}
 
+	/**
+	 * Commits to the sharedpreferences. This determines if the device is
+	 * gingerbread or above. If it is, it uses
+	 * {@link SharedPreferences.Editor#apply()} rather than
+	 * {@link SharedPreferences.Editor#commit()}
+	 * 
+	 * @param editor
+	 */
 	@TargetApi(9)
 	public static void commitSharedPrefs(SharedPreferences.Editor editor) {
 		if (isGingerbreadOrHigher())
@@ -66,10 +81,25 @@ public class Utils {
 			editor.commit();
 	}
 
+	/**
+	 * Starts a new activity with the given intent. If the device is JellyBean
+	 * or above, it uses the new activity with options to perform an animation.
+	 * 
+	 * @param activity
+	 *            The activity context
+	 * @param intent
+	 *            The intent to launch
+	 * @param v
+	 *            The view to start the animation from (the anchor)
+	 * @param startX
+	 *            The starting x position
+	 * @param startY
+	 *            The starting y position
+	 */
 	@TargetApi(16)
 	public static void startActivity(Activity activity, Intent intent, View v,
 			int startX, int startY) {
-		if (isICSorHigher()) {
+		if (isJBorHigher()) {
 			ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v,
 					startX, startY, v.getWidth(), v.getHeight());
 			activity.startActivity(intent, options.toBundle());
@@ -78,14 +108,41 @@ public class Utils {
 		}
 	}
 
+	/**
+	 * Starts a new activity with the given intent. If the device is JellyBean
+	 * or above, it uses the new activity with options to perform an animation.
+	 * 
+	 * @param activity
+	 *            The activity context
+	 * @param intent
+	 *            The intent to launch
+	 * @param v
+	 *            The view to start the animation from (the anchor)
+	 */
 	@TargetApi(16)
 	public static void startActivity(Activity activity, Intent intent, View v) {
-		if (isICSorHigher()) {
+		if (isJBorHigher()) {
 			ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v,
 					0, 0, v.getWidth(), v.getHeight());
 			activity.startActivity(intent, options.toBundle());
 		} else {
 			activity.startActivity(intent);
+		}
+	}
+
+	/**
+	 * Clears the text in all of the EditTexts passed in.
+	 * 
+	 * @param et
+	 *            An array of EditTexts
+	 */
+	public static void clearEditTexts(EditText... et) {
+		if (et == null || et.length == 0)
+			return;
+		for (int i = 0; i < et.length; i++) {
+			EditText editText = et[i];
+			if (editText != null)
+				et[i].setText("");
 		}
 	}
 }
