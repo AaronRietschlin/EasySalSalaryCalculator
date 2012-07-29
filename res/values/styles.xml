@@ -74,7 +74,7 @@
     </style>
 
     <style name="PagerTitleStrip.Green">
-        <item name="android:background">@color/money_green</item>
+        <item name="android:background">@color/money_pager</item>
     </style>
 
     <style name="PagerTitleStrip.Dark">

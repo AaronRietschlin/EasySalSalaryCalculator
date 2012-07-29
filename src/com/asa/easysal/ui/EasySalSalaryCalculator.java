@@ -55,8 +55,7 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 			// Phone layout
 			listAdapter = ArrayAdapter.createFromResource(this, R.array.titles,
 					R.layout.spinner_text);
-			listAdapter
-					.setDropDownViewResource(R.layout.spinner_dropdown_text);
+			listAdapter.setDropDownViewResource(R.layout.spinner_dropdown_text);
 			mActionBar.setListNavigationCallbacks(listAdapter, this);
 			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 			if (Utils.isLandscape(this)) {
@@ -108,7 +107,7 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 			changeTheme(R.style.LightTheme);
 			return true;
 		case R.id.menu_theme_green:
-			changeTheme(R.style.GreenAppTheme);
+			changeTheme(R.style.Theme_money);
 			return true;
 		}
 		return false;
