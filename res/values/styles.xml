@@ -1,0 +1,100 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="ic_action_theme">@drawable/ic_action_theme_dark</item>
+    </style>
+    <!-- The themes -->
+    <style name="LightTheme" parent="Theme.Sherlock.Light">
+        <item name="pagertitle">@style/PagerTitleStrip</item>
+        <item name="ic_action_theme">@drawable/ic_action_theme_light</item>
+        <item name="bg_main">@style/BG_Main</item>
+        <item name="spinner_dropdown_item">@style/SpinnerDropdownItem</item>
+        <item name="spinner_item">@style/SpinnerDropdownItem</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.Sherlock">
+        <item name="ic_action_theme">@drawable/ic_action_theme_dark</item>
+        <item name="pagertitle">@style/PagerTitleStrip.Dark</item>
+        <item name="bg_main">@android:style/Theme.Holo</item>
+        <item name="spinner_dropdown_item">@style/SpinnerDropdownItem</item>
+        <item name="spinner_item">@style/SpinnerDropdownItem</item>
+    </style>
+
+    <style name="GreenAppTheme" parent="AppTheme">
+        <item name="pagertitle">@style/PagerTitleStrip.Green</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Green</item>
+        <item name="actionBarStyle">@style/ActionBar.Green</item>
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+        <item name="actionBarStyle">@style/ActionBar</item>
+        <item name="spinner_dropdown_item">@style/SpinnerDropdownItem.Green</item>
+        <item name="spinner_item">@style/SpinnerDropdownItem.Green</item>
+        <item name="bg_main">@style/BG_Main.Green</item>
+        <item name="android:actionBarTabStyle">@style/ActionBar.TabView.Green</item>
+        <item name="actionBarTabStyle">@style/ActionBar.TabView.Green</item>
+    </style>
+
+    <!-- Actionbar styles -->
+    <style name="ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="android:icon">@drawable/ic_launcher</item>
+        <item name="icon">@drawable/ic_launcher</item>
+        <item name="android:displayOptions">showHome|showTitle</item>
+        <item name="displayOptions">showHome|showTitle</item>
+        <item name="android:titleTextStyle">@style/ActionBar.TitleText</item>
+        <item name="titleTextStyle">@style/ActionBar.TitleText</item>
+    </style>
+
+    <style name="ActionBar.Green">
+        <item name="android:background">@color/black</item>
+        <item name="background">@color/black</item>
+    </style>
+
+    <style name="ActionBar.TitleText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/actionbar_text_size</item>
+    </style>
+
+    <!-- This is the style for the selected view -->
+    <style name="ActionBar.TabView" parent="Widget.Sherlock.ActionBar.TabView" />
+
+    <style name="ActionBar.TabViewLight" parent="Widget.Sherlock.Light.ActionBar.TabView.Inverse"></style>
+
+    <style name="ActionBar.TabView.Green">
+        <item name="android:background">@drawable/tab_white_ab</item>
+    </style>
+
+
+    <style name="ActionBar.TabText" parent="Widget.Sherlock.Light.ActionBar.TabText.Inverse"></style>
+
+    <!-- Pager styles -->
+    <style name="PagerTitleStrip">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/pagertitle_text_size</item>
+        <item name="android:background">#33b5e5</item>
+    </style>
+
+    <style name="PagerTitleStrip.Green">
+        <item name="android:background">@color/money_green</item>
+    </style>
+
+    <style name="PagerTitleStrip.Dark">
+        <item name="android:background">#535353</item>
+    </style>
+
+    <!-- Styles for the background -->
+    <style name="BG_Main">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="BG_Main.Green">
+        <item name="android:background">@color/money_bg_green_light</item>
+    </style>
+
+    <!-- Styles for the spinner text -->
+    <style name="SpinnerDropdownItem" parent="@android:style/TextAppearance.Holo"></style>
+
+    <style name="SpinnerDropdownItem.Green">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>

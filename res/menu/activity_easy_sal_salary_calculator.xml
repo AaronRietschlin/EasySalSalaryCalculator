@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_settings"/>
+    <item
+        android:id="@+id/menu_theme"
+        android:orderInCategory="100"
+        android:showAsAction="withText|always"
+        android:icon="?ic_action_theme"
+        android:title="@string/menu_theme">
+        <menu>
+            <item
+                android:id="@+id/menu_theme_dark"
+                android:title="@string/menu_theme_dark"/>
+            <item
+                android:id="@+id/menu_theme_light"
+                android:title="@string/menu_theme_light"/>
+            <item
+                android:id="@+id/menu_theme_green"
+                android:title="@string/menu_theme_green"/>
+        </menu>
+    </item>
+
+</menu>

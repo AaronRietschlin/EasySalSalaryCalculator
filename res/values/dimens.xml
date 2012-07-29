@@ -1,0 +1,9 @@
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="actionbar_text_size">18sp</dimen>
+    <dimen name="pagertitle_text_size">10sp</dimen>
+
+</resources>

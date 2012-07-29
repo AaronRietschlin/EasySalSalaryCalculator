@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ot_names">
+        <item>@string/pref_otpay_half</item>
+        <item>@string/pref_otpay_double</item>
+    </string-array>
+    <string-array name="ot_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="tax_rate_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="tax_rate_names">
+        <item>@string/pref_single</item> <!-- 1 -->
+        <item>@string/pref_married_jointly</item> <!-- 2 -->
+        <item>@string/pref_married_separate</item> <!-- 3 -->
+        <item>@string/pref_hoh</item> <!-- 4 -->
+    </string-array>
+    <string-array name="biweekly_entries">
+        <item>@string/title_biweekly</item>
+        <item>@string/title_weekly</item>
+    </string-array>
+    <string-array name="biweekly_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="titles">
+        <item>@string/title_hourly</item>
+        <item>@string/title_daily</item>
+        <item>@string/title_weekly</item>
+        <item>@string/title_biweekly</item>
+        <item>@string/title_monthly</item>
+        <item>@string/title_yearly</item>
+    </string-array>
+
+</resources>
