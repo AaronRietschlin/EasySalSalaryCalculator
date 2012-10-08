@@ -1,11 +1,10 @@
 package com.asa.easysal.ui;
 
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
@@ -80,9 +79,11 @@ public class EasySalHourly extends BaseFragment {
 		// This is to allow the buttons to be clicked on first load
 		mActivity.pageChanged(0);
 	}
-	
-	private void makeCalculation(){
-		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(R.string.title_activity_easy_sal_salary_calculator, R.layout.calculate_layout, null);
+
+	private void makeCalculation() {
+		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
+				R.string.title_activity_easy_sal_salary_calculator,
+				R.layout.calculate_layout, null);
 		frag.show(mActivity.getSupportFragmentManager(), "Hourly_calcs");
 	}
 

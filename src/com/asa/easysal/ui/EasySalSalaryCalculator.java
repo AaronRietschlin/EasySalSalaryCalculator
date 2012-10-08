@@ -23,6 +23,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
 
+
 public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 		ActionBar.TabListener, ViewPager.OnPageChangeListener,
 		ActionBar.OnNavigationListener {

@@ -1,11 +1,9 @@
 package com.asa.easysal.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asa.easysal.R;
@@ -59,10 +57,10 @@ public class EasySalDaily extends BaseFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
+
 		salaryTv.setText(R.string.daily_salary);
 		hoursWorkedTv.setText(R.string.daily_hours);
-		
+
 		mPageChangedListener = new PageChangedListener() {
 			@Override
 			public void pageChanged() {

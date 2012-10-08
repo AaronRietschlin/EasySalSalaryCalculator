@@ -32,10 +32,11 @@ public class CalculateDialogFragment extends DialogFragment {
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		int title = getArguments().getInt("title");
 		int layoutId = getArguments().getInt("layout");
+		layoutId = R.layout.results;
 		LayoutInflater inflater = (LayoutInflater) getActivity()
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(layoutId, null);
-//		view = Util.setView(list, view);
+		// view = Util.setView(list, view);
 		return new AlertDialog.Builder(getActivity())
 				.setIcon(R.drawable.ic_launcher)
 				.setTitle(title)

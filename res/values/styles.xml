@@ -1,5 +1,13 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Styles -->
+    <style name="Results" ></style>
+
+    <style name="Results.Text">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/result_font_size</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
         <item name="ic_action_theme">@drawable/ic_action_theme_dark</item>
     </style>
@@ -98,11 +106,13 @@
     </style>
 
     <style name="Text" parent="@android:style/TextAppearance.Holo" />
-    <style name="TextLight" parent="@android:style/TextAppearance.Holo.Inverse" />
-    
-    <style name="Dialog" parent="@android:style/Theme.Holo.Dialog" />
-    <style name="DialogLight" parent="@android:style/Theme.Holo.Light.Dialog" />
-    <style name="DialogLight.Money" parent="@android:style/Theme.Holo.Light.Dialog" />
 
+    <style name="TextLight" parent="@android:style/TextAppearance.Holo.Inverse" />
+
+    <style name="Dialog" parent="@android:style/Theme.Holo.Dialog" />
+
+    <style name="DialogLight" parent="@android:style/Theme.Holo.Light.Dialog" />
+
+    <style name="DialogLight.Money" parent="@android:style/Theme.Holo.Light.Dialog" />
 
 </resources>
