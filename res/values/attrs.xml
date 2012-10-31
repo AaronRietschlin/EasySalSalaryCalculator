@@ -8,5 +8,6 @@
     <attr name="spinner_item" format="reference" />
     <attr name="myDividerVertical" format="reference" />
     <attr name="myText" format="reference" />
+    <attr name="myButtonBarStyle" format="reference" />
 
 </resources>
