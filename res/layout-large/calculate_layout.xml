@@ -13,6 +13,8 @@
 
         <RelativeLayout
             android:layout_width="400dp"
+            android:padding="40dp"
+            style="?contentBackground"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:orientation="vertical" >

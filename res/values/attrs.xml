@@ -9,5 +9,6 @@
     <attr name="myDividerVertical" format="reference" />
     <attr name="myText" format="reference" />
     <attr name="myButtonBarStyle" format="reference" />
+    <attr name="contentBackground" format="reference" />
 
 </resources>

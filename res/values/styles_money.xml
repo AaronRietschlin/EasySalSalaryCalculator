@@ -27,8 +27,9 @@
         <item name="actionBarStyle">@style/money_solid_ActionBar</item>
         <item name="pagertitle">@style/PagerTitleStrip.Green</item>
         <item name="bg_main">@style/BG_Main.Green</item>
-        <item name="myText">@style/TextLight</item>
-        <item name="myButtonBarStyle">@style/ButtonBar</item>
+        <item name="myText">@style/Text</item>
+        <item name="myButtonBarStyle">@style/ButtonBar.Money</item>
+        <item name="contentBackground">@style/ContentBackground.Money</item>
 
         <item name="android:actionBarItemBackground">@drawable/selectable_background_money</item>
         <item name="android:popupMenuStyle">@style/money_PopupMenu</item>
@@ -39,7 +40,8 @@
         <item name="android:dividerHorizontal">@android:drawable/divider_horizontal_bright</item>
         <item name="android:dividerVertical">@android:drawable/divider_horizontal_bright</item>
         <item name="android:panelBackground">@drawable/menu_hardkey_panel_money</item>
-        <item name="myButtonBarStyle">@style/ButtonBar</item>
+        <item name="android:editTextStyle">@style/EditTextMoney</item>
+
     </style>
 
     <style name="money_solid_ActionBar" parent="@style/Widget.Sherlock.ActionBar.Solid">
