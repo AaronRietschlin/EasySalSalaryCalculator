@@ -23,7 +23,6 @@ import com.actionbarsherlock.view.MenuItem;
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
 
-
 public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 		ActionBar.TabListener, ViewPager.OnPageChangeListener,
 		ActionBar.OnNavigationListener {
@@ -156,6 +155,12 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 			return true;
 		case R.id.menu_theme_green:
 			changeTheme(R.style.Theme_money);
+			return true;
+		case R.id.menu_help:
+			AlertDialogFragment fragment = AlertDialogFragment.newInstance(
+					R.string.help_title, R.string.help_content,
+					R.string.button_dismiss);
+			fragment.show(getSupportFragmentManager(), "help");
 			return true;
 		}
 		return false;

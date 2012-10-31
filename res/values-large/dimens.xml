@@ -6,5 +6,5 @@
     <dimen name="pagertitle_text_size">15sp</dimen>
 
     <!-- used for the padding of the content -->
-    <dimen name="padding_top">50dp</dimen>
+    <dimen name="padding_top">100dp</dimen>
 </resources>

@@ -38,7 +38,7 @@
 
             <Button
                 android:id="@+id/button_reset"
-                style="?android:attr/buttonBarButtonStyle"
+                style="?myButtonBarStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -49,7 +49,7 @@
 
             <Button
                 android:id="@+id/button_calculate"
-                style="?android:attr/buttonBarButtonStyle"
+                style="?myButtonBarStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

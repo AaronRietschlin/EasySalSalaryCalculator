@@ -19,6 +19,11 @@
     <string name="title_monthly">Monthly</string>
     <string name="title_yearly">Yearly</string>
 
+    <!-- Buttons -->
+    <string name="button_calculate">Calculate</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_dismiss">Dismiss</string>
+
     <!-- Values for HourlyActivity -->
     <string name="hours_worked">Enter Hours Worked Per Week:</string>
     <string name="hourly_wage">Enter Your Hourly Salary:</string>
@@ -68,8 +73,6 @@
     <string name="hint_hours">Enter Hours Worked</string>
     <string name="overtime_not_considered">Note: Overtime not taken into consideration.</string>
     <string name="overtime_on_but_no_ot">The overtime setting is turned on, yet the hours you entered does not qualify as overtime hours. In this case, overtime will not be considered.</string>
-    <string name="button_calculate">Calculate</string>
-    <string name="button_reset">Reset</string>
     <string name="pref_taxes">Federal Taxes</string>
     <string name="pref_taxes_summary">Check if you would like to incorporate federal taxes.</string>
     <string name="pref_tax_rate">Tax Rate</string>
