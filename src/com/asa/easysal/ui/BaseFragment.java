@@ -48,4 +48,12 @@ public class BaseFragment extends Fragment {
 		mActivity = (EasySalSalaryCalculator) getActivity();
 	}
 
+	protected String getWageString() {
+		return wageField.getText().toString().trim();
+	}
+
+	protected String getHoursString() {
+		return hoursField.getText().toString().trim();
+	}
+
 }

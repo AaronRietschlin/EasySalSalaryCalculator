@@ -1,11 +1,11 @@
 package com.asa.easysal.ui;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
@@ -81,9 +81,14 @@ public class EasySalHourly extends BaseFragment {
 	}
 
 	private void makeCalculation() {
+		double[] params = CalculationUtils.convertStringsToDoubles(
+				getWageString(), getHoursString());
+		double[] results = CalculationUtils.performCalculation(mActivity,
+				CalculationUtils.TYPE_HOURLY, false, params);
 		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
 				R.string.title_activity_easy_sal_salary_calculator,
-				R.layout.calculate_layout, null);
+				R.layout.calculate_layout);
+		frag.setResults(results);
 		frag.show(mActivity.getSupportFragmentManager(), "Hourly_calcs");
 	}
 
