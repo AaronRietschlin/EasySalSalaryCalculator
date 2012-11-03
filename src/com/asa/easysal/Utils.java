@@ -157,6 +157,6 @@ public class Utils {
 	}
 	
 	public static void showCrouton(SherlockFragmentActivity context, int messageId){
-		Crouton.makeText(context, messageId, Style.ALERT);
+		Crouton.makeText(context, messageId, Style.ALERT).show();
 	}
 }
