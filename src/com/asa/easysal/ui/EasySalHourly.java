@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
@@ -81,6 +82,17 @@ public class EasySalHourly extends BaseFragment {
 	}
 
 	private void makeCalculation() {
+		String wageString = getWageString();
+		if (!isStringValid(wageString)) {
+			Utils.makeToast(mActivity, R.string.error_no_salary_entered);
+			return;
+		}
+		String hourString = getHoursString();
+		if (!isStringValid(hourString)) {
+			Utils.makeToast(mActivity, R.string.error_no_hours_entered);
+			return;
+		}
+
 		double[] params = CalculationUtils.convertStringsToDoubles(
 				getWageString(), getHoursString());
 		double[] results = CalculationUtils.performCalculation(mActivity,

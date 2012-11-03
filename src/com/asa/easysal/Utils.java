@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Utils {
 
@@ -144,5 +145,9 @@ public class Utils {
 			if (editText != null)
 				et[i].setText("");
 		}
+	}
+
+	public static void makeToast(Context context, int messageId) {
+		Toast.makeText(context, messageId, Toast.LENGTH_SHORT).show();
 	}
 }

@@ -56,4 +56,14 @@ public class BaseFragment extends Fragment {
 		return hoursField.getText().toString().trim();
 	}
 
+	/**
+	 * Checks the given string to make sure it is not empty.
+	 * 
+	 * @param wageString
+	 * @return
+	 */
+	protected boolean isStringValid(String wageString) {
+		return !(wageString == null || wageString.length() == 0);
+	}
+
 }
