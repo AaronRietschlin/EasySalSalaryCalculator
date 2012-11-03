@@ -84,12 +84,12 @@ public class EasySalHourly extends BaseFragment {
 	private void makeCalculation() {
 		String wageString = getWageString();
 		if (!isStringValid(wageString)) {
-			Utils.makeToast(mActivity, R.string.error_no_salary_entered);
+			Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
 			return;
 		}
 		String hourString = getHoursString();
 		if (!isStringValid(hourString)) {
-			Utils.makeToast(mActivity, R.string.error_no_hours_entered);
+			Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
 			return;
 		}
 

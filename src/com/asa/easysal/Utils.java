@@ -12,6 +12,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+import de.neofonie.mobile.app.android.widget.crouton.Crouton;
+import de.neofonie.mobile.app.android.widget.crouton.Style;
+
 public class Utils {
 
 	public static final String PREFERENCES = "easysal_prefs";
@@ -149,5 +154,9 @@ public class Utils {
 
 	public static void makeToast(Context context, int messageId) {
 		Toast.makeText(context, messageId, Toast.LENGTH_SHORT).show();
+	}
+	
+	public static void showCrouton(SherlockFragmentActivity context, int messageId){
+		Crouton.makeText(context, messageId, Style.ALERT);
 	}
 }
