@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
@@ -52,6 +51,7 @@ public class EasySalHourly extends BaseFragment {
 		// } else {
 		// overtimeTv.setVisibility(View.VISIBLE);
 		// }
+
 	}
 
 	@Override
@@ -61,13 +61,23 @@ public class EasySalHourly extends BaseFragment {
 		salaryTv.setText(R.string.hourly_wage);
 		hoursWorkedTv.setText(R.string.hours_worked);
 
+		setListener();
+	}
+	
+	@Override
+	protected void configurationChanged(){
+		mActivity = (EasySalSalaryCalculator) getActivity();
+		setListener();
+	}
+
+	private void setListener() {
 		mPageChangedListener = new PageChangedListener() {
 			@Override
 			public void pageChanged() {
 				mActivity.setButtonClickListener(new ButtonClickListener() {
 					@Override
 					public void calculateButtonClicked() {
-						makeCalculation();
+						makeCalculation(CalculationUtils.TYPE_HOURLY);
 					}
 
 					@Override
@@ -77,31 +87,9 @@ public class EasySalHourly extends BaseFragment {
 				});
 			}
 		};
-		// This is to allow the buttons to be clicked on first load
+		// This is to allow the buttons to be clicked on first load. It
+		// corresponds with the above because we change the button click
+		// listener when the page is changed.
 		mActivity.pageChanged(0);
 	}
-
-	private void makeCalculation() {
-		String wageString = getWageString();
-		if (!isStringValid(wageString)) {
-			Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
-			return;
-		}
-		String hourString = getHoursString();
-		if (!isStringValid(hourString)) {
-			Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
-			return;
-		}
-
-		double[] params = CalculationUtils.convertStringsToDoubles(
-				getWageString(), getHoursString());
-		double[] results = CalculationUtils.performCalculation(mActivity,
-				CalculationUtils.TYPE_HOURLY, false, params);
-		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
-				R.string.title_activity_easy_sal_salary_calculator,
-				R.layout.calculate_layout);
-		frag.setResults(results);
-		frag.show(mActivity.getSupportFragmentManager(), "Hourly_calcs");
-	}
-
 }

@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
 import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
@@ -46,14 +46,6 @@ public class EasySalBiweekly extends BaseFragment {
 		// } else {
 		// hoursWorkedTv.setText(getString(R.string.hours_worked));
 		// }
-		super.onResume();
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-
-		overtimeTv.setVisibility(View.INVISIBLE);
 
 		mPageChangedListener = new PageChangedListener() {
 			@Override
@@ -61,8 +53,7 @@ public class EasySalBiweekly extends BaseFragment {
 				mActivity.setButtonClickListener(new ButtonClickListener() {
 					@Override
 					public void calculateButtonClicked() {
-						Toast.makeText(mActivity, "Biweekly!",
-								Toast.LENGTH_SHORT).show();
+						makeCalculation(CalculationUtils.TYPE_BIWEEKLY);
 					}
 
 					@Override
@@ -72,5 +63,14 @@ public class EasySalBiweekly extends BaseFragment {
 				});
 			}
 		};
+		super.onResume();
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		overtimeTv.setVisibility(View.INVISIBLE);
+
 	}
 }

@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
@@ -46,14 +46,18 @@ public class EasySalMonthly extends BaseFragment {
 		salaryTv.setText(R.string.monthly_salary);
 		hoursWorkedTv.setText(R.string.yearly_monthly_hours);
 
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
 		mPageChangedListener = new PageChangedListener() {
 			@Override
 			public void pageChanged() {
 				mActivity.setButtonClickListener(new ButtonClickListener() {
 					@Override
 					public void calculateButtonClicked() {
-						Toast.makeText(mActivity, "Monthly!",
-								Toast.LENGTH_SHORT).show();
+						makeCalculation(CalculationUtils.TYPE_MONTHLY);
 					}
 
 					@Override

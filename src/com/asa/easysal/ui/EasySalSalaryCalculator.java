@@ -51,7 +51,7 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(final Bundle savedInstanceState) {
 		prefs = getSharedPreferences(Utils.PREFERENCES, MODE_PRIVATE);
 		setTheme(prefs.getInt(Utils.PREFERENCES_THEME, R.style.LightTheme));
 		super.onCreate(savedInstanceState);
@@ -108,6 +108,20 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 			}
 		});
 
+		if (savedInstanceState != null) {
+			// This means that the configuration changed. Need to restore
+			// fragment.
+			calculateButton.postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					BaseFragment fragment = mAdapter.getItem(savedInstanceState
+							.getInt("current_item"));
+					fragment.configurationChanged();
+				}
+			}, 1000);
+		}
+
 	}
 
 	@Override
@@ -135,6 +149,12 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 				.setTabListener(this));
 		mActionBar.addTab(mActionBar.newTab().setText(R.string.title_yearly)
 				.setTabListener(this));
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("current_item", mPager.getCurrentItem());
 	}
 
 	@Override

@@ -50,7 +50,7 @@
     <!-- About EasySal -->
     <string name="about_title">About</string>
     <string name="about_summary">About EasySal</string>
-    <string name="about_content" size="10">EasySal Calculator v1.1.0 - 2011\n\nContributors:\n\tAaron Rietschlin - Developer\n\tDave Straight - Designer\n\tKathi Pichler - Translator (de)\n\nVisit the homepage for more information: http://asandroid.blogspot.com/</string>
+    <string name="about_content" size="10">EasySal Calculator v1.1.0 - 2011\n\nContributors:\n\tAaron Rietschlin - Developer\n\tDave Straight - Designer\n\tKathi Pichler - Translator (de)\n\nVisit the homepage for more information: http://asandroid.blogspot.com/.\n\n<b>Credit</b>\n\nThe following are libraries used in this project: <ul><li>Crouton - https://github.com/keyboardsurfer/Crouton</li><li>ActionBarSherlock - http://actionbarsherlock.com/</li></ul></string>
     <string name="approximate_earnings">Approximate Earnings:</string>
     <string name="daily_earnings">Test</string>
     <string name="error">TESTING</string>

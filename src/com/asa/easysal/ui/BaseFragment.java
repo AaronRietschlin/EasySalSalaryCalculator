@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
+import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
 
 public class BaseFragment extends Fragment {
@@ -66,4 +68,30 @@ public class BaseFragment extends Fragment {
 		return !(wageString == null || wageString.length() == 0);
 	}
 
+	protected void makeCalculation(int type) {
+		// Check the entered wage/salary and don't let them proceed if wrong.
+		String wageString = getWageString();
+		if (!isStringValid(wageString)) {
+			Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
+			return;
+		}
+		String hourString = getHoursString();
+		if (!isStringValid(hourString)) {
+			Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
+			return;
+		}
+
+		double[] params = CalculationUtils.convertStringsToDoubles(
+				getWageString(), getHoursString());
+		double[] results = CalculationUtils.performCalculation(mActivity, type,
+				false, params);
+		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
+				R.string.title_activity_easy_sal_salary_calculator,
+				R.layout.calculate_layout);
+		frag.setResults(results);
+		frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
+	}
+	
+	// OVERRIDE
+	protected void configurationChanged(){}
 }

@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
@@ -52,14 +52,6 @@ public class EasySalDaily extends BaseFragment {
 		// } else {
 		// overtimeTv.setVisibility(View.VISIBLE);
 		// }
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-
-		salaryTv.setText(R.string.daily_salary);
-		hoursWorkedTv.setText(R.string.daily_hours);
 
 		mPageChangedListener = new PageChangedListener() {
 			@Override
@@ -67,8 +59,7 @@ public class EasySalDaily extends BaseFragment {
 				mActivity.setButtonClickListener(new ButtonClickListener() {
 					@Override
 					public void calculateButtonClicked() {
-						Toast.makeText(mActivity, "Daily!", Toast.LENGTH_SHORT)
-								.show();
+						makeCalculation(CalculationUtils.TYPE_DAILY);
 					}
 
 					@Override
@@ -78,5 +69,14 @@ public class EasySalDaily extends BaseFragment {
 				});
 			}
 		};
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		salaryTv.setText(R.string.daily_salary);
+		hoursWorkedTv.setText(R.string.daily_hours);
+
 	}
 }

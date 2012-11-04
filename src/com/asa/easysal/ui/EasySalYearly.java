@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
@@ -54,8 +55,7 @@ public class EasySalYearly extends BaseFragment {
 				mActivity.setButtonClickListener(new ButtonClickListener() {
 					@Override
 					public void calculateButtonClicked() {
-						Toast.makeText(mActivity, "Yearly!",
-								Toast.LENGTH_SHORT).show();
+						makeCalculation(CalculationUtils.TYPE_YEARLY);
 					}
 
 					@Override
