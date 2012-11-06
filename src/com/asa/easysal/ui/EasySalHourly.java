@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
 import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
@@ -46,11 +47,11 @@ public class EasySalHourly extends BaseFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		// if (!Util.prefsOtOn) {
-		// overtimeTv.setVisibility(View.INVISIBLE);
-		// } else {
-		// overtimeTv.setVisibility(View.VISIBLE);
-		// }
+		if (!SettingsUtil.isOvertime(getActivity())) {
+			overtimeTv.setVisibility(View.GONE);
+		} else {
+			overtimeTv.setVisibility(View.VISIBLE);
+		}
 
 	}
 
@@ -63,9 +64,9 @@ public class EasySalHourly extends BaseFragment {
 
 		setListener();
 	}
-	
+
 	@Override
-	protected void configurationChanged(){
+	protected void configurationChanged() {
 		mActivity = (EasySalSalaryCalculator) getActivity();
 		setListener();
 	}

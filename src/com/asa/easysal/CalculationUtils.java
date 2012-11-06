@@ -96,11 +96,11 @@ public class CalculationUtils {
 		double hoursDelta = 0, overtimeResult = 0;
 		// If it's OT, then there needs to be one more value returned.
 		if (mIsOvertime) {
+			setOvertimeValue();
 			size = 7;
 			if (mHours > OVERTIME_VALUE_WEEK) {
 				hoursDelta = mHours - OVERTIME_VALUE_WEEK;
 				overtimeResult = mWage * OVERTIME_VALUE * hoursDelta;
-				mHours = OVERTIME_VALUE_DAY;
 			}
 		}
 		double[] result = new double[size];
@@ -114,7 +114,7 @@ public class CalculationUtils {
 
 		result[0] = hourlyResult;
 		result[1] = dailyResult;
-		result[2] = weeklyResult;
+		result[2] = weeklyResult + overtimeResult;
 		result[3] = biweeklyResult;
 		result[4] = monthlyResult;
 		result[5] = yearlyResult;
@@ -304,5 +304,12 @@ public class CalculationUtils {
 			DecimalFormat twoDForm = new DecimalFormat("#.##");
 			results[i] = Double.valueOf(twoDForm.format(result));
 		}
+	}
+
+	/**
+	 * Sets {@linkplain #OVERTIME_VALUE} based off of the users preferences.
+	 */
+	private static void setOvertimeValue() {
+		OVERTIME_VALUE = SettingsUtil.getOvertimePay(mContext);
 	}
 }

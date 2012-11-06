@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
 
@@ -84,14 +85,15 @@ public class BaseFragment extends Fragment {
 		double[] params = CalculationUtils.convertStringsToDoubles(
 				getWageString(), getHoursString());
 		double[] results = CalculationUtils.performCalculation(mActivity, type,
-				false, params);
+				SettingsUtil.isOvertime(getActivity()), params);
 		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
 				R.string.title_activity_easy_sal_salary_calculator,
 				R.layout.calculate_layout);
 		frag.setResults(results);
 		frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
 	}
-	
+
 	// OVERRIDE
-	protected void configurationChanged(){}
+	protected void configurationChanged() {
+	}
 }

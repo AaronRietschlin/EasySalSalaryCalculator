@@ -6,7 +6,7 @@
         <item>@string/pref_otpay_double</item>
     </string-array>
     <string-array name="ot_values">
-        <item>1</item>
+        <item>1.5</item>
         <item>2</item>
     </string-array>
     <string-array name="tax_rate_values">

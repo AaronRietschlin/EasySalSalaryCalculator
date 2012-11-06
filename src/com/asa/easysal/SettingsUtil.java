@@ -22,6 +22,9 @@ public class SettingsUtil {
 	public static final String PREFERENCES_TAXES = "taxes";
 
 	private static SharedPreferences defaultPrefs;
+	private static boolean isOvertime;
+
+	private static boolean isOTSet;
 
 	public static SharedPreferences getDefaultPreferences(Context context) {
 		if (defaultPrefs == null) {
@@ -81,5 +84,17 @@ public class SettingsUtil {
 			intent = new Intent(context, PreHCPreferenceActivity.class);
 		}
 		context.startActivity(intent);
+	}
+
+	public static boolean isOvertime(Context context) {
+		getDefaultPreferences(context);
+		return defaultPrefs.getBoolean(PREFERENCES_OVERTIME, false);
+	}
+
+	public static double getOvertimePay(Context context) {
+		getDefaultPreferences(context);
+		String test = defaultPrefs.getString(PREFERENCES_OVERTIME_PAY, "1.5");
+		return Double.valueOf(defaultPrefs.getString(PREFERENCES_OVERTIME_PAY,
+				"1.5"));
 	}
 }
