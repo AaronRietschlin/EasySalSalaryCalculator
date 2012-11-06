@@ -50,7 +50,7 @@
     <!-- About EasySal -->
     <string name="about_title">About</string>
     <string name="about_summary">About EasySal</string>
-    <string name="about_content" size="10">EasySal Calculator v1.1.0 - 2011\n\nContributors:\n\tAaron Rietschlin - Developer\n\tDave Straight - Designer\n\tKathi Pichler - Translator (de)\n\nVisit the homepage for more information: http://asandroid.blogspot.com/.\n\n<b>Credit</b>\n\nThe following are libraries used in this project: <ul><li>Crouton - https://github.com/keyboardsurfer/Crouton</li><li>ActionBarSherlock - http://actionbarsherlock.com/</li></ul></string>
+    <string name="about_content" size="10">EasySal Calculator v1.2.0 - 2012\n\nContributors:\n\tAaron Rietschlin - Developer\n\tDave Straight - Designer\n\tKathi Pichler - Translator (de)\n\nVisit the homepage for more information: http://asandroid.blogspot.com/.\n\n<b>Credit</b>\nThe following are libraries used in this project:\n\t-Crouton- https://github.com/keyboardsurfer/Crouton\n\t-ActionBarSherlock - http://actionbarsherlock.com/</string>
     <string name="approximate_earnings">Approximate Earnings:</string>
     <string name="daily_earnings">Test</string>
     <string name="error">TESTING</string>
@@ -58,6 +58,14 @@
     <string name="resultsTitle">Your Approximate Earnings:</string>
     <string name="resultsCalculate">Calculate Again!</string>
     <string name="resultsCloseApp">Close App</string>
+    <string name="help_title">Help</string>
+    <string name="help_content">EasySal Salary Calculator is a simple way to calculate your salary. You can calculate your salary based on several different salary options: \n\t-Hourly  \n\t-Daily  \n\t-Weekly  \n\t-Every two weeks  \n\t-Monthly  \n\t-Yearly \n\nEasySal also gives the option of taking overtime pay into consideration. Overtime pay can be based on either the United States minimum of one and a half times the normal pay for any hours worked over full-time (40 hours) or twice the normal pay.</string>
+    <string name="hint_salary">Enter Salary</string>
+    <string name="hint_hours">Enter Hours Worked</string>
+    <string name="overtime_not_considered">Note: Overtime not taken into consideration.</string>
+    <string name="overtime_on_but_no_ot">The overtime setting is turned on, yet the hours you entered does not qualify as overtime hours. In this case, overtime will not be considered.</string>
+
+    <!-- Preference strings -->
     <string name="pref_ot_title">Overtime</string>
     <string name="pref_ot_descrip">Check if you would like to incorporate overtime.</string>
     <string name="pref_otpay_title">Overtime pay</string>
@@ -67,18 +75,13 @@
     <string name="pref_monthly_title">Display 31 Days</string>
     <string name="pref_monthly_descrip">Check if you would like to display 31 day month (default: only shows 30 days).</string>
     <string name="pref_pref_title">Settings</string>
-    <string name="help_title">Help</string>
-    <string name="help_content">EasySal Salary Calculator is a simple way to calculate your salary. You can calculate your salary based on several different salary options: \n\t-Hourly  \n\t-Daily  \n\t-Weekly  \n\t-Every two weeks  \n\t-Monthly  \n\t-Yearly \n\nEasySal also gives the option of taking overtime pay into consideration. Overtime pay can be based on either the United States minimum of one and a half times the normal pay for any hours worked over full-time (40 hours) or twice the normal pay.</string>
-    <string name="hint_salary">Enter Salary</string>
-    <string name="hint_hours">Enter Hours Worked</string>
-    <string name="overtime_not_considered">Note: Overtime not taken into consideration.</string>
-    <string name="overtime_on_but_no_ot">The overtime setting is turned on, yet the hours you entered does not qualify as overtime hours. In this case, overtime will not be considered.</string>
     <string name="pref_taxes">Federal Taxes</string>
     <string name="pref_taxes_summary">Check if you would like to incorporate federal taxes.</string>
     <string name="pref_tax_rate">Tax Rate</string>
     <string name="pref_tax_rate_summary">Select tax rate (e.g. single, married, etc).</string>
     <string name="pref_biweekly">Biweekly</string>
     <string name="pref_biweekly_descrip">Select method for entering in hours worked on a biweekly salary.</string>
+    <string name="pref_options">Options</string>
 
     <!-- Strings for the dialog popup. -->
     <string name="dialog_hourly_title">Hourly Earnings:</string>

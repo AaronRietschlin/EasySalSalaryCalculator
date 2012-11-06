@@ -21,6 +21,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.Utils;
 
 public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
@@ -181,6 +182,9 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 					R.string.help_title, R.string.help_content,
 					R.string.button_dismiss);
 			fragment.show(getSupportFragmentManager(), "help");
+			return true;
+		case R.id.menu_settings:
+			SettingsUtil.launchSettings(this);
 			return true;
 		}
 		return false;

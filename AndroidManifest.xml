@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.PreHCPreferenceActivity"
+            android:label="@string/title_activity_easy_sal_salary_calculator" />
+        <activity
+            android:name=".ui.PostHCPreferenceActivity"
+            android:label="@string/title_activity_easy_sal_salary_calculator" />
     </application>
 
 </manifest>
