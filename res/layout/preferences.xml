@@ -19,7 +19,7 @@
             android:summary="Select amount paid for overtime."
             android:title="Overtime Pay" />
 
-        <CheckBoxPreference
+<!--         <CheckBoxPreference
             android:defaultValue="false"
             android:key="taxes"
             android:summary="@string/pref_taxes_summary"
@@ -31,7 +31,7 @@
             android:entries="@array/tax_rate_names"
             android:entryValues="@array/tax_rate_values"
             android:summary="@string/pref_tax_rate_summary"
-            android:title="@string/pref_tax_rate" />
+            android:title="@string/pref_tax_rate" /> -->
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/about_title" >
