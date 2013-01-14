@@ -15,6 +15,8 @@ import com.asa.easysal.R;
 public class CalculateDialogFragment extends DialogFragment {
 	private double[] results;
 
+	private final static String EXTRA_DOUBLE_VALUES = "values";
+
 	public static CalculateDialogFragment newInstance(int title, int layoutId) {
 		CalculateDialogFragment frag = new CalculateDialogFragment();
 		Bundle args = new Bundle();
@@ -30,6 +32,17 @@ public class CalculateDialogFragment extends DialogFragment {
 
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		if (savedInstanceState != null) {
+			double[] savedArr = savedInstanceState
+					.getDoubleArray(EXTRA_DOUBLE_VALUES);
+			if (savedArr != null) {
+				int length = savedArr.length;
+				results = new double[length];
+				for (int i = 0; i < length; i++) {
+					results[i] = savedArr[i];
+				}
+			}
+		}
 		int title = getArguments().getInt("title");
 		LayoutInflater inflater = (LayoutInflater) getActivity()
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -64,5 +77,10 @@ public class CalculateDialogFragment extends DialogFragment {
 								dialog.dismiss();
 							}
 						}).setView(view).create();
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		outState.putDoubleArray(EXTRA_DOUBLE_VALUES, results);
 	}
 }
