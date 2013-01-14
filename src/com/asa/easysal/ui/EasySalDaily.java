@@ -46,29 +46,11 @@ public class EasySalDaily extends BaseFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-
 		// if (!Util.prefsOtOn) {
 		// overtimeTv.setVisibility(View.INVISIBLE);
 		// } else {
 		// overtimeTv.setVisibility(View.VISIBLE);
 		// }
-
-		mPageChangedListener = new PageChangedListener() {
-			@Override
-			public void pageChanged() {
-				mActivity.setButtonClickListener(new ButtonClickListener() {
-					@Override
-					public void calculateButtonClicked() {
-						makeCalculation(CalculationUtils.TYPE_DAILY);
-					}
-
-					@Override
-					public void resetButtonClicked() {
-						Utils.clearEditTexts(wageField, hoursField);
-					}
-				});
-			}
-		};
 	}
 
 	@Override
@@ -78,5 +60,10 @@ public class EasySalDaily extends BaseFragment {
 		salaryTv.setText(R.string.daily_salary);
 		hoursWorkedTv.setText(R.string.daily_hours);
 
+	}
+
+	@Override
+	protected void calculateClicked() {
+		makeCalculation(CalculationUtils.TYPE_DAILY);
 	}
 }

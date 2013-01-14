@@ -51,21 +51,10 @@ public class EasySalMonthly extends BaseFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		mPageChangedListener = new PageChangedListener() {
-			@Override
-			public void pageChanged() {
-				mActivity.setButtonClickListener(new ButtonClickListener() {
-					@Override
-					public void calculateButtonClicked() {
-						makeCalculation(CalculationUtils.TYPE_MONTHLY);
-					}
+	}
 
-					@Override
-					public void resetButtonClicked() {
-						Utils.clearEditTexts(wageField, hoursField);
-					}
-				});
-			}
-		};
+	@Override
+	protected void calculateClicked() {
+		makeCalculation(CalculationUtils.TYPE_MONTHLY);
 	}
 }

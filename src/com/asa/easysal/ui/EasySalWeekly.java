@@ -51,26 +51,14 @@ public class EasySalWeekly extends BaseFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
 		overtimeTv.setVisibility(View.INVISIBLE);
 		salaryTv.setText(R.string.weekly_salary);
 		hoursWorkedTv.setText(R.string.hours_worked);
 
-		mPageChangedListener = new PageChangedListener() {
-			@Override
-			public void pageChanged() {
-				mActivity.setButtonClickListener(new ButtonClickListener() {
-					@Override
-					public void calculateButtonClicked() {
-						makeCalculation(CalculationUtils.TYPE_WEEKLY);
-					}
+	}
 
-					@Override
-					public void resetButtonClicked() {
-						Utils.clearEditTexts(wageField, hoursField);
-					}
-				});
-			}
-		};
+	@Override
+	protected void calculateClicked() {
+		makeCalculation(CalculationUtils.TYPE_WEEKLY);
 	}
 }

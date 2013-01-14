@@ -41,29 +41,12 @@ public class EasySalBiweekly extends BaseFragment {
 
 	@Override
 	public void onResume() {
+		super.onResume();
 		// if (Util.prefsBiweeklyValue == Util.BIWEEKLY_VALUE_BI) {
 		// hoursWorkedTv.setText(getString(R.string.biweekly_hours));
 		// } else {
 		// hoursWorkedTv.setText(getString(R.string.hours_worked));
 		// }
-
-		mPageChangedListener = new PageChangedListener() {
-			@Override
-			public void pageChanged() {
-				mActivity.setButtonClickListener(new ButtonClickListener() {
-					@Override
-					public void calculateButtonClicked() {
-						makeCalculation(CalculationUtils.TYPE_BIWEEKLY);
-					}
-
-					@Override
-					public void resetButtonClicked() {
-						Utils.clearEditTexts(wageField, hoursField);
-					}
-				});
-			}
-		};
-		super.onResume();
 	}
 
 	@Override
@@ -72,5 +55,10 @@ public class EasySalBiweekly extends BaseFragment {
 
 		overtimeTv.setVisibility(View.INVISIBLE);
 
+	}
+
+	@Override
+	protected void calculateClicked() {
+		makeCalculation(CalculationUtils.TYPE_BIWEEKLY);
 	}
 }

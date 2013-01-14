@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,6 +23,9 @@ public class BaseFragment extends Fragment {
 	protected TextView salaryTv;
 	protected TextView hoursWorkedTv;
 	protected TextView overtimeTv;
+
+	private Button resetButton;
+	private Button calculateButton;
 
 	protected PageChangedListener mPageChangedListener;
 	protected EasySalSalaryCalculator mActivity;
@@ -49,6 +53,22 @@ public class BaseFragment extends Fragment {
 		overtimeTv = (TextView) v.findViewById(R.id.main_ot_label);
 		wageField = (EditText) v.findViewById(R.id.main_wage_field);
 		hoursField = (EditText) v.findViewById(R.id.main_hours_field);
+
+		calculateButton = (Button) v.findViewById(R.id.button_calculate);
+		resetButton = (Button) v.findViewById(R.id.button_reset);
+		calculateButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				calculateClicked();
+			}
+		});
+		resetButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Utils.clearEditTexts(wageField, hoursField);
+			}
+		});
+
 		return v;
 	}
 
@@ -102,5 +122,9 @@ public class BaseFragment extends Fragment {
 
 	// OVERRIDE
 	protected void configurationChanged() {
+	}
+
+	protected void calculateClicked() {
+
 	}
 }

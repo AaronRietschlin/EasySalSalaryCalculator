@@ -93,36 +93,6 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 				// This means we are in portrait
 			}
 		}
-
-		calculateButton = (Button) findViewById(R.id.button_calculate);
-		resetButton = (Button) findViewById(R.id.button_reset);
-		calculateButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mButtonClickListener.calculateButtonClicked();
-			}
-		});
-		resetButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mButtonClickListener.resetButtonClicked();
-			}
-		});
-
-		if (savedInstanceState != null) {
-			// This means that the configuration changed. Need to restore
-			// fragment.
-			calculateButton.postDelayed(new Runnable() {
-
-				@Override
-				public void run() {
-					BaseFragment fragment = mAdapter.getItem(savedInstanceState
-							.getInt("current_item"));
-					fragment.configurationChanged();
-				}
-			}, 1000);
-		}
-
 	}
 
 	@Override

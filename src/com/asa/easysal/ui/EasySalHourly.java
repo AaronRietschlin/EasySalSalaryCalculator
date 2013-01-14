@@ -12,6 +12,9 @@ import com.asa.easysal.Utils;
 import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
 import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
 
+import de.neofonie.mobile.app.android.widget.crouton.Crouton;
+import de.neofonie.mobile.app.android.widget.crouton.Style;
+
 public class EasySalHourly extends BaseFragment {
 
 	public static final String TAG = "HOURLY";
@@ -58,41 +61,13 @@ public class EasySalHourly extends BaseFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
 		salaryTv.setText(R.string.hourly_wage);
 		hoursWorkedTv.setText(R.string.hours_worked);
 
-		setListener();
 	}
 
 	@Override
-	protected void configurationChanged() {
-	}
-
-	private void setListener() {
-		mPageChangedListener = new PageChangedListener() {
-			@Override
-			public void pageChanged() {
-				setButtonClickListener();
-			}
-		};
-		// This is to allow the buttons to be clicked on first load. It
-		// corresponds with the above because we change the button click
-		// listener when the page is changed.
-		mActivity.pageChanged(0);
-	}
-
-	private void setButtonClickListener() {
-		mActivity.setButtonClickListener(new ButtonClickListener() {
-			@Override
-			public void calculateButtonClicked() {
-				makeCalculation(CalculationUtils.TYPE_HOURLY);
-			}
-
-			@Override
-			public void resetButtonClicked() {
-				Utils.clearEditTexts(wageField, hoursField);
-			}
-		});
+	protected void calculateClicked() {
+		makeCalculation(CalculationUtils.TYPE_HOURLY);
 	}
 }
