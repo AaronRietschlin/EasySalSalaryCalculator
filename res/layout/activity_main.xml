@@ -8,7 +8,7 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/buttons" >
+        android:layout_above="@+id/ad" >
 
         <android.support.v4.view.PagerTitleStrip
             android:id="@+id/pager_title_strip"
@@ -19,12 +19,23 @@
             android:paddingBottom="4dp"
             android:paddingTop="4dp" />
     </android.support.v4.view.ViewPager>
-<!-- 
+    <!-- 
+    <com.admob.android.ads.AdView
+        android:id="@+id/ad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:backgroundColor="#000000"
+        ads:keywords="Salary, money, calculator, job"
+        ads:primaryTextColor="#FFFFFF"
+        ads:secondaryTextColor="#CCCCCC" /> -->
+    <!--
     <include
         android:id="@+id/layout_buttons_ref"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        layout="@layout/layout_buttons" /> -->
+        layout="@layout/layout_buttons" />
+    -->
 
 </RelativeLayout>

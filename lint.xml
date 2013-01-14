@@ -3,4 +3,7 @@
     <issue id="NewApi">
         <ignore path="res\values\styles.xml" />
     </issue>
+    <issue id="RequiredSize" severity="ignore">
+        <ignore path="libs\easysal_abs\res\layout\abs__action_bar_tab.xml" />
+    </issue>
 </lint>
