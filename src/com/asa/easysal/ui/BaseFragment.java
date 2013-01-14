@@ -1,5 +1,6 @@
 package com.asa.easysal.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,6 +32,12 @@ public class BaseFragment extends Fragment {
 
 	public void setPageChangedListener(PageChangedListener pageChangedListener) {
 		this.mPageChangedListener = pageChangedListener;
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		mActivity = (EasySalSalaryCalculator) activity;
 	}
 
 	@Override

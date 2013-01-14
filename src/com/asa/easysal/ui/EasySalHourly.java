@@ -67,30 +67,32 @@ public class EasySalHourly extends BaseFragment {
 
 	@Override
 	protected void configurationChanged() {
-		mActivity = (EasySalSalaryCalculator) getActivity();
-		setListener();
 	}
 
 	private void setListener() {
 		mPageChangedListener = new PageChangedListener() {
 			@Override
 			public void pageChanged() {
-				mActivity.setButtonClickListener(new ButtonClickListener() {
-					@Override
-					public void calculateButtonClicked() {
-						makeCalculation(CalculationUtils.TYPE_HOURLY);
-					}
-
-					@Override
-					public void resetButtonClicked() {
-						Utils.clearEditTexts(wageField, hoursField);
-					}
-				});
+				setButtonClickListener();
 			}
 		};
 		// This is to allow the buttons to be clicked on first load. It
 		// corresponds with the above because we change the button click
 		// listener when the page is changed.
 		mActivity.pageChanged(0);
+	}
+
+	private void setButtonClickListener() {
+		mActivity.setButtonClickListener(new ButtonClickListener() {
+			@Override
+			public void calculateButtonClicked() {
+				makeCalculation(CalculationUtils.TYPE_HOURLY);
+			}
+
+			@Override
+			public void resetButtonClicked() {
+				Utils.clearEditTexts(wageField, hoursField);
+			}
+		});
 	}
 }
