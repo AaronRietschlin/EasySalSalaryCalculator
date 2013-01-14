@@ -27,7 +27,7 @@
         <item name="actionBarStyle">@style/money_solid_ActionBar</item>
         <item name="pagertitle">@style/PagerTitleStrip.Green</item>
         <item name="bg_main">@style/BG_Main.Green</item>
-        <item name="myText">@style/Text</item>
+        <item name="myText">@style/Text.Light</item>
         <item name="myButtonBarStyle">@style/ButtonBar.Money</item>
         <item name="contentBackground">@style/ContentBackground.Money</item>
 

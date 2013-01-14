@@ -22,7 +22,7 @@
         <item name="myText">@style/Text</item>
         <item name="contentBackground">@style/ContentBackground.Light</item>
     </style>
-
+<!-- TODO - Search for Holo. Remove them and move it to Styles 11. -->
     <style name="DarkTheme" parent="Theme.Sherlock">
         <item name="ic_action_theme">@drawable/ic_action_theme_dark</item>
         <item name="pagertitle">@style/PagerTitleStrip.Dark</item>
@@ -40,6 +40,7 @@
         <item name="actionBarStyle">@style/ActionBar.Green</item>
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="actionBarStyle">@style/ActionBar</item>
+        <item name="myText">@style/Text.Light</item>
         <item name="spinner_dropdown_item">@style/SpinnerDropdownItem.Green</item>
         <item name="spinner_item">@style/SpinnerDropdownItem.Green</item>
         <item name="bg_main">@style/BG_Main.Green</item>

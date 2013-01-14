@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
-import com.asa.easysal.Utils;
-import com.asa.easysal.ui.EasySalSalaryCalculator.ButtonClickListener;
-import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
 
 public class EasySalWeekly extends BaseFragment {
 
@@ -54,7 +51,6 @@ public class EasySalWeekly extends BaseFragment {
 		overtimeTv.setVisibility(View.INVISIBLE);
 		salaryTv.setText(R.string.weekly_salary);
 		hoursWorkedTv.setText(R.string.hours_worked);
-
 	}
 
 	@Override
