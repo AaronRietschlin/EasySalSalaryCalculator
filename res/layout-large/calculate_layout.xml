@@ -3,21 +3,28 @@
     android:id="@+id/scroll_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/padding_top"
-    android:fillViewport="true" >
+    android:fillViewport="true"
+    android:paddingTop="@dimen/padding_top" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
+        <include
+            android:id="@+id/layout_buttons_ref"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            layout="@layout/layout_buttons" />
+
         <RelativeLayout
-            android:layout_width="400dp"
-            android:padding="40dp"
             style="?contentBackground"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="40dp" >
 
             <TextView
                 android:id="@+id/main_wage_label"

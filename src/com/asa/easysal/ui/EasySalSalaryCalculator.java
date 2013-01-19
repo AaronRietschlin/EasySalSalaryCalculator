@@ -49,8 +49,7 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
-		prefs = getSharedPreferences(Utils.PREFERENCES, MODE_PRIVATE);
-		setTheme(prefs.getInt(Utils.PREFERENCES_THEME, R.style.LightTheme));
+		setTheme(Utils.getThemeResource(getApplicationContext()));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -157,8 +156,7 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	}
 
 	private void changeTheme(int themeId) {
-		Utils.commitSharedPrefs(prefs.edit().putInt(Utils.PREFERENCES_THEME,
-				themeId));
+		Utils.setThemeResource(getApplicationContext(), themeId);
 		Intent intent = new Intent(this, EasySalSalaryCalculator.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);

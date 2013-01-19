@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="?bg_main"
     android:layout_width="match_parent"
@@ -19,23 +19,14 @@
             android:paddingBottom="4dp"
             android:paddingTop="4dp" />
     </android.support.v4.view.ViewPager>
-    <!-- 
-    <com.admob.android.ads.AdView
+<!--
+    <com.google.ads.AdView
         android:id="@+id/ad"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        ads:backgroundColor="#000000"
-        ads:keywords="Salary, money, calculator, job"
-        ads:primaryTextColor="#FFFFFF"
-        ads:secondaryTextColor="#CCCCCC" /> -->
-    <!--
-    <include
-        android:id="@+id/layout_buttons_ref"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/layout_buttons" />
-    -->
+        ads:adSize="BANNER"
+        ads:adUnitId="MY_AD_UNIT_ID"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" /> -->
 
-</RelativeLayout>
+</LinearLayout>

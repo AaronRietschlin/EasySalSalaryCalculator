@@ -7,14 +7,5 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttons" />
-
-    <include
-        android:id="@+id/layout_buttons_ref"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/layout_buttons" /> 
-
+        android:layout_height="wrap_content" />
 </RelativeLayout>

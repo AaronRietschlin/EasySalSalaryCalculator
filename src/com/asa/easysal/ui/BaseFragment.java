@@ -1,6 +1,7 @@
 package com.asa.easysal.ui;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -76,6 +77,10 @@ public class BaseFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mActivity = (EasySalSalaryCalculator) getActivity();
+		if (!Utils.isHoneycombOrHigher()){
+			hoursField.setTextColor(Color.BLACK);
+			wageField.setTextColor(Color.BLACK);
+		}
 	}
 
 	protected String getWageString() {

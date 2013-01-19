@@ -155,8 +155,22 @@ public class Utils {
 	public static void makeToast(Context context, int messageId) {
 		Toast.makeText(context, messageId, Toast.LENGTH_SHORT).show();
 	}
-	
-	public static void showCrouton(SherlockFragmentActivity context, int messageId){
+
+	public static void showCrouton(SherlockFragmentActivity context,
+			int messageId) {
 		Crouton.makeText(context, messageId, Style.ALERT).show();
 	}
+
+	public static final int getThemeResource(Context context) {
+		SharedPreferences prefs = context.getSharedPreferences(PREFERENCES,
+				Context.MODE_PRIVATE);
+		return prefs.getInt(PREFERENCES_THEME, R.style.LightTheme);
+	}
+
+	public static final void setThemeResource(Context context, int resource) {
+		SharedPreferences prefs = context.getSharedPreferences(PREFERENCES,
+				Context.MODE_PRIVATE);
+		commitSharedPrefs(prefs.edit().putInt(PREFERENCES_THEME, resource));
+	}
+
 }
