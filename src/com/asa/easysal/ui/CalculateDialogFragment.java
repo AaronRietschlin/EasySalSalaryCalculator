@@ -47,7 +47,9 @@ public class CalculateDialogFragment extends DialogFragment {
 		LayoutInflater inflater = (LayoutInflater) getActivity()
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.results, null);
-
+		TextView otText = (TextView) view.findViewById(R.id.results_overtime);
+		TextView otTitle = (TextView) view
+				.findViewById(R.id.results_overtime_title);
 		// Sets the results
 		((TextView) view.findViewById(R.id.results_hourly)).setText(""
 				+ results[0]);
@@ -61,9 +63,17 @@ public class CalculateDialogFragment extends DialogFragment {
 				+ results[4]);
 		((TextView) view.findViewById(R.id.results_yearly)).setText(""
 				+ results[5]);
+		otText.setText("" + results[5]);
 		if (results.length == 7) {
-			((TextView) view.findViewById(R.id.results_overtime)).setText(""
-					+ results[6]);
+			if (results[6] > 0) {
+				otText.setText("" + results[6]);
+			} else {
+				otText.setVisibility(View.GONE);
+				otTitle.setVisibility(View.GONE);
+			}
+		} else {
+			otText.setVisibility(View.GONE);
+			otTitle.setVisibility(View.GONE);
 		}
 
 		// view = Util.setView(list, view);
