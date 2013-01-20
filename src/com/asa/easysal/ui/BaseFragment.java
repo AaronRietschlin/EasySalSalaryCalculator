@@ -122,7 +122,7 @@ public class BaseFragment extends Fragment {
 		double[] results = CalculationUtils.performCalculation(mActivity, type,
 				SettingsUtil.isOvertime(getActivity()), params);
 		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
-				R.string.title_activity_easy_sal_salary_calculator,
+				R.string.results_dialog_title,
 				R.layout.calculate_layout);
 		frag.setResults(results);
 		frag.show(mActivity.getSupportFragmentManager(), "calculation_result");

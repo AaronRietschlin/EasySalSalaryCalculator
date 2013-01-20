@@ -4,6 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_easy_sal_salary_calculator">EasySal</string>
 
+    <!-- Results title -->
+    <string name="results_dialog_title">EasySal Earnings</string>
+
     <!-- Menu stuff -->
     <string name="menu_settings">Settings</string>
     <string name="menu_theme">Theme</string>
@@ -84,13 +87,13 @@
     <string name="pref_options">Options</string>
 
     <!-- Strings for the dialog popup. -->
-    <string name="dialog_hourly_title">Hourly Earnings:</string>
-    <string name="dialog_daily_title">Daily Earnings</string>
-    <string name="dialog_weekly_title">Weekly Earnings</string>
-    <string name="dialog_biweekly_title">BiWeekly Earnings:</string>
-    <string name="dialog_monthly_title">Monthly Earnings:</string>
-    <string name="dialog_yearly_title">Yearly Earnings:</string>
-    <string name="dialog_overtime_title">Overtime Earnings:</string>
+    <string name="dialog_hourly_title">Hourly:</string>
+    <string name="dialog_daily_title">Daily:</string>
+    <string name="dialog_weekly_title">Weekly:</string>
+    <string name="dialog_biweekly_title">BiWeekly:</string>
+    <string name="dialog_monthly_title">Monthly:</string>
+    <string name="dialog_yearly_title">Yearly:</string>
+    <string name="dialog_overtime_title">Overtime:</string>
 
     <!-- Taxes -->
     <string name="pref_single">Single</string>
