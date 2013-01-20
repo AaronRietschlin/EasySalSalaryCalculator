@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/layout_buttons_ref"
         android:fillViewport="true"
-        android:padding="@dimen/padding_top" >
+        android:padding="@dimen/padding_large" >
 
         <RelativeLayout
             android:layout_width="match_parent"
