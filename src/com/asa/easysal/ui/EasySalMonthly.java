@@ -39,7 +39,7 @@ public class EasySalMonthly extends BaseFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
+		overtimeTv.setVisibility(View.INVISIBLE);
 		salaryTv.setText(R.string.monthly_salary);
 		hoursWorkedTv.setText(R.string.yearly_monthly_hours);
 

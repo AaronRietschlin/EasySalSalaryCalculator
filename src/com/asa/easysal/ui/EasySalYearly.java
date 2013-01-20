@@ -20,17 +20,11 @@ public class EasySalYearly extends BaseFragment {
 		return f;
 	}
 
-	/**
-	 * When creating, retrieve this instance's number from its arguments.
-	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
-	/**
-	 * The Fragment's UI is just a simple text view showing its instance number.
-	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
