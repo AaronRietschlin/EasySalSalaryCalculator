@@ -35,7 +35,7 @@
                 android:layout_alignParentTop="true"
                 android:text="@string/biweekly_salary" />
 
-            <EditText
+            <com.asa.easysal.widget.CancelEditText
                 android:id="@+id/main_wage_field"
                 style="?myText"
                 android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                 android:layout_below="@+id/main_wage_field"
                 android:text="@string/biweekly_hours" />
 
-            <EditText
+            <com.asa.easysal.widget.CancelEditText
                 android:id="@+id/main_hours_field"
                 style="?myText"
                 android:layout_width="match_parent"

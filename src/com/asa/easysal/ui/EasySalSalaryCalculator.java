@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -27,13 +26,15 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 		ActionBar.TabListener, ViewPager.OnPageChangeListener,
 		ActionBar.OnNavigationListener {
 
+	public static final String XMLNS = "http://asa/asa/schema";
+	public static final String CANCEL_DRAWABLE = "cancelDrawable";
+
 	private ViewPager mPager;
 	private ActionBar mActionBar;
 	private PagerTitleStrip mPagerTitleStrip;
 	private TabsPagerAdapter mAdapter;
 
 	private ArrayAdapter<CharSequence> listAdapter;
-	private SharedPreferences prefs;
 
 	private ButtonClickListener mButtonClickListener;
 

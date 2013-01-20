@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+
     <include
         android:id="@+id/layout_buttons_ref"
         android:layout_width="match_parent"
@@ -14,8 +14,8 @@
         android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
         android:layout_above="@id/layout_buttons_ref"
+        android:fillViewport="true"
         android:padding="@dimen/padding_top" >
 
         <RelativeLayout
@@ -37,7 +37,7 @@
                     android:layout_alignParentTop="true"
                     android:text="@string/biweekly_salary" />
 
-                <EditText
+                <com.asa.easysal.widget.CancelEditText
                     android:id="@+id/main_wage_field"
                     style="?myText"
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:layout_below="@+id/main_wage_field"
                     android:text="@string/biweekly_hours" />
 
-                <EditText
+                <com.asa.easysal.widget.CancelEditText
                     android:id="@+id/main_hours_field"
                     style="?myText"
                     android:layout_width="match_parent"
