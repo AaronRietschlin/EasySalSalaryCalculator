@@ -27,7 +27,7 @@
             android:layout_weight="0.25"
             android:orientation="horizontal"
             android:visibility="gone" />
-
+<!-- 
         <Button
             android:id="@+id/button_reset"
             style="?myButtonBarStyle"
@@ -36,7 +36,7 @@
             android:layout_gravity="left"
             android:layout_weight="1"
             android:maxLines="2"
-            android:text="@string/button_reset" />
+            android:text="@string/button_reset" /> -->
 
         <Button
             android:id="@+id/button_calculate"

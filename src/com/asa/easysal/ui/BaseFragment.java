@@ -25,7 +25,8 @@ public class BaseFragment extends Fragment {
 	protected TextView hoursWorkedTv;
 	protected TextView overtimeTv;
 
-	private Button resetButton;
+	// Not keeping the reset button. TODO - Keep this in case I bring it back.
+	// private Button resetButton;
 	private Button calculateButton;
 
 	protected PageChangedListener mPageChangedListener;
@@ -56,19 +57,21 @@ public class BaseFragment extends Fragment {
 		hoursField = (EditText) v.findViewById(R.id.main_hours_field);
 
 		calculateButton = (Button) v.findViewById(R.id.button_calculate);
-		resetButton = (Button) v.findViewById(R.id.button_reset);
+		// resetButton = (Button) v.findViewById(R.id.button_reset);
 		calculateButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				calculateClicked();
 			}
 		});
-		resetButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Utils.clearEditTexts(wageField, hoursField);
-			}
-		});
+		
+		// TODO - Keep this in case I am going to keep it. 
+		// resetButton.setOnClickListener(new View.OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// Utils.clearEditTexts(wageField, hoursField);
+		// }
+		// });
 
 		return v;
 	}
@@ -77,7 +80,7 @@ public class BaseFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mActivity = (EasySalSalaryCalculator) getActivity();
-		if (!Utils.isHoneycombOrHigher()){
+		if (!Utils.isHoneycombOrHigher()) {
 			hoursField.setTextColor(Color.BLACK);
 			wageField.setTextColor(Color.BLACK);
 		}
