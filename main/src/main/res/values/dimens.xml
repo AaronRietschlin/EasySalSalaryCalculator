@@ -1,0 +1,12 @@
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="actionbar_text_size">18sp</dimen>
+    <dimen name="pagertitle_text_size">10sp</dimen>
+    <dimen name="result_font_size">15sp</dimen>
+
+    <!-- used for the padding of the content -->
+    <dimen name="padding_top">10dp</dimen>
+</resources>

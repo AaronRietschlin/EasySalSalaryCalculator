@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.asa.easysal"
+    android:versionCode="11"
+    android:versionName="2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/GreenAppTheme" >
+        <activity
+            android:name=".ui.EasySalSalaryCalculator"
+            android:label="@string/title_activity_easy_sal_salary_calculator" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.PreHCPreferenceActivity"
+            android:label="@string/title_activity_easy_sal_salary_calculator" />
+        <activity
+            android:name=".ui.PostHCPreferenceActivity"
+            android:label="@string/title_activity_easy_sal_salary_calculator" />
+    </application>
+
+</manifest>

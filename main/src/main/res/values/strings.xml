@@ -1,0 +1,120 @@
+<resources>
+
+    <string name="app_name">com.asa.easysal</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_easy_sal_salary_calculator">EasySal</string>
+
+    <!-- Results title -->
+    <string name="results_dialog_title">EasySal Earnings</string>
+
+    <!-- Menu stuff -->
+    <string name="menu_settings">Settings</string>
+    <string name="menu_theme">Theme</string>
+    <string name="menu_theme_dark">Dark</string>
+    <string name="menu_theme_light">Light</string>
+    <string name="menu_theme_green">Money</string>
+
+    <!-- Tab Titles -->
+    <string name="title_hourly">Hourly</string>
+    <string name="title_daily">Daily</string>
+    <string name="title_weekly">Weekly</string>
+    <string name="title_biweekly">Biweekly</string>
+    <string name="title_monthly">Monthly</string>
+    <string name="title_yearly">Yearly</string>
+
+    <!-- Buttons -->
+    <string name="button_calculate">Calculate</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_dismiss">Dismiss</string>
+
+    <!-- Values for HourlyActivity -->
+    <string name="hours_worked">Enter Hours Worked Per Week:</string>
+    <string name="hourly_wage">Enter Your Hourly Salary:</string>
+    <string name="overtime_turned_on">Note: Overtime is turned on!</string>
+
+    <!-- Values for Daily Activity -->
+    <string name="daily_salary">Enter Your Daily Salary:</string>
+    <string name="daily_hours">Enter Hours Worked Per Day:</string>
+
+    <!-- Values for Weekly Activity -->
+    <string name="weekly_salary">Enter Your Weekly Salary:</string>
+
+    <!-- Values for BiWeekly Activity -->
+    <string name="biweekly_salary">Enter Your Biweekly Salary:</string>
+    <string name="biweekly_hours">Enter Hours Worked Every Two Weeks:</string>
+
+    <!-- Values for Monthly Activity -->
+    <string name="monthly_salary">Enter Your Monthly Salary:</string>
+
+    <!-- Values for Yearly Activity -->
+    <string name="yearly_salary">Enter Your Yearly Salary:</string>
+    <string name="yearly_monthly_hours">Enter Avg. Hours Worked Per Week:</string>
+
+    <!-- About EasySal -->
+    <string name="about_title">About</string>
+    <string name="about_summary">About EasySal</string>
+    <string name="about_content" size="10">EasySal Calculator v1.2.0 - 2012\n\nContributors:\n\tAaron Rietschlin - Developer\n\tDave Straight - Designer\n\tKathi Pichler - Translator (de)\n\nVisit the homepage for more information: http://asandroid.blogspot.com/.\n\n<b>Credit</b>\nThe following are libraries used in this project:\n\t-Crouton- https://github.com/keyboardsurfer/Crouton\n\t-ActionBarSherlock - http://actionbarsherlock.com/</string>
+    <string name="approximate_earnings">Approximate Earnings:</string>
+    <string name="daily_earnings">Test</string>
+    <string name="error">TESTING</string>
+    <string name="invalid_entry"><b>Error:</b> Invalid character. You can only use numeric characters and \'.\'.</string>
+    <string name="resultsTitle">Your Approximate Earnings:</string>
+    <string name="resultsCalculate">Calculate Again!</string>
+    <string name="resultsCloseApp">Close App</string>
+    <string name="help_title">Help</string>
+    <string name="help_content">EasySal Salary Calculator is a simple way to calculate your salary. You can calculate your salary based on several different salary options: \n\t-Hourly  \n\t-Daily  \n\t-Weekly  \n\t-Every two weeks  \n\t-Monthly  \n\t-Yearly \n\nEasySal also gives the option of taking overtime pay into consideration. Overtime pay can be based on either the United States minimum of one and a half times the normal pay for any hours worked over full-time (40 hours) or twice the normal pay.</string>
+    <string name="hint_salary">Enter Salary</string>
+    <string name="hint_hours">Enter Hours Worked</string>
+    <string name="overtime_not_considered">Note: Overtime not taken into consideration.</string>
+    <string name="overtime_on_but_no_ot">The overtime setting is turned on, yet the hours you entered does not qualify as overtime hours. In this case, overtime will not be considered.</string>
+
+    <!-- Preference strings -->
+    <string name="pref_ot_title">Overtime</string>
+    <string name="pref_ot_descrip">Check if you would like to incorporate overtime.</string>
+    <string name="pref_otpay_title">Overtime pay</string>
+    <string name="pref_otpay_descrip">Select amount paid for overtime.</string>
+    <string name="pref_otpay_double">Double (x2)</string>
+    <string name="pref_otpay_half">Time-and-a-half (x1.5)</string>
+    <string name="pref_monthly_title">Display 31 Days</string>
+    <string name="pref_monthly_descrip">Check if you would like to display 31 day month (default: only shows 30 days).</string>
+    <string name="pref_pref_title">Settings</string>
+    <string name="pref_taxes">Federal Taxes</string>
+    <string name="pref_taxes_summary">Check if you would like to incorporate federal taxes.</string>
+    <string name="pref_tax_rate">Tax Rate</string>
+    <string name="pref_tax_rate_summary">Select tax rate (e.g. single, married, etc).</string>
+    <string name="pref_biweekly">Biweekly</string>
+    <string name="pref_biweekly_descrip">Select method for entering in hours worked on a biweekly salary.</string>
+    <string name="pref_options">Options</string>
+
+    <!-- Strings for the dialog popup. -->
+    <string name="dialog_hourly_title">Hourly:</string>
+    <string name="dialog_daily_title">Daily:</string>
+    <string name="dialog_weekly_title">Weekly:</string>
+    <string name="dialog_biweekly_title">BiWeekly:</string>
+    <string name="dialog_monthly_title">Monthly:</string>
+    <string name="dialog_yearly_title">Yearly:</string>
+    <string name="dialog_overtime_title">Overtime:</string>
+
+    <!-- Taxes -->
+    <string name="pref_single">Single</string>
+    <string name="pref_married_jointly">Married Filed Jointly</string>
+    <string name="pref_married_separate">Married Filed Separately</string>
+    <string name="pref_hoh">Head of Household</string>
+
+    <!-- New v2.0 and above (Done like this for localization ease -->
+    <!-- Errors -->
+    <string name="error_no_hours_entered">You must enter a value for how many hours you worked!</string>
+    <string name="error_no_salary_entered">You must enter a value for your salary!</string>
+    <string name="error_only_one_decimal_salary">The entry for your salary is invalid. Please try again with a valid number (e.g. only one decimal point).</string>
+    <string name="error_only_one_decimal_hours">The entry for your number of hours worked is invalid. Please try again with a valid number (e.g. only one decimal point).</string>
+    <string name="error_invalid_salary">There was an error converting your salary. Make sure to enter a valid number (e.g. only one decimal point).</string>
+    <string name="error_invalid_hours">There was an error converting your hours worked. Make sure to enter a valid number (e.g. only one decimal point).</string>
+
+    <!-- Fun errors -->
+    <string name="fun_error_hourly_weeks">There aren\'t that many hours in the week! Oh well, curiosity never hurt anybody...</string>
+    <string name="fun_error_hourly_days">What planet are you from? Here on Earth, there\'s only 24 hours in a day.</string>
+    <string name="fun_error_weekly">Um...yeah, there\'s only 168 hours in the week.</string>
+    <string name="fun_error_biweekly">I highly doubt that you work more hours than there are in two weeks!</string>
+    <string name="fun_error_monthly">Wow, really? Do you have the power of the Force? Working that many hours is insane!</string>
+
+</resources>
