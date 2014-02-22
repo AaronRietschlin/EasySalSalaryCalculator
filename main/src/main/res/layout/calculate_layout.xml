@@ -1,87 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <include
-        android:id="@+id/layout_buttons_ref"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/layout_buttons" />
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
     <ScrollView
         android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/layout_buttons_ref"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fillViewport="true"
-        android:padding="@dimen/padding_large" >
+        android:padding="@dimen/padding_large">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <RelativeLayout
+
+            <TextView
+                android:id="@+id/main_wage_label"
+                style="?myText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/biweekly_salary" />
 
-                <TextView
-                    android:id="@+id/main_wage_label"
-                    style="?myText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:text="@string/biweekly_salary" />
+            <com.asa.easysal.widget.CancelEditText
+                android:id="@+id/main_wage_field"
+                style="?myText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/main_wage_label"
+                android:ellipsize="none"
+                android:ems="10"
+                android:hint="@string/hint_salary"
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
 
-                <com.asa.easysal.widget.CancelEditText
-                    android:id="@+id/main_wage_field"
-                    style="?myText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/main_wage_label"
-                    android:ellipsize="none"
-                    android:ems="10"
-                    android:hint="@string/hint_salary"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true" />
+            <TextView
+                android:id="@+id/main_hours_label"
+                style="?myText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/main_wage_field"
+                android:text="@string/biweekly_hours" />
 
-                <TextView
-                    android:id="@+id/main_hours_label"
-                    style="?myText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/main_wage_field"
-                    android:text="@string/biweekly_hours" />
+            <com.asa.easysal.widget.CancelEditText
+                android:id="@+id/main_hours_field"
+                style="?myText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/main_hours_label"
+                android:ellipsize="none"
+                android:ems="10"
+                android:hint="@string/hint_hours"
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
 
-                <com.asa.easysal.widget.CancelEditText
-                    android:id="@+id/main_hours_field"
-                    style="?myText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/main_hours_label"
-                    android:ellipsize="none"
-                    android:ems="10"
-                    android:hint="@string/hint_hours"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true" />
-
-                <TextView
-                    android:id="@+id/main_ot_label"
-                    style="?myText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/main_hours_field"
-                    android:text="@string/overtime_turned_on" />
-            </RelativeLayout>
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/main_ot_label"
+                style="?myText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/main_hours_field"
+                android:text="@string/overtime_turned_on" />
+        </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/button_calculate"
+        style="?myButtonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:filterTouchesWhenObscured="true"
+        android:maxLines="2"
+        android:text="@string/button_calculate" />
+</LinearLayout>

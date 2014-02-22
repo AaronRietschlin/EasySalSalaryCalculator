@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 
 import com.asa.easysal.R;
@@ -33,7 +34,9 @@ public class CancelEditText extends EditText {
 	}
 
 	private void build(AttributeSet attrs) {
-
+        if(isInEditMode()){
+            return;
+        }
 		int cancelDrawableResourceId = 0;
 		int theme = Utils.getThemeResource(getContext());
 		if (theme == 0) {
