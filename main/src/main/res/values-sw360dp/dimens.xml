@@ -1,0 +1,11 @@
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="pagertitle_text_size">18sp</dimen>
+
+    <!-- used for the padding of the content -->
+    <dimen name="padding_top">100dp</dimen>
+
+</resources>

@@ -38,8 +38,6 @@
         <item name="pagertitle">@style/PagerTitleStrip.Green</item>
         <item name="android:actionBarStyle">@style/ActionBar.Green</item>
         <item name="actionBarStyle">@style/ActionBar.Green</item>
-        <item name="android:actionBarStyle">@style/ActionBar</item>
-        <item name="actionBarStyle">@style/ActionBar</item>
         <item name="myText">@style/Text.Light</item>
         <item name="spinner_dropdown_item">@style/SpinnerDropdownItem.Green</item>
         <item name="spinner_item">@style/SpinnerDropdownItem.Green</item>
