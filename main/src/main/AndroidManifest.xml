@@ -10,7 +10,7 @@
         android:theme="@style/GreenAppTheme">
 
         <activity
-            android:name=".ui.EasySalSalaryCalculator"
+            android:name=".ui.EsHostActivity"
             android:label="@string/title_activity_easy_sal_salary_calculator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

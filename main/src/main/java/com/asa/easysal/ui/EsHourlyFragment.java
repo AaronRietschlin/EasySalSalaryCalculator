@@ -6,15 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.asa.easysal.CalculationUtils;
+import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
 
-public class EasySalBiweekly extends BaseFragment {
+public class EsHourlyFragment extends BaseFragment {
+
+	public static final String TAG = "HOURLY";
 
 	/**
 	 * Create a new instance of CountingFragment, providing "num" as an
 	 * argument.
 	 */
-	static EasySalBiweekly newInstance(int num) {
-		EasySalBiweekly f = new EasySalBiweekly();
+	static EsHourlyFragment newInstance(int num) {
+		EsHourlyFragment f = new EsHourlyFragment();
 
 		return f;
 	}
@@ -33,29 +37,31 @@ public class EasySalBiweekly extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return super.onCreateView(inflater, container, savedInstanceState);
+		View v = super.onCreateView(inflater, container, savedInstanceState);
+		return v;
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		// if (Util.prefsBiweeklyValue == Util.BIWEEKLY_VALUE_BI) {
-		// hoursWorkedTv.setText(getString(R.string.biweekly_hours));
-		// } else {
-		// hoursWorkedTv.setText(getString(R.string.hours_worked));
-		// }
+		if (!SettingsUtil.isOvertime(getActivity())) {
+			overtimeTv.setVisibility(View.GONE);
+		} else {
+			overtimeTv.setVisibility(View.VISIBLE);
+		}
+
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-		overtimeTv.setVisibility(View.INVISIBLE);
+		salaryTv.setText(R.string.hourly_wage);
+		hoursWorkedTv.setText(R.string.hours_worked);
 
 	}
 
 	@Override
 	protected void calculateClicked() {
-		makeCalculation(CalculationUtils.TYPE_BIWEEKLY);
+		makeCalculation(CalculationUtils.TYPE_HOURLY);
 	}
 }

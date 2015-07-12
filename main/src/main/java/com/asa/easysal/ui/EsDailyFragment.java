@@ -9,7 +9,7 @@ import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 
-public class EasySalDaily extends BaseFragment {
+public class EsDailyFragment extends BaseFragment {
 
 	public static final String TAG = "DAILY";
 
@@ -17,8 +17,8 @@ public class EasySalDaily extends BaseFragment {
 	 * Create a new instance of CountingFragment, providing "num" as an
 	 * argument.
 	 */
-	static EasySalDaily newInstance(int num) {
-		EasySalDaily f = new EasySalDaily();
+	static EsDailyFragment newInstance(int num) {
+		EsDailyFragment f = new EsDailyFragment();
 
 		return f;
 	}

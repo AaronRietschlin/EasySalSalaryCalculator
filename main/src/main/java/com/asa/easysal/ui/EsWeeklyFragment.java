@@ -8,13 +8,21 @@ import android.view.ViewGroup;
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 
-public class EasySalMonthly extends BaseFragment {
+public class EsWeeklyFragment extends BaseFragment {
+
+	public static final String TAG = "WEEKLY";
+
 	/**
 	 * Create a new instance of CountingFragment, providing "num" as an
 	 * argument.
 	 */
-	static EasySalMonthly newInstance(int num) {
-		EasySalMonthly f = new EasySalMonthly();
+	static EsWeeklyFragment newInstance(int num) {
+		EsWeeklyFragment f = new EsWeeklyFragment();
+
+		// Supply num input as an argument.
+		Bundle args = new Bundle();
+		args.putInt("num", num);
+		f.setArguments(args);
 
 		return f;
 	}
@@ -33,25 +41,20 @@ public class EasySalMonthly extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return super.onCreateView(inflater, container, savedInstanceState);
+		View v = super.onCreateView(inflater, container, savedInstanceState);
+		return v;
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		overtimeTv.setVisibility(View.INVISIBLE);
-		salaryTv.setText(R.string.monthly_salary);
-		hoursWorkedTv.setText(R.string.yearly_monthly_hours);
-
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
+		salaryTv.setText(R.string.weekly_salary);
+		hoursWorkedTv.setText(R.string.hours_worked);
 	}
 
 	@Override
 	protected void calculateClicked() {
-		makeCalculation(CalculationUtils.TYPE_MONTHLY);
+		makeCalculation(CalculationUtils.TYPE_WEEKLY);
 	}
 }

@@ -22,7 +22,7 @@ import com.asa.easysal.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
+public class EsHostActivity extends SherlockFragmentActivity implements
 		ActionBar.TabListener, ViewPager.OnPageChangeListener,
 		ActionBar.OnNavigationListener {
 
@@ -62,12 +62,12 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 
 		// Set the Pagers data adapter
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-		mAdapter.addFragment(new EasySalHourly());
-		mAdapter.addFragment(new EasySalDaily());
-		mAdapter.addFragment(new EasySalWeekly());
-		mAdapter.addFragment(new EasySalBiweekly());
-		mAdapter.addFragment(new EasySalMonthly());
-		mAdapter.addFragment(new EasySalYearly());
+		mAdapter.addFragment(new EsHourlyFragment());
+		mAdapter.addFragment(new EsDailyFragment());
+		mAdapter.addFragment(new EsWeeklyFragment());
+		mAdapter.addFragment(new EsBiWeeklyFragment());
+		mAdapter.addFragment(new EsMonthlyFragment());
+		mAdapter.addFragment(new EsYearlyFragment());
 		mPager.setAdapter(mAdapter);
 		mPager.setOnPageChangeListener(this);
 
@@ -158,7 +158,7 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 
 	private void changeTheme(int themeId) {
 		Utils.setThemeResource(getApplicationContext(), themeId);
-		Intent intent = new Intent(this, EasySalSalaryCalculator.class);
+		Intent intent = new Intent(this, EsHostActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
@@ -272,8 +272,8 @@ public class EasySalSalaryCalculator extends SherlockFragmentActivity implements
 	public void pageChanged(int position) {
 		TabsPagerAdapter adapter = (TabsPagerAdapter) mPager.getAdapter();
 		BaseFragment fragment = adapter.getItem(position);
-		if (fragment instanceof EasySalHourly) {
-			EasySalHourly frag = (EasySalHourly) fragment;
+		if (fragment instanceof EsHourlyFragment) {
+			EsHourlyFragment frag = (EsHourlyFragment) fragment;
 			frag.getActivity();
 		}
 		PageChangedListener listener = fragment.getPageChangedListener();

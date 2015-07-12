@@ -7,18 +7,14 @@ import android.view.ViewGroup;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
-import com.asa.easysal.SettingsUtil;
 
-public class EasySalHourly extends BaseFragment {
-
-	public static final String TAG = "HOURLY";
-
+public class EsMonthlyFragment extends BaseFragment {
 	/**
 	 * Create a new instance of CountingFragment, providing "num" as an
 	 * argument.
 	 */
-	static EasySalHourly newInstance(int num) {
-		EasySalHourly f = new EasySalHourly();
+	static EsMonthlyFragment newInstance(int num) {
+		EsMonthlyFragment f = new EsMonthlyFragment();
 
 		return f;
 	}
@@ -37,31 +33,25 @@ public class EasySalHourly extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = super.onCreateView(inflater, container, savedInstanceState);
-		return v;
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		if (!SettingsUtil.isOvertime(getActivity())) {
-			overtimeTv.setVisibility(View.GONE);
-		} else {
-			overtimeTv.setVisibility(View.VISIBLE);
-		}
-
+		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		salaryTv.setText(R.string.hourly_wage);
-		hoursWorkedTv.setText(R.string.hours_worked);
+		overtimeTv.setVisibility(View.INVISIBLE);
+		salaryTv.setText(R.string.monthly_salary);
+		hoursWorkedTv.setText(R.string.yearly_monthly_hours);
 
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+	}
+
+	@Override
 	protected void calculateClicked() {
-		makeCalculation(CalculationUtils.TYPE_HOURLY);
+		makeCalculation(CalculationUtils.TYPE_MONTHLY);
 	}
 }

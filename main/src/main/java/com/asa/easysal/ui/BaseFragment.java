@@ -15,7 +15,7 @@ import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.Utils;
-import com.asa.easysal.ui.EasySalSalaryCalculator.PageChangedListener;
+import com.asa.easysal.ui.EsHostActivity.PageChangedListener;
 
 public class BaseFragment extends Fragment {
 
@@ -30,7 +30,7 @@ public class BaseFragment extends Fragment {
 	private Button calculateButton;
 
 	protected PageChangedListener mPageChangedListener;
-	protected EasySalSalaryCalculator mActivity;
+	protected EsHostActivity mActivity;
 
 	public PageChangedListener getPageChangedListener() {
 		return mPageChangedListener;
@@ -43,7 +43,7 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		mActivity = (EasySalSalaryCalculator) activity;
+		mActivity = (EsHostActivity) activity;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mActivity = (EasySalSalaryCalculator) getActivity();
+		mActivity = (EsHostActivity) getActivity();
 		if (!Utils.isHoneycombOrHigher()) {
 			hoursField.setTextColor(Color.BLACK);
 			wageField.setTextColor(Color.BLACK);

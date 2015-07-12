@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 
-public class EasySalYearly extends BaseFragment {
+public class EsYearlyFragment extends BaseFragment {
 
 	/**
 	 * Create a new instance of CountingFragment, providing "num" as an
 	 * argument.
 	 */
-	static EasySalYearly newInstance(int num) {
-		EasySalYearly f = new EasySalYearly();
+	static EsYearlyFragment newInstance(int num) {
+		EsYearlyFragment f = new EsYearlyFragment();
 
 		return f;
 	}
