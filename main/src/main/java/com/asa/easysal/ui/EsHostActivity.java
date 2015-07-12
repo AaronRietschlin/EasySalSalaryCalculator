@@ -7,14 +7,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.Utils;
@@ -22,7 +21,7 @@ import com.asa.easysal.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EsHostActivity extends SherlockFragmentActivity implements
+public class EsHostActivity extends AppCompatActivity implements
 		ActionBar.TabListener, ViewPager.OnPageChangeListener,
 		ActionBar.OnNavigationListener {
 
@@ -126,7 +125,7 @@ public class EsHostActivity extends SherlockFragmentActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(
+		getMenuInflater().inflate(
 				R.menu.activity_easy_sal_salary_calculator, menu);
 		return true;
 	}
@@ -242,17 +241,17 @@ public class EsHostActivity extends SherlockFragmentActivity implements
 	}
 
 	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 		mPager.setCurrentItem(tab.getPosition());
 	}
 
 	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
 	}
 
 	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 	}
 
 	@Override

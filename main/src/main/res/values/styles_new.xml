@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ThemeOverlay.EasySal" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorForeground">@color/bright_foreground_material_dark</item>
+        <!--<item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>-->
+        <!--<item name="android:autoCompleteTextViewStyle">@style/Widget.AppCompat.AutoCompleteTextView</item>-->
+        <!--<item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>-->
+        <item name="colorControlNormal">@android:color/white</item>
+        <!--<item name="colorControlHighlight">@color/ev_blue_dark</item>-->
+        <!--<item name="colorSwitchThumbNormal">@color/switch_thumb_normal_material_dark</item>-->
+    </style>
+
+</resources>

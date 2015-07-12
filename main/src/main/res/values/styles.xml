@@ -8,11 +8,11 @@
         <item name="android:textSize">@dimen/result_font_size</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="ic_action_theme">@drawable/ic_action_theme_dark</item>
     </style>
     <!-- The themes -->
-    <style name="LightTheme" parent="Theme.Sherlock.Light">
+    <style name="LightTheme" parent="Theme.AppCompat.Light">
         <item name="pagertitle">@style/PagerTitleStrip</item>
         <item name="ic_action_theme">@drawable/ic_action_theme_light</item>
         <item name="bg_main">@style/BG_Main</item>
@@ -23,7 +23,7 @@
         <item name="contentBackground">@style/ContentBackground.Light</item>
     </style>
     <!-- TODO - Search for Holo. Remove them and move it to Styles 11. -->
-    <style name="DarkTheme" parent="Theme.Sherlock">
+    <style name="DarkTheme" parent="Theme.AppCompat">
         <item name="ic_action_theme">@drawable/ic_action_theme_dark</item>
         <item name="pagertitle">@style/PagerTitleStrip.Dark</item>
         <item name="bg_main">@android:style/Theme.Holo</item>
@@ -48,7 +48,7 @@
     </style>
 
     <!-- Actionbar styles -->
-    <style name="ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+    <style name="ActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:icon">@drawable/ic_launcher</item>
         <item name="icon">@drawable/ic_launcher</item>
         <item name="android:displayOptions">showHome|showTitle</item>
@@ -68,15 +68,15 @@
     </style>
 
     <!-- This is the style for the selected view -->
-    <style name="ActionBar.TabView" parent="Widget.Sherlock.ActionBar.TabView" />
+    <style name="ActionBar.TabView" parent="Widget.AppCompat.ActionBar.TabView" />
 
-    <style name="ActionBar.TabViewLight" parent="Widget.Sherlock.Light.ActionBar.TabView.Inverse"></style>
+    <style name="ActionBar.TabViewLight" parent="Widget.AppCompat.Light.ActionBar.TabView.Inverse"/>
 
     <style name="ActionBar.TabView.Green">
         <item name="android:background">@drawable/tab_white_ab</item>
     </style>
 
-    <style name="ActionBar.TabText" parent="Widget.Sherlock.Light.ActionBar.TabText.Inverse"></style>
+    <style name="ActionBar.TabText" parent="Widget.AppCompat.Light.ActionBar.TabText.Inverse"/>
 
     <!-- Pager styles -->
     <style name="PagerTitleStrip">
