@@ -1,39 +1,49 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.asa.easysal">
+<manifest package="com.asa.easysal"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/GreenAppTheme">
+        android:theme="@style/Theme.Money">
 
         <activity
             android:name=".ui.EsHostActivity"
             android:label="@string/title_activity_easy_sal_salary_calculator">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".ui.EsHostActivityCompat"
+            android:label="@string/title_activity_easy_sal_salary_calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <activity
             android:name=".ui.PreHCPreferenceActivity"
-            android:label="@string/title_activity_easy_sal_salary_calculator" />
+            android:label="@string/title_activity_easy_sal_salary_calculator"/>
 
         <activity
             android:name=".ui.PostHCPreferenceActivity"
-            android:label="@string/title_activity_easy_sal_salary_calculator" />
+            android:label="@string/title_activity_easy_sal_salary_calculator"/>
 
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"/>
 
     </application>
 

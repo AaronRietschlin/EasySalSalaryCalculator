@@ -9,4 +9,7 @@
 
     <!-- used for the padding of the content -->
     <dimen name="padding_top">10dp</dimen>
+
+    <!-- For the tabs -->
+    <dimen name="tab_height">48dp</dimen>
 </resources>

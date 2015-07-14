@@ -54,7 +54,7 @@ public class EsHostActivity extends AppCompatActivity implements
 		setContentView(R.layout.activity_main);
 
 		mPager = (ViewPager) findViewById(R.id.pager);
-		mPagerTitleStrip = (PagerTitleStrip) findViewById(R.id.pager_title_strip);
+//		mPagerTitleStrip = (PagerTitleStrip) findViewById(R.id.pager_title_strip);
 
 		// Instatiate the ActionBar
 		mActionBar = getSupportActionBar();

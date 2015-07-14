@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">com.asa.easysal</string>
+    <string name="app_name">EasySal Salary Calculator</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_easy_sal_salary_calculator">EasySal</string>
 
@@ -57,7 +57,8 @@
     <string name="approximate_earnings">Approximate Earnings:</string>
     <string name="daily_earnings">Test</string>
     <string name="error">TESTING</string>
-    <string name="invalid_entry"><b>Error:</b> Invalid character. You can only use numeric characters and \'.\'.</string>
+    <string name="invalid_entry"><b>Error:</b> Invalid character. You can only use numeric characters and \'.\'.
+</string>
     <string name="resultsTitle">Your Approximate Earnings:</string>
     <string name="resultsCalculate">Calculate Again!</string>
     <string name="resultsCloseApp">Close App</string>

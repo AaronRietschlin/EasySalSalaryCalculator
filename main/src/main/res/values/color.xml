@@ -5,4 +5,8 @@
     <color name="money_green">#033617</color>
     <color name="money_bg_green_light">#C7DCD0</color>
     <color name="money_pager">#77876B</color>
+
+    <color name="money_color_primary_dark">#525d4a</color>
+    <color name="money_color_primary">#77876B</color>
+    <color name="money_color_accent">#77876B</color>
 </resources>
