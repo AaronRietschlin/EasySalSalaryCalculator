@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,13 +30,15 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     private EsCalculator mCalculator;
 
     @Bind(R.id.main_wage_field)
-    EditText wageField;
+    EditText mWageField;
+    @Bind(R.id.main_wage_field_layout)
+    TextInputLayout mWageInputLayout;
+
     @Bind(R.id.main_hours_field)
-    EditText hoursField;
-    @Bind(R.id.main_wage_label)
-    TextView salaryTv;
-    @Bind(R.id.main_hours_label)
-    TextView hoursWorkedTv;
+    EditText mHoursField;
+    @Bind(R.id.main_hours_field_layout)
+    TextInputLayout mHoursInputLayout;
+
     @Bind(R.id.main_ot_label)
     TextView overtimeTv;
     @Bind(R.id.button_calculate)
@@ -81,7 +84,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.calculate_layout, container, false);
+        View v = inflater.inflate(R.layout.calculate_layout_md, container, false);
         ButterKnife.bind(this, v);
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +93,9 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
             }
         });
 
+        mHoursInputLayout.setHint(getString(mCalculator.getHoursHintText()));
+        mWageInputLayout.setHint(getString(mCalculator.getSalaryHintText()));
+
         return v;
     }
 
@@ -97,17 +103,17 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (!Utils.isHoneycombOrHigher()) {
-            hoursField.setTextColor(Color.BLACK);
-            wageField.setTextColor(Color.BLACK);
+            mHoursField.setTextColor(Color.BLACK);
+            mWageField.setTextColor(Color.BLACK);
         }
     }
 
     protected String getWageString() {
-        return wageField.getText().toString().trim();
+        return mWageField.getText().toString().trim();
     }
 
     protected String getHoursString() {
-        return hoursField.getText().toString().trim();
+        return mHoursField.getText().toString().trim();
     }
 
     /**

@@ -16,6 +16,12 @@ public interface EsCalculator extends Parcelable {
 
     void performCalculation(double[] values, CalculatorCallback callback);
 
+    @StringRes
+    int getSalaryHintText();
+
+    @StringRes
+    int getHoursHintText();
+
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({CalculatorType.HOURLY, CalculatorType.DAILY, CalculatorType.WEEKLY, CalculatorType.BIWEEKLY,
             CalculatorType.MONTHLY, CalculatorType.YEARLY})
