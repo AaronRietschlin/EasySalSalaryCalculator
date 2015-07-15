@@ -9,8 +9,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
+import com.asa.easysal.calculators.HourlyCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,12 +59,35 @@ public class EsHostActivityCompat extends AppCompatActivity {
     }
 
     private void addFragmentsToPager() {
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_hourly));
+        EsSalaryFragment frag = EsSalaryFragment.newInstance(new HourlyCalculator());
+        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_hourly));
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_daily));
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_weekly));
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_biweekly));
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_monthly));
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_yearly));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_easy_sal_salary_calculator, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_help:
+                AlertDialogFragment fragment = AlertDialogFragment.newInstance(
+                        R.string.help_title, R.string.help_content,
+                        R.string.button_dismiss);
+                fragment.show(getSupportFragmentManager(), "help");
+                return true;
+            case R.id.menu_settings:
+                SettingsUtil.launchSettings(this);
+                return true;
+        }
+        return false;
     }
 
     static class EsPagerAdapter extends FragmentPagerAdapter {

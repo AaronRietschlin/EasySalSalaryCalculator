@@ -3,6 +3,7 @@ package com.asa.easysal.ui;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,126 +16,167 @@ import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.Utils;
+import com.asa.easysal.calculators.EsCalculator;
 import com.asa.easysal.ui.EsHostActivity.PageChangedListener;
 
-import butterknife.OnClick;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-public class EsSalaryFragment extends Fragment {
+public class EsSalaryFragment extends Fragment implements EsCalculator.CalculatorCallback {
+    public static final String TAG = EsSalaryFragment.class.getSimpleName();
+    private static final String EXTRA_CALCULATOR = "calculator";
 
-	protected EditText wageField;
-	protected EditText hoursField;
-	protected TextView salaryTv;
-	protected TextView hoursWorkedTv;
-	protected TextView overtimeTv;
+    private EsCalculator mCalculator;
 
-	// Not keeping the reset button. TODO - Keep this in case I bring it back.
-	// private Button resetButton;
-	private Button calculateButton;
+    @Bind(R.id.main_wage_field)
+    EditText wageField;
+    @Bind(R.id.main_hours_field)
+    EditText hoursField;
+    @Bind(R.id.main_wage_label)
+    TextView salaryTv;
+    @Bind(R.id.main_hours_label)
+    TextView hoursWorkedTv;
+    @Bind(R.id.main_ot_label)
+    TextView overtimeTv;
+    @Bind(R.id.button_calculate)
+    Button calculateButton;
 
-	protected PageChangedListener mPageChangedListener;
-	protected EsHostActivity mActivity;
+    // Not keeping the reset button. TODO - Keep this in case I bring it back.
+    // private Button resetButton;
 
-	public PageChangedListener getPageChangedListener() {
-		return mPageChangedListener;
-	}
+    protected PageChangedListener mPageChangedListener;
+    protected EsHostActivityCompat mActivity;
 
-	public void setPageChangedListener(PageChangedListener pageChangedListener) {
-		this.mPageChangedListener = pageChangedListener;
-	}
+    public static EsSalaryFragment newInstance(EsCalculator calculator) {
+        EsSalaryFragment fragment = new EsSalaryFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(EXTRA_CALCULATOR, calculator);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		mActivity = (EsHostActivity) activity;
-	}
+    public PageChangedListener getPageChangedListener() {
+        return mPageChangedListener;
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.calculate_layout, container, false);
-		salaryTv = (TextView) v.findViewById(R.id.main_wage_label);
-		hoursWorkedTv = (TextView) v.findViewById(R.id.main_hours_label);
-		overtimeTv = (TextView) v.findViewById(R.id.main_ot_label);
-		wageField = (EditText) v.findViewById(R.id.main_wage_field);
-		hoursField = (EditText) v.findViewById(R.id.main_hours_field);
+    public void setPageChangedListener(PageChangedListener pageChangedListener) {
+        this.mPageChangedListener = pageChangedListener;
+    }
 
-		calculateButton = (Button) v.findViewById(R.id.button_calculate);
-		// resetButton = (Button) v.findViewById(R.id.button_reset);
-		calculateButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				calculateClicked();
-			}
-		});
-		
-		// TODO - Keep this in case I am going to keep it. 
-		// resetButton.setOnClickListener(new View.OnClickListener() {
-		// @Override
-		// public void onClick(View v) {
-		// Utils.clearEditTexts(wageField, hoursField);
-		// }
-		// });
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (EsHostActivityCompat) activity;
+    }
 
-		return v;
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle args = getArguments();
+        if (args != null) {
+            mCalculator = args.getParcelable(EXTRA_CALCULATOR);
+        }
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		mActivity = (EsHostActivity) getActivity();
-		if (!Utils.isHoneycombOrHigher()) {
-			hoursField.setTextColor(Color.BLACK);
-			wageField.setTextColor(Color.BLACK);
-		}
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.calculate_layout, container, false);
+        ButterKnife.bind(this, v);
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculateClicked();
+            }
+        });
 
-	protected String getWageString() {
-		return wageField.getText().toString().trim();
-	}
+        return v;
+    }
 
-	protected String getHoursString() {
-		return hoursField.getText().toString().trim();
-	}
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (!Utils.isHoneycombOrHigher()) {
+            hoursField.setTextColor(Color.BLACK);
+            wageField.setTextColor(Color.BLACK);
+        }
+    }
 
-	/**
-	 * Checks the given string to make sure it is not empty.
-	 * 
-	 * @param wageString
-	 * @return
-	 */
-	protected boolean isStringValid(String wageString) {
-		return !(wageString == null || wageString.length() == 0);
-	}
+    protected String getWageString() {
+        return wageField.getText().toString().trim();
+    }
 
-	protected void makeCalculation(int type) {
-		// Check the entered wage/salary and don't let them proceed if wrong.
-		String wageString = getWageString();
-		if (!isStringValid(wageString)) {
-			Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
-			return;
-		}
-		String hourString = getHoursString();
-		if (!isStringValid(hourString)) {
-			Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
-			return;
-		}
+    protected String getHoursString() {
+        return hoursField.getText().toString().trim();
+    }
 
-		double[] params = CalculationUtils.convertStringsToDoubles(
-				getWageString(), getHoursString());
-		double[] results = CalculationUtils.performCalculation(mActivity, type,
-				SettingsUtil.isOvertime(getActivity()), params);
-		CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
-				R.string.results_dialog_title,
-				R.layout.calculate_layout);
-		frag.setResults(results);
-		frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
-	}
+    /**
+     * Checks the given string to make sure it is not empty.
+     *
+     * @param wageString
+     * @return
+     */
+    protected boolean isStringValid(String wageString) {
+        return !(wageString == null || wageString.length() == 0);
+    }
 
-	// OVERRIDE
-	protected void configurationChanged() {
-	}
+    protected void makeCalculation(int type) {
+        // Check the entered wage/salary and don't let them proceed if wrong.
+        String wageString = getWageString();
+        if (!isStringValid(wageString)) {
+            Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
+            return;
+        }
+        String hourString = getHoursString();
+        if (!isStringValid(hourString)) {
+            Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
+            return;
+        }
 
-	protected void calculateClicked() {
+        double[] params = CalculationUtils.convertStringsToDoubles(
+                getWageString(), getHoursString());
+        double[] results = CalculationUtils.performCalculation(mActivity, type,
+                SettingsUtil.isOvertime(getActivity()), params);
+        CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
+                R.string.results_dialog_title,
+                R.layout.calculate_layout);
+        frag.setResults(results);
+        frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
+    }
 
-	}
+    // OVERRIDE
+    protected void configurationChanged() {
+    }
+
+    protected void calculateClicked() {
+// Check the entered wage/salary and don't let them proceed if wrong.
+        String wageString = getWageString();
+        if (!isStringValid(wageString)) {
+            Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
+            return;
+        }
+        String hourString = getHoursString();
+        if (!isStringValid(hourString)) {
+            Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
+            return;
+        }
+
+        double[] params = CalculationUtils.convertStringsToDoubles(
+                getWageString(), getHoursString());
+        mCalculator.performCalculation(params, this);
+    }
+
+
+    @Override
+    public void success(double[] results) {
+        CalculateDialogFragment frag = CalculateDialogFragment.newInstance(R.string.results_dialog_title,
+                R.layout.calculate_layout);
+        frag.setResults(results);
+        frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
+    }
+
+    @Override
+    public void failure(@StringRes int errorResId) {
+
+    }
 }

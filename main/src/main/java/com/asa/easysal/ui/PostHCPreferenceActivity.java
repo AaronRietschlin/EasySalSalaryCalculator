@@ -15,8 +15,8 @@ public class PostHCPreferenceActivity extends FragmentActivity {
 
 		// Since this is onjly going to be show on API 11+, we don't need to use
 		// ABS.
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+//		getActionBar().setHomeButtonEnabled(true);
+//		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Display the fragment as the main content.
 		getFragmentManager().beginTransaction()
