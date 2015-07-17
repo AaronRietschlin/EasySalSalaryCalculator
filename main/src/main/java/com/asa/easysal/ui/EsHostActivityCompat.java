@@ -21,6 +21,8 @@ import com.asa.easysal.calculators.MonthlyCalculator;
 import com.asa.easysal.calculators.WeeklyCalculator;
 import com.asa.easysal.calculators.YearlyCalculator;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +51,6 @@ public class EsHostActivityCompat extends AppCompatActivity {
 
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
-        }
-
-        if (savedInstanceState != null) {
-//            mPager.onRestoreInstanceState(savedInstanceState);
         }
 
         if (mPagerAdapter == null) {

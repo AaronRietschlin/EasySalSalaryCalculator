@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 22
@@ -9,22 +24,64 @@ android {
         targetSdkVersion 22
         versionCode 13
         versionName "3.0.0"
+
+        def appName = "EasySal_"
+
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def file = output.outputFile
+                if (!file.name.contains("debug")) {
+                    def newName = appName + "v" + versionName + "_" + new Date().format('MM-dd-yyyy') + ".apk"
+                    output.outputFile = new File(file.parent, newName)
+                }
+            }
+        }
     }
+
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
+            buildConfigField "boolean", "REPORT_CRASHES", "true"
+            buildConfigField "boolean", "IS_DEBUG", "false"
+            buildConfigField "boolean", "REPORT_ANALYTICS", "true"
         }
 
         debug {
-            applicationIdSuffix ".debug"
+
+            def SUFFIX = "debug"
+            applicationIdSuffix "." + SUFFIX
+            versionNameSuffix "_" + SUFFIX
+            signingConfig signingConfigs.debug
+
+            buildConfigField "boolean", "REPORT_CRASHES", "false"
+            buildConfigField "boolean", "IS_DEBUG", "true"
+            buildConfigField "boolean", "REPORT_ANALYTICS", "false"
         }
+
+        beta {
+
+            def SUFFIX = "beta"
+            applicationIdSuffix "." + SUFFIX
+            versionNameSuffix "_" + SUFFIX
+            signingConfig signingConfigs.debug
+
+            buildConfigField "boolean", "REPORT_CRASHES", "true"
+            buildConfigField "boolean", "IS_DEBUG", "false"
+            buildConfigField "boolean", "REPORT_ANALYTICS", "true"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
-    compile ('com.android.support:design:22.2.1'){
+    compile('com.android.support:design:22.2.1') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
     }
@@ -33,4 +90,7 @@ dependencies {
     compile 'com.jakewharton.timber:timber:3.1.0'
 
     compile 'com.google.android.gms:play-services:7.5.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.4.0@aar') {
+        transitive = true;
+    }
 }
