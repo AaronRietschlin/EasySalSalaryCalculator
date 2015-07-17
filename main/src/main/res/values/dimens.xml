@@ -12,4 +12,7 @@
 
     <!-- For the tabs -->
     <dimen name="tab_height">48dp</dimen>
+
+    <!-- Shake delta -->
+    <dimen name="shake_delta">4dp</dimen>
 </resources>

@@ -1,5 +1,8 @@
 package com.asa.easysal;
 
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -145,10 +148,15 @@ public class Utils {
         Toast.makeText(context, messageId, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Use {@link SnackUtils}.
+     */
+    @Deprecated
     public static void showCrouton(FragmentActivity context,
                                    int messageId) {
 //		Crouton.makeText(context, messageId, Style.ALERT).show();
     }
+
 
     public static final int getThemeResource(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES,
@@ -160,6 +168,31 @@ public class Utils {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES,
                 Context.MODE_PRIVATE);
         commitSharedPrefs(prefs.edit().putInt(PREFERENCES_THEME, resource));
+    }
+
+    /**
+     * Will shake the given view by the given delta. This performs the check to make sure it is ICS or greater.
+     *
+     * @param view The {@link android.view.View} to shake.
+     */
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    public static void performShakeOnView(Context context, View view) {
+        int delta = context.getResources().getDimensionPixelSize(R.dimen.shake_delta);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            return;
+        }
+        PropertyValuesHolder pvhTranslateX = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X,
+                Keyframe.ofFloat(0f, 0),
+                Keyframe.ofFloat(.10f, -delta),
+                Keyframe.ofFloat(.26f, delta),
+                Keyframe.ofFloat(.42f, -delta),
+                Keyframe.ofFloat(.58f, delta),
+                Keyframe.ofFloat(.74f, -delta),
+                Keyframe.ofFloat(.90f, delta),
+                Keyframe.ofFloat(1f, 0f)
+        );
+        ObjectAnimator.ofPropertyValuesHolder(view, pvhTranslateX).
+                setDuration(500).start();
     }
 
 }

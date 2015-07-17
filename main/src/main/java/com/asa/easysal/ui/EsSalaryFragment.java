@@ -16,12 +16,14 @@ import android.widget.TextView;
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
+import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
 import com.asa.easysal.calculators.EsCalculator;
 import com.asa.easysal.ui.EsHostActivity.PageChangedListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class EsSalaryFragment extends Fragment implements EsCalculator.CalculatorCallback {
     public static final String TAG = EsSalaryFragment.class.getSimpleName();
@@ -89,15 +91,11 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.calculate_layout_md, container, false);
         ButterKnife.bind(this, v);
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculateClicked();
-            }
-        });
 
         mHoursInputLayout.setHint(getString(mCalculator.getHoursHintText()));
         mWageInputLayout.setHint(getString(mCalculator.getSalaryHintText()));
+        mHoursInputLayout.setErrorEnabled(true);
+        mWageInputLayout.setErrorEnabled(true);
 
         return v;
     }
@@ -165,16 +163,23 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     protected void configurationChanged() {
     }
 
-    protected void calculateClicked() {
-// Check the entered wage/salary and don't let them proceed if wrong.
+    @OnClick(R.id.button_calculate)
+    protected void onCalculateClicked() {
+        // Reset the errors:
+        mWageInputLayout.setError(" ");
+        mHoursInputLayout.setError(" ");
+
+        // Check the entered wage/salary and don't let them proceed if wrong.
         String wageString = getWageString();
         if (!isStringValid(wageString)) {
-            Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
+            mWageInputLayout.setError(getString(R.string.error_no_salary_entered));
+            Utils.performShakeOnView(mActivity, mWageInputLayout);
             return;
         }
         String hourString = getHoursString();
         if (!isStringValid(hourString)) {
-            Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
+            mHoursInputLayout.setError(getString(R.string.error_no_hours_entered));
+            Utils.performShakeOnView(mActivity, mHoursInputLayout);
             return;
         }
 

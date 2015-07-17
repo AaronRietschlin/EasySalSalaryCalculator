@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
+import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -66,6 +67,9 @@ public class CancelEditText extends EditText {
                 @Override
                 public void onTextChanged(CharSequence s, int start,
                                           int before, int count) {
+                    if (s.length() > 0) {
+                        resetError();
+                    }
                     showOrHideCancel();
                 }
 
@@ -75,6 +79,12 @@ public class CancelEditText extends EditText {
                 }
             });
             showOrHideCancel();
+        }
+    }
+
+    private void resetError() {
+        if (getParent() instanceof TextInputLayout) {
+            ((TextInputLayout) getParent()).setError(" ");
         }
     }
 
