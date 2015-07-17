@@ -15,7 +15,7 @@ public interface EsCalculator extends Parcelable {
 
     boolean canHaveOvertime(Context context);
 
-    void performCalculation(double[] values, CalculatorCallback callback);
+    void performCalculation(Context context, double[] values, CalculatorCallback callback);
 
     @StringRes
     int getSalaryHintText();

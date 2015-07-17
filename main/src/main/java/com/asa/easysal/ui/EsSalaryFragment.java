@@ -189,7 +189,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
         double[] params = CalculationUtils.convertStringsToDoubles(
                 getWageString(), getHoursString());
-        mCalculator.performCalculation(params, this);
+        mCalculator.performCalculation(mActivity.getApplicationContext(), params, this);
     }
 
     @Override

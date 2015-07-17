@@ -53,7 +53,7 @@ public class CalculationUtils {
         mWage = params[0];
         mType = type;
 
-        checkHours();
+//        checkHours();
 
         switch (type) {
             case CalculatorType.HOURLY:
@@ -70,6 +70,10 @@ public class CalculationUtils {
                 return calculateYearly();
         }
         return null;
+    }
+
+    public static void clear(){
+        mContext = null;
     }
 
     public static double[] convertStringsToDoubles(String... params) {
