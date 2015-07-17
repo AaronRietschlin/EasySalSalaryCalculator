@@ -16,17 +16,28 @@ public class SnackUtils {
 
     @Nullable
     public static Snackbar make(@NonNull EsSalaryFragment fragment, @StringRes int text) {
+        return make(fragment, text, Snackbar.LENGTH_SHORT);
+    }
+
+    @Nullable
+    public static Snackbar make(@NonNull EsSalaryFragment fragment, String text) {
+        return make(fragment, text, Snackbar.LENGTH_SHORT);
+    }
+
+    @Nullable
+    public static Snackbar make(@NonNull EsSalaryFragment fragment, @StringRes int text, int length) {
         try {
-            return Snackbar.make(fragment.getView(), text, Snackbar.LENGTH_SHORT);
+            return Snackbar.make(fragment.getView(), text, length);
         } catch (Exception e) {
             Timber.e(e, "Tried to create a SnackBar, but an exception occurred.");
             return null;
         }
     }
 
-    public static Snackbar make(@NonNull EsSalaryFragment fragment, String text) {
+    @Nullable
+    public static Snackbar make(@NonNull EsSalaryFragment fragment, String text, int length) {
         try {
-            return Snackbar.make(fragment.getView(), text, Snackbar.LENGTH_SHORT);
+            return Snackbar.make(fragment.getView(), text, length);
         } catch (Exception e) {
             Timber.e(e, "Tried to create a SnackBar, but an exception occurred.");
             return null;

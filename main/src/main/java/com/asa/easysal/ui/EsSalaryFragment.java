@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
@@ -40,11 +42,6 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     EditText mHoursField;
     @Bind(R.id.main_hours_field_layout)
     TextInputLayout mHoursInputLayout;
-
-    @Bind(R.id.main_ot_label)
-    TextView overtimeTv;
-    @Bind(R.id.button_calculate)
-    Button calculateButton;
 
     // Not keeping the reset button. TODO - Keep this in case I bring it back.
     // private Button resetButton;
@@ -77,6 +74,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         if (mCalculator == null) {
             Bundle args = getArguments();
@@ -107,6 +105,12 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
             mHoursField.setTextColor(Color.BLACK);
             mWageField.setTextColor(Color.BLACK);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mActivity.invalidateOptionsMenu();
     }
 
     @Override
@@ -188,6 +192,34 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         mCalculator.performCalculation(params, this);
     }
 
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (mCalculator.canHaveOvertime(mActivity)) {
+            inflater.inflate(R.menu.menu_ot, menu);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_ot:
+                if (mCalculator.canHaveOvertime(mActivity)) {
+                    Snackbar snackbar = SnackUtils.make(this, R.string.overtime_turned_on, Snackbar.LENGTH_LONG);
+                    if (snackbar != null) {
+                        snackbar.show();
+                    }
+                    return true;
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void success(double[] results) {

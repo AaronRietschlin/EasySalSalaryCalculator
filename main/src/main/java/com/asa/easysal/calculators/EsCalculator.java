@@ -1,5 +1,6 @@
 package com.asa.easysal.calculators;
 
+import android.content.Context;
 import android.os.Parcelable;
 import android.support.annotation.IntDef;
 import android.support.annotation.StringRes;
@@ -12,7 +13,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 public interface EsCalculator extends Parcelable {
 
-    boolean canHaveOvertime();
+    boolean canHaveOvertime(Context context);
 
     void performCalculation(double[] values, CalculatorCallback callback);
 

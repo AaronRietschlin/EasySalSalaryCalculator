@@ -4,6 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_easy_sal_salary_calculator">EasySal</string>
 
+    <!-- Action Strings -->
+    <string name="action_ot">Overtime Info</string>
+
     <!-- Results title -->
     <string name="results_dialog_title">EasySal Earnings</string>
 

@@ -1,9 +1,10 @@
 package com.asa.easysal.calculators;
 
+import android.content.Context;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
 
 /**
  * Created by aaron on 7/14/15.
@@ -11,8 +12,8 @@ import com.asa.easysal.R;
 public class HourlyCalculator implements EsCalculator {
 
     @Override
-    public boolean canHaveOvertime() {
-        return true;
+    public boolean canHaveOvertime(Context context) {
+        return SettingsUtil.isOvertime(context);
     }
 
     @Override
@@ -39,7 +40,8 @@ public class HourlyCalculator implements EsCalculator {
     public void writeToParcel(Parcel dest, int flags) {
     }
 
-    public HourlyCalculator(){}
+    public HourlyCalculator() {
+    }
 
     protected HourlyCalculator(Parcel in) {
     }
