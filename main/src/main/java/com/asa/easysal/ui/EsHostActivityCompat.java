@@ -14,7 +14,12 @@ import android.view.MenuItem;
 
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
+import com.asa.easysal.calculators.BiWeeklyCalculator;
+import com.asa.easysal.calculators.DailyCalculator;
 import com.asa.easysal.calculators.HourlyCalculator;
+import com.asa.easysal.calculators.MonthlyCalculator;
+import com.asa.easysal.calculators.WeeklyCalculator;
+import com.asa.easysal.calculators.YearlyCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,11 +66,16 @@ public class EsHostActivityCompat extends AppCompatActivity {
     private void addFragmentsToPager() {
         EsSalaryFragment frag = EsSalaryFragment.newInstance(new HourlyCalculator());
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_hourly));
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_daily));
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_weekly));
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_biweekly));
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_monthly));
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, new FragmentPlaceholder(), R.string.title_yearly));
+        frag = EsSalaryFragment.newInstance(new DailyCalculator());
+        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_daily));
+        frag = EsSalaryFragment.newInstance(new WeeklyCalculator());
+        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_weekly));
+        frag = EsSalaryFragment.newInstance(new BiWeeklyCalculator());
+        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_biweekly));
+        frag = EsSalaryFragment.newInstance(new MonthlyCalculator());
+        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_monthly));
+        frag = EsSalaryFragment.newInstance(new YearlyCalculator());
+        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_yearly));
     }
 
     @Override
