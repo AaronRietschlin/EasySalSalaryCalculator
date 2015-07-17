@@ -47,7 +47,7 @@ public class EsHostActivityCompat extends AppCompatActivity {
         }
 
         if (savedInstanceState != null) {
-            mPager.onRestoreInstanceState(savedInstanceState);
+//            mPager.onRestoreInstanceState(savedInstanceState);
         }
 
         if (mPagerAdapter == null) {

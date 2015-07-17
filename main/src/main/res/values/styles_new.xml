@@ -16,6 +16,7 @@
         <!--<item name="pagertitle">@style/PagerTitleStrip.Green</item>-->
         <item name="bg_main">@style/BG_Main.Green</item>
         <item name="myText">@style/Text.Light</item>
+        <item name="myButtonBarStyle">@style/TextAppearance.EasySal.Button</item>
         <!--<item name="myButtonBarStyle">@style/ButtonBar.Money</item>-->
         <!--<item name="contentBackground">@style/ContentBackground.Money</item>-->
 
@@ -30,6 +31,12 @@
         <!--<item name="android:panelBackground">@drawable/menu_hardkey_panel_money</item>-->
         <!--<item name="android:editTextStyle">@style/EditTextMoney</item>-->
 
+    </style>
+
+    <style name="TextAppearance.EasySal" parent="TextAppearance.AppCompat"/>
+
+    <style name="TextAppearance.EasySal.Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/money_color_accent</item>
     </style>
 
     <style name="ThemeOverlay.EasySal" parent="ThemeOverlay.AppCompat.Dark">

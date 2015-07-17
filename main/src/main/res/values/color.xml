@@ -9,4 +9,6 @@
     <color name="money_color_primary_dark">#525d4a</color>
     <color name="money_color_primary">#77876B</color>
     <color name="money_color_accent">#77876B</color>
+    <color name="money_text_color_button">#4e5846</color>
+    
 </resources>

@@ -75,9 +75,12 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle args = getArguments();
-        if (args != null) {
-            mCalculator = args.getParcelable(EXTRA_CALCULATOR);
+
+        if (mCalculator == null) {
+            Bundle args = getArguments();
+            if (args != null) {
+                mCalculator = args.getParcelable(EXTRA_CALCULATOR);
+            }
         }
     }
 
@@ -105,6 +108,14 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         if (!Utils.isHoneycombOrHigher()) {
             mHoursField.setTextColor(Color.BLACK);
             mWageField.setTextColor(Color.BLACK);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mCalculator != null) {
+            outState.putParcelable(EXTRA_CALCULATOR, mCalculator);
         }
     }
 
