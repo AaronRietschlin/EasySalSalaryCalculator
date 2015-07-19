@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.asa.easysal.BuildConfig;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.calculators.BiWeeklyCalculator;
@@ -20,9 +22,11 @@ import com.asa.easysal.calculators.HourlyCalculator;
 import com.asa.easysal.calculators.MonthlyCalculator;
 import com.asa.easysal.calculators.WeeklyCalculator;
 import com.asa.easysal.calculators.YearlyCalculator;
+import com.asa.easysal.utils.AdUtils;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +44,8 @@ public class EsHostActivityCompat extends AppCompatActivity {
     TabLayout mTabLayout;
     @Bind(R.id.pager)
     ViewPager mPager;
+    @Bind(R.id.adView)
+    AdView mAdView;
 
     private EsPagerAdapter mPagerAdapter;
 
@@ -59,6 +65,8 @@ public class EsHostActivityCompat extends AppCompatActivity {
             mPager.setAdapter(mPagerAdapter);
             mTabLayout.setupWithViewPager(mPager);
         }
+
+        setupAds();
     }
 
     private void addFragmentsToPager() {
@@ -74,6 +82,23 @@ public class EsHostActivityCompat extends AppCompatActivity {
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_monthly));
         frag = EsSalaryFragment.newInstance(new YearlyCalculator());
         mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_yearly));
+    }
+
+    private void setupAds() {
+        // TODO - check if ads enabled.
+        if (!BuildConfig.SHOW_ADS) {
+            return;
+        }
+        AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
+        AdUtils.addTestAds(adRequestBuilder);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
+        mAdView.loadAd(adRequestBuilder.build());
     }
 
     @Override

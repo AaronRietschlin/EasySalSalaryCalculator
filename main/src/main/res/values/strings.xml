@@ -124,4 +124,7 @@
     <!-- New erros -->
     <string name="default_error">Error performing calculation.</string>
 
+    <!-- Ads -->
+    <string name="main_app_banner_ad_unit">ca-app-pub-1062229174020330/8735472404</string>
+
 </resources>
