@@ -2,10 +2,13 @@ package com.asa.easysal.calculators;
 
 import android.content.Context;
 import android.os.Parcel;
+import android.support.annotation.NonNull;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.EsException;
 import com.asa.easysal.R;
+import com.asa.easysal.analytics.AnalyticsContants;
+import com.asa.easysal.analytics.AnalyticsHelper;
 
 import timber.log.Timber;
 
@@ -39,6 +42,12 @@ public class BiWeeklyCalculator implements EsCalculator {
     @Override
     public int getHoursHintText() {
         return R.string.biweekly_hours;
+    }
+
+    @Override
+    public void sendAnalyticsCalculateClickedEvent(@NonNull Context context) {
+        AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
+                AnalyticsContants.CALC_TYPE_BIWEEKLY);
     }
 
     @Override
