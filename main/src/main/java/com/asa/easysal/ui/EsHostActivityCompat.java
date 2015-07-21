@@ -14,8 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.asa.easysal.BuildConfig;
+import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
+import com.asa.easysal.analytics.AnalyticsContants;
+import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.calculators.BiWeeklyCalculator;
 import com.asa.easysal.calculators.DailyCalculator;
 import com.asa.easysal.calculators.HourlyCalculator;
@@ -49,6 +52,8 @@ public class EsHostActivityCompat extends AppCompatActivity {
 
     private EsPagerAdapter mPagerAdapter;
 
+    private static final int POS_DAILY = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +72,7 @@ public class EsHostActivityCompat extends AppCompatActivity {
         }
 
         setupAds();
+        setupPagerListener();
     }
 
     private void addFragmentsToPager() {
@@ -101,6 +107,50 @@ public class EsHostActivityCompat extends AppCompatActivity {
         mAdView.loadAd(adRequestBuilder.build());
     }
 
+    private void setupPagerListener() {
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case CalculationUtils.TYPE_HOURLY:
+                        AnalyticsHelper.sendScreenView(getApplicationContext(),
+                                AnalyticsContants.SCREEN_HOURLY_CALCULATE_SCREEN);
+                        break;
+                    case CalculationUtils.TYPE_DAILY:
+                        AnalyticsHelper.sendScreenView(getApplicationContext(),
+                                AnalyticsContants.SCREEN_DAILY_CALCULATE_SCREEN);
+                        break;
+                    case CalculationUtils.TYPE_WEEKLY:
+                        AnalyticsHelper.sendScreenView(getApplicationContext(),
+                                AnalyticsContants.SCREEN_WEEKLY_CALCULATE_SCREEN);
+                        break;
+                    case CalculationUtils.TYPE_BIWEEKLY:
+                        AnalyticsHelper.sendScreenView(getApplicationContext(),
+                                AnalyticsContants.SCREEN_BIWEEKLY_CALCULATE_SCREEN);
+                        break;
+                    case CalculationUtils.TYPE_MONTHLY:
+                        AnalyticsHelper.sendScreenView(getApplicationContext(),
+                                AnalyticsContants.SCREEN_MONTHLY_CALCULATE_SCREEN);
+                        break;
+                    case CalculationUtils.TYPE_YEARLY:
+                        AnalyticsHelper.sendScreenView(getApplicationContext(),
+                                AnalyticsContants.SCREEN_YEARLY_CALCULATE_SCREEN);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_easy_sal_salary_calculator, menu);
@@ -118,6 +168,7 @@ public class EsHostActivityCompat extends AppCompatActivity {
                 return true;
             case R.id.menu_settings:
                 SettingsUtil.launchSettings(this);
+                AnalyticsHelper.sendSettingsClickedEvent(this);
                 return true;
         }
         return false;

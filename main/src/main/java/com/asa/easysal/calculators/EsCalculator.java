@@ -3,6 +3,7 @@ package com.asa.easysal.calculators;
 import android.content.Context;
 import android.os.Parcelable;
 import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 
 import java.lang.annotation.Retention;
@@ -22,6 +23,8 @@ public interface EsCalculator extends Parcelable {
 
     @StringRes
     int getHoursHintText();
+
+    void sendAnalyticsCalculateClickedEvent(@NonNull Context context);
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({CalculatorType.HOURLY, CalculatorType.DAILY, CalculatorType.WEEKLY, CalculatorType.BIWEEKLY,

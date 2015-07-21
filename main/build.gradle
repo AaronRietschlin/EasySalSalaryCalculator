@@ -49,6 +49,8 @@ android {
             buildConfigField "boolean", "REPORT_ANALYTICS", "true"
             buildConfigField "boolean", "SHOW_ADS", "true"
             buildConfigField "boolean", "SHOW_PROD_AD", "true"
+
+            buildConfigField "String", "GA_TRACKING_ID", "\"" + ES_GA_TRACKING_ID + "\""
         }
 
         debug {
@@ -63,6 +65,8 @@ android {
             buildConfigField "boolean", "REPORT_ANALYTICS", "false"
             buildConfigField "boolean", "SHOW_ADS", "false"
             buildConfigField "boolean", "SHOW_PROD_AD", "false"
+
+            buildConfigField "String", "GA_TRACKING_ID", "\"" + ES_GA_TRACKING_ID + "\""
 
         }
 
@@ -79,6 +83,7 @@ android {
             buildConfigField "boolean", "SHOW_ADS", "true"
             buildConfigField "boolean", "SHOW_PROD_AD", "false"
 
+            buildConfigField "String", "GA_TRACKING_ID", "\"" + ES_GA_TRACKING_ID + "\""
         }
     }
 
