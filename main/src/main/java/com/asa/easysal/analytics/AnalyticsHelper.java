@@ -11,7 +11,7 @@ import com.google.android.gms.analytics.Tracker;
 public class AnalyticsHelper {
 
     public static Tracker getTracker(Context context) {
-        return ((EsApplication) context).getTracker();
+        return ((EsApplication) context.getApplicationContext()).getTracker();
     }
 
     public static void sendScreenView(Context context, @AnalyticsContants.Screens String stringName) {
@@ -42,6 +42,26 @@ public class AnalyticsHelper {
 
     public static void sendSettingsClickedEvent(@NonNull Context context) {
         sendEvent(context, "", AnalyticsContants.EVENT_SETTINGS_ACTION_CLICKED, "");
+    }
+
+    public static void sendOvertimeTurnedOnEvent(@NonNull Context context) {
+        sendEvent(context, "", AnalyticsContants.EVENT_OVERTIME_TURNED_ON, "");
+    }
+
+    public static void sendOvertimeTurnedOffEvent(@NonNull Context context) {
+        sendEvent(context, "", AnalyticsContants.EVENT_OVERTIME_TURNED_OFF, "");
+    }
+
+    public static void sendOvertimeValueChangedEvent(@NonNull Context context, String value) {
+        sendEvent(context, "", AnalyticsContants.EVENT_OVERTIME_AMOUNT_CHANGED, value);
+    }
+
+    public static void sendOpenSourceLicensesnClickedEvent(@NonNull Context context) {
+        sendEvent(context, "", AnalyticsContants.EVENT_OPEN_SOURCE_LICENSES_CLICKED, "");
+    }
+
+    public static void sendOvertimeInfoButtonClickedEvent(@NonNull Context context) {
+        sendEvent(context, "", AnalyticsContants.EVENT_OVERTIME_INFO_BTN_CLICKED, "");
     }
 
 }

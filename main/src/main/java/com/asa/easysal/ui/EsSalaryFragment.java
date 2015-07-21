@@ -20,6 +20,7 @@ import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
+import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.calculators.EsCalculator;
 import com.asa.easysal.ui.EsHostActivity.PageChangedListener;
 
@@ -215,6 +216,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
                     if (snackbar != null) {
                         snackbar.show();
                     }
+                    AnalyticsHelper.sendOvertimeInfoButtonClickedEvent(mActivity);
                     return true;
                 }
                 break;

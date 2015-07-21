@@ -6,10 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
 
+import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.ui.PostHCPreferenceActivity;
 import com.asa.easysal.ui.PreHCPreferenceActivity;
 
@@ -58,6 +60,34 @@ public class SettingsUtil {
                     }
 
                 });
+    }
+
+    public static void setOvertimeListener(final Context context, Preference checkBoxPreference) {
+        checkBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (newValue instanceof Boolean) {
+                    if (((boolean) newValue)) {
+                        AnalyticsHelper.sendOvertimeTurnedOnEvent(context);
+                    } else {
+                        AnalyticsHelper.sendOvertimeTurnedOffEvent(context);
+                    }
+                }
+                return true;
+            }
+        });
+    }
+
+    public static void setOvertimeValueListener(final Context context, ListPreference preference) {
+        preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (newValue instanceof String) {
+                    AnalyticsHelper.sendOvertimeValueChangedEvent(context, (String) newValue);
+                }
+                return true;
+            }
+        });
     }
 
     public static void launchHome(final Context context,

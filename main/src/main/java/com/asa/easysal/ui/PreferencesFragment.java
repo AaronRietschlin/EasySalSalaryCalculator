@@ -3,6 +3,7 @@ package com.asa.easysal.ui;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 
 import com.asa.easysal.R;
@@ -20,5 +21,8 @@ public class PreferencesFragment extends PreferenceFragment {
 				findPreference(SettingsUtil.PREFERENCES_ABOUT));
 		SettingsUtil.launchHome(getActivity(),
 				findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
+		SettingsUtil.setOvertimeListener(getActivity(), findPreference(SettingsUtil.PREFERENCES_OVERTIME));
+		SettingsUtil.setOvertimeValueListener(getActivity(), (ListPreference) findPreference(SettingsUtil.PREFERENCES_OVERTIME_PAY));
+
 	}
 }

@@ -9,8 +9,8 @@ public interface AnalyticsContants {
 
     @Retention(RetentionPolicy.SOURCE)
     @StringDef({
-            EVENT_CALCULATE_CLICKED, EVENT_SETTINGS_ACTION_CLICKED, EVENT_OVERTIME_TURNED_ON,
-            EVENT_OVERTIME_AMOUNT_CHANGED, EVENT_OPEN_SOURCE_LICENSES_CLICKED, EVENT_OVERTIME_BTN_CLICKED
+            EVENT_CALCULATE_CLICKED, EVENT_SETTINGS_ACTION_CLICKED, EVENT_OVERTIME_TURNED_ON, EVENT_OVERTIME_TURNED_OFF,
+            EVENT_OVERTIME_AMOUNT_CHANGED, EVENT_OPEN_SOURCE_LICENSES_CLICKED, EVENT_OVERTIME_INFO_BTN_CLICKED
     })
     @interface Events {
     }
@@ -18,9 +18,10 @@ public interface AnalyticsContants {
     String EVENT_CALCULATE_CLICKED = "calculate_clicked";
     String EVENT_SETTINGS_ACTION_CLICKED = "settings_action_clicked";
     String EVENT_OVERTIME_TURNED_ON = "overtime_turned_on";
+    String EVENT_OVERTIME_TURNED_OFF = "overtime_turned_off";
     String EVENT_OVERTIME_AMOUNT_CHANGED = "overtime_amount_changed";
     String EVENT_OPEN_SOURCE_LICENSES_CLICKED = "open_source_licenses_clicked";
-    String EVENT_OVERTIME_BTN_CLICKED = "overtime_btn_clicked";
+    String EVENT_OVERTIME_INFO_BTN_CLICKED = "overtime_info_btn_clicked";
 
     @Retention(RetentionPolicy.SOURCE)
     @StringDef({
