@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+    <PreferenceCategory android:title="@string/pref_options">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="overtime"
+            android:summary="@string/pref_ot_descrip"
+            android:title="@string/pref_ot_title"/>
+
+        <ListPreference
+            android:defaultValue="1"
+            android:dependency="overtime"
+            android:entries="@array/ot_names"
+            android:entryValues="@array/ot_values"
+            android:key="overtimePay"
+            android:summary="Select amount paid for overtime."
+            android:title="Overtime Pay"/>
+
+        <!--         <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="taxes"
+                    android:summary="@string/pref_taxes_summary"
+                    android:title="@string/pref_taxes" />
+
+                <ListPreference
+                    android:defaultValue="1"
+                    android:dependency="taxes"
+                    android:entries="@array/tax_rate_names"
+                    android:entryValues="@array/tax_rate_values"
+                    android:summary="@string/pref_tax_rate_summary"
+                    android:title="@string/pref_tax_rate" /> -->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/about_title">
+
+        <Preference
+            android:key="homepagePref"
+            android:summary="Homepage"
+            android:title="EasySal Calculator Homepage"/>
+
+        <Preference
+            android:key="aboutPref"
+            android:summary="@string/about_summary"
+            android:title="@string/about_title"/>
+
+        <Preference
+            android:key="licenses"
+            android:summary="@string/pref_message_open_source"
+            android:title="@string/pref_title_open_source"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

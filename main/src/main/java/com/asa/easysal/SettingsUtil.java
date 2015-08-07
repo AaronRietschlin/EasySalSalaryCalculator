@@ -14,6 +14,7 @@ import android.preference.PreferenceManager;
 import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.ui.PostHCPreferenceActivity;
 import com.asa.easysal.ui.PreHCPreferenceActivity;
+import com.asa.easysal.utils.NoticeUtils;
 
 public class SettingsUtil {
 
@@ -21,6 +22,7 @@ public class SettingsUtil {
     public static final String PREFERENCES_HOMEPAGE = "homepagePref";
     public static final String PREFERENCES_OVERTIME = "overtime";
     public static final String PREFERENCES_OVERTIME_PAY = "overtimePay";
+    public static final String PREFERENCES_LICENSES = "licenses";
     public static final String PREFERENCES_TAXES = "taxes";
 
     private static SharedPreferences defaultPrefs;
@@ -114,6 +116,17 @@ public class SettingsUtil {
             intent = new Intent(context, PreHCPreferenceActivity.class);
         }
         context.startActivity(intent);
+    }
+
+    public static void openLicenses(final Context context, Preference licensePreference) {
+        licensePreference
+                .setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                    public boolean onPreferenceClick(Preference preference) {
+                        NoticeUtils.showLicenseDialog(context);
+                        return true;
+                    }
+
+                });
     }
 
     public static boolean isOvertime(Context context) {
