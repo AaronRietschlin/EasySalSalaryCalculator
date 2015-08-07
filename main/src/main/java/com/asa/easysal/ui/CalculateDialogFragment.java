@@ -16,12 +16,12 @@ public class CalculateDialogFragment extends DialogFragment {
     private double[] results;
 
     private final static String EXTRA_DOUBLE_VALUES = "values";
+    private final static String EXTRA_TITLE = "title";
 
-    public static CalculateDialogFragment newInstance(int title, int layoutId) {
+    public static CalculateDialogFragment newInstance(int title) {
         CalculateDialogFragment frag = new CalculateDialogFragment();
         Bundle args = new Bundle();
-        args.putInt("title", title);
-        args.putInt("layout", layoutId);
+        args.putInt(EXTRA_TITLE, title);
         frag.setArguments(args);
         return frag;
     }
@@ -43,13 +43,11 @@ public class CalculateDialogFragment extends DialogFragment {
                 }
             }
         }
-        int title = getArguments().getInt("title");
-        LayoutInflater inflater = (LayoutInflater) getActivity()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        int title = getArguments().getInt(EXTRA_TITLE);
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.results, null);
         TextView otText = (TextView) view.findViewById(R.id.results_overtime);
-        TextView otTitle = (TextView) view
-                .findViewById(R.id.results_overtime_title);
+        TextView otTitle = (TextView) view.findViewById(R.id.results_overtime_title);
         // Sets the results
         ((TextView) view.findViewById(R.id.results_hourly)).setText("" + results[0]);
         ((TextView) view.findViewById(R.id.results_daily)).setText("" + results[1]);

@@ -17,12 +17,10 @@ import android.widget.EditText;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
-import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
 import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.calculators.EsCalculator;
-import com.asa.easysal.ui.EsHostActivity.PageChangedListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,7 +45,6 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     // Not keeping the reset button. TODO - Keep this in case I bring it back.
     // private Button resetButton;
 
-    protected PageChangedListener mPageChangedListener;
     protected EsHostActivityCompat mActivity;
 
     public static EsSalaryFragment newInstance(EsCalculator calculator) {
@@ -56,14 +53,6 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         args.putParcelable(EXTRA_CALCULATOR, calculator);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public PageChangedListener getPageChangedListener() {
-        return mPageChangedListener;
-    }
-
-    public void setPageChangedListener(PageChangedListener pageChangedListener) {
-        this.mPageChangedListener = pageChangedListener;
     }
 
     @Override
@@ -88,7 +77,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.calculate_layout_md, container, false);
+        View v = inflater.inflate(R.layout.calculate_layout, container, false);
         ButterKnife.bind(this, v);
 
         mHoursInputLayout.setHint(getString(mCalculator.getHoursHintText()));
@@ -140,33 +129,6 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         return !(wageString == null || wageString.length() == 0);
     }
 
-    protected void makeCalculation(int type) {
-        // Check the entered wage/salary and don't let them proceed if wrong.
-        String wageString = getWageString();
-        if (!isStringValid(wageString)) {
-            Utils.showCrouton(mActivity, R.string.error_no_salary_entered);
-            return;
-        }
-        String hourString = getHoursString();
-        if (!isStringValid(hourString)) {
-            Utils.showCrouton(mActivity, R.string.error_no_hours_entered);
-            return;
-        }
-
-        double[] params = CalculationUtils.convertStringsToDoubles(
-                getWageString(), getHoursString());
-        double[] results = CalculationUtils.performCalculation(mActivity, type,
-                SettingsUtil.isOvertime(getActivity()), params);
-        CalculateDialogFragment frag = CalculateDialogFragment.newInstance(
-                R.string.results_dialog_title,
-                R.layout.calculate_layout);
-        frag.setResults(results);
-        frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
-    }
-
-    // OVERRIDE
-    protected void configurationChanged() {
-    }
 
     @OnClick(R.id.button_calculate)
     protected void onCalculateClicked() {
@@ -226,8 +188,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     @Override
     public void success(double[] results) {
-        CalculateDialogFragment frag = CalculateDialogFragment.newInstance(R.string.results_dialog_title,
-                R.layout.calculate_layout);
+        CalculateDialogFragment frag = CalculateDialogFragment.newInstance(R.string.results_dialog_title);
         frag.setResults(results);
         frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
     }

@@ -44,15 +44,7 @@ public class CancelEditText extends EditText {
         // init the empty drawable
         mDrawableEmpty = getDrawable(R.drawable.ic_action_clear_empty);
 
-        int cancelDrawableResourceId = 0;
-        int theme = Utils.getThemeResource(getContext());
-        if (theme == 0) {
-            return;
-        } else if (theme == R.style.DarkTheme) {
-            cancelDrawableResourceId = R.drawable.ic_action_clear_light;
-        } else {
-            cancelDrawableResourceId = R.drawable.ic_action_clear;
-        }
+        int cancelDrawableResourceId = R.drawable.ic_action_clear;
 
         if (cancelDrawableResourceId != 0) {
             mDrawableClear = getDrawable(cancelDrawableResourceId);

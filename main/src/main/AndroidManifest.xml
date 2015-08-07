@@ -15,16 +15,6 @@
         android:theme="@style/Theme.Money">
 
         <activity
-            android:name=".ui.EsHostActivity"
-            android:label="@string/title_activity_easy_sal_salary_calculator">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-
-        <activity
             android:name=".ui.EsHostActivityCompat"
             android:label="@string/title_activity_easy_sal_salary_calculator"
             android:windowSoftInputMode="stateHidden">

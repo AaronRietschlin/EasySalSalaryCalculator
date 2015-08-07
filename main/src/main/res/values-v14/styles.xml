@@ -1,9 +1,0 @@
-<resources>
-
-    <style name="Text" parent="@android:style/TextAppearance.Holo" />
-
-    <style name="Text.Light">
-        <item name="android:textColor">#000</item>
-    </style>
-
-</resources>
