@@ -14,12 +14,11 @@ public class PreHCPreferenceActivity extends PreferenceActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.layout.preferences);
+		addPreferencesFromResource(R.xml.preferences);
 
-		SettingsUtil.launchAbout(this,
-				findPreference(SettingsUtil.PREFERENCES_ABOUT));
-		SettingsUtil.launchHome(this,
-				findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
+		SettingsUtil.launchAbout(this, findPreference(SettingsUtil.PREFERENCES_ABOUT));
+		SettingsUtil.launchHome(this, findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
+		SettingsUtil.openLicenses(this, findPreference(SettingsUtil.PREFERENCES_LICENSES));
 
 		AnalyticsHelper.sendScreenView(this, AnalyticsContants.SCREEN_SETTINGS_SCREEN);
 	}

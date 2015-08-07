@@ -102,6 +102,7 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.timber:timber:3.1.0'
+    compile 'de.psdev.licensesdialog:licensesdialog:1.7.0'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.4.0@aar') {
         transitive = true;

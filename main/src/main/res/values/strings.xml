@@ -89,6 +89,8 @@
     <string name="pref_biweekly">Biweekly</string>
     <string name="pref_biweekly_descrip">Select method for entering in hours worked on a biweekly salary.</string>
     <string name="pref_options">Options</string>
+    <string name="pref_title_open_source">Open Source Licenses</string>
+    <string name="pref_message_open_source">Click to view the open source licenses used in the app.</string>
 
     <!-- Strings for the dialog popup. -->
     <string name="dialog_hourly_title">Hourly:</string>

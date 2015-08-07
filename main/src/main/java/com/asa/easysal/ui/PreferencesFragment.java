@@ -15,7 +15,7 @@ public class PreferencesFragment extends PreferenceFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		addPreferencesFromResource(R.layout.preferences);
+		addPreferencesFromResource(R.xml.preferences);
 
 		SettingsUtil.launchAbout(getActivity(),
 				findPreference(SettingsUtil.PREFERENCES_ABOUT));
@@ -23,6 +23,7 @@ public class PreferencesFragment extends PreferenceFragment {
 				findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
 		SettingsUtil.setOvertimeListener(getActivity(), findPreference(SettingsUtil.PREFERENCES_OVERTIME));
 		SettingsUtil.setOvertimeValueListener(getActivity(), (ListPreference) findPreference(SettingsUtil.PREFERENCES_OVERTIME_PAY));
+		SettingsUtil.openLicenses(getActivity(), findPreference(SettingsUtil.PREFERENCES_LICENSES));
 
 	}
 }
