@@ -133,15 +133,6 @@ public class EsHostActivity extends AppCompatActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_theme_dark:
-			changeTheme(R.style.DarkTheme);
-			return true;
-		case R.id.menu_theme_light:
-			changeTheme(R.style.LightTheme);
-			return true;
-		case R.id.menu_theme_green:
-			changeTheme(R.style.Theme_money);
-			return true;
 		case R.id.menu_help:
 			AlertDialogFragment fragment = AlertDialogFragment.newInstance(
                     R.string.help_title, R.string.help_content,

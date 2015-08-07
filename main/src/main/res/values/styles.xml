@@ -1,7 +1,44 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <style name="Theme.Money" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- AppCompat themes -->
+        <item name="colorPrimary">@color/money_color_primary</item>
+        <item name="colorPrimaryDark">@color/money_color_primary_dark</item>
+        <item name="colorAccent">@color/money_color_accent</item>
+
+        <item name="bg_main">@style/BG_Main.Green</item>
+        <item name="myText">@style/Text.Light</item>
+        <item name="myButtonBarStyle">@style/TextAppearance.EasySal.Button</item>
+    </style>
+
+    <style name="Theme.Setting" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- AppCompat themes -->
+        <item name="colorPrimary">@color/money_color_primary</item>
+        <item name="colorPrimaryDark">@color/money_color_primary_dark</item>
+        <item name="colorAccent">@color/money_color_accent</item>
+        <item name="bg_main">@style/BG_Main.Green</item>
+        <item name="myText">@style/Text.Light</item>
+        <item name="myButtonBarStyle">@style/TextAppearance.EasySal.Button</item>
+    </style>
+
+    <style name="TextAppearance.EasySal" parent="TextAppearance.AppCompat"/>
+
+    <style name="TextAppearance.EasySal.Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/money_color_accent</item>
+    </style>
+
+    <style name="ThemeOverlay.EasySal" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorForeground">@color/bright_foreground_material_dark</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.EasySal.Tab">
+        <item name="colorAccent">@android:color/white</item>
+    </style>
+
     <!-- Styles -->
-    <style name="Results"></style>
+    <style name="Results"/>
 
     <style name="Results.Text">
         <item name="android:textStyle">bold</item>
