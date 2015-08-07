@@ -33,6 +33,25 @@
 
     </style>
 
+    <style name="Theme.Setting" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- AppCompat themes -->
+        <item name="colorPrimary">@color/money_color_primary</item>
+        <item name="colorPrimaryDark">@color/money_color_primary_dark</item>
+        <item name="colorAccent">@color/money_color_accent</item>
+
+        <!--<item name="actionBarItemBackground">@drawable/selectable_background_money</item>-->
+        <!--<item name="popupMenuStyle">@style/money_PopupMenu</item>-->
+        <!--<item name="dropDownListViewStyle">@style/money_DropDownListView</item>-->
+        <!--<item name="actionBarTabStyle">@style/money_ActionBarTabStyle</item>-->
+        <!--<item name="actionDropDownStyle">@style/money_DropDownNav</item>-->
+        <!--<item name="actionBarStyle">@style/money_solid_ActionBar</item>-->
+        <!--<item name="pagertitle">@style/PagerTitleStrip.Green</item>-->
+        <item name="bg_main">@style/BG_Main.Green</item>
+        <item name="myText">@style/Text.Light</item>
+        <item name="myButtonBarStyle">@style/TextAppearance.EasySal.Button</item>
+    </style>
+
     <style name="TextAppearance.EasySal" parent="TextAppearance.AppCompat"/>
 
     <style name="TextAppearance.EasySal.Button" parent="TextAppearance.AppCompat.Button">

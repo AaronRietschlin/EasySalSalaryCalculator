@@ -37,10 +37,12 @@
 
         <activity
             android:name=".ui.PreHCPreferenceActivity"
+            android:theme="@style/Theme.Setting"
             android:label="@string/title_activity_easy_sal_salary_calculator"/>
 
         <activity
             android:name=".ui.PostHCPreferenceActivity"
+            android:theme="@style/Theme.Setting"
             android:label="@string/title_activity_easy_sal_salary_calculator"/>
 
         <activity

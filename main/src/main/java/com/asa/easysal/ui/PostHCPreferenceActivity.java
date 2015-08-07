@@ -4,13 +4,15 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.asa.easysal.analytics.AnalyticsContants;
 import com.asa.easysal.analytics.AnalyticsHelper;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-public class PostHCPreferenceActivity extends FragmentActivity {
+public class PostHCPreferenceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +20,9 @@ public class PostHCPreferenceActivity extends FragmentActivity {
 
         // Since this is onjly going to be show on API 11+, we don't need to use
         // ABS.
-//		getActionBar().setHomeButtonEnabled(true);
-//		getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar ab = getSupportActionBar();
+		ab.setHomeButtonEnabled(true);
+		ab.setDisplayHomeAsUpEnabled(true);
 
         // Display the fragment as the main content.
         getFragmentManager().beginTransaction()
