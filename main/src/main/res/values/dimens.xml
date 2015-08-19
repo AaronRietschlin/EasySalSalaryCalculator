@@ -10,4 +10,9 @@
 
     <!-- Shake delta -->
     <dimen name="shake_delta">4dp</dimen>
+
+    <!-- Size of the Cancel EditText clear icon -->
+    <dimen name="cancel_view_clear_icon_size">32dp</dimen>
+    <dimen name="cancel_view_padding_end">36dp</dimen>
+    <dimen name="cancel_view_padding_delta">4dp</dimen>
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/cancel_layout_field_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/cancel_layout_field_text_input_field"
+            style="?myText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_wage_label"
+            android:ellipsize="none"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:paddingEnd="@dimen/cancel_view_padding_end"
+            android:paddingRight="@dimen/cancel_view_padding_end"
+            android:singleLine="true"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/cancel_layout_img_clear"
+        android:layout_width="@dimen/cancel_view_clear_icon_size"
+        android:layout_height="@dimen/cancel_view_clear_icon_size"
+        android:layout_gravity="center_vertical|right|end"
+        android:layout_marginEnd="@dimen/cancel_view_padding_delta"
+        android:layout_marginLeft="@dimen/cancel_view_padding_delta"
+        android:layout_marginRight="@dimen/cancel_view_padding_delta"
+        android:layout_marginStart="@dimen/cancel_view_padding_delta"
+        android:alpha="0"
+        android:src="@drawable/ic_action_clear"
+        android:visibility="invisible"/>
+</FrameLayout>

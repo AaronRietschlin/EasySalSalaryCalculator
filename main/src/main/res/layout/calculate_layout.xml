@@ -17,6 +17,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.asa.easysal.widget.CancelEditText2
+                android:id="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="0dp">
@@ -24,43 +29,16 @@
                 <requestFocus/>
             </EditText>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/main_wage_field_layout"
+            <com.asa.easysal.widget.CancelEditText2
+                android:id="@+id/salary_field_wage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
-                <com.asa.easysal.widget.CancelEditText
-                    android:id="@+id/main_wage_field"
-                    style="?myText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/main_wage_label"
-                    android:ellipsize="none"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/main_hours_field_layout"
+            <com.asa.easysal.widget.CancelEditText2
+                android:id="@+id/salary_field_wage_hours"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
-                <com.asa.easysal.widget.CancelEditText
-                    android:id="@+id/main_hours_field"
-                    style="?myText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/main_hours_label"
-                    android:ellipsize="none"
-                    android:ems="10"
-                    android:hint="@string/hint_hours"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </ScrollView>
 

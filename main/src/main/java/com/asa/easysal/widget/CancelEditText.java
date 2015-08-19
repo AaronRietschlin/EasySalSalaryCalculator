@@ -12,7 +12,6 @@ import android.view.MotionEvent;
 import android.widget.EditText;
 
 import com.asa.easysal.R;
-import com.asa.easysal.Utils;
 
 /**
  * A cancelabled EditText. Based off of ClearEditText from OAK.
@@ -46,32 +45,30 @@ public class CancelEditText extends EditText {
 
         int cancelDrawableResourceId = R.drawable.ic_action_clear;
 
-        if (cancelDrawableResourceId != 0) {
-            mDrawableClear = getDrawable(cancelDrawableResourceId);
+        mDrawableClear = getDrawable(cancelDrawableResourceId);
 
-            addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start,
-                                              int count, int after) {
+        addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (s.length() > 0) {
+                    resetError();
                 }
+                showOrHideCancel();
+            }
 
-                @Override
-                public void onTextChanged(CharSequence s, int start,
-                                          int before, int count) {
-                    if (s.length() > 0) {
-                        resetError();
-                    }
-                    showOrHideCancel();
-                }
+            @Override
+            public void afterTextChanged(Editable s) {
 
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-            showOrHideCancel();
-        }
+            }
+        });
+        showOrHideCancel();
     }
 
     private void resetError() {
@@ -91,8 +88,7 @@ public class CancelEditText extends EditText {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        if (mDrawableClear != null
-                && event.getX() > getWidth() - getPaddingRight()
+        if (mDrawableClear != null && event.getX() > getWidth() - getPaddingRight()
                 - mDrawableClear.getIntrinsicWidth()) {
             setText("");
             setCancelVisible(false);

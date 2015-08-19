@@ -51,6 +51,21 @@ public class Utils {
     }
 
     /**
+     * Determines if the current device is Gingerbread or higher.
+     */
+    public static boolean isLollipopOrHigher() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    /**
+     * Determines if the current device is Gingerbread or higher.
+     */
+    public static boolean isMarshmallowOrHigher() {
+        // TODO - When the official SDK updates and adds Build.VERSION_CODES.MARSHMALLOW, update this.U
+        return Build.VERSION.SDK_INT >= 23;
+    }
+
+    /**
      * Tells if the device is a tablet or not.
      *
      * @param context

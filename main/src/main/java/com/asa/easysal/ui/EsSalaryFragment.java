@@ -1,6 +1,6 @@
 package com.asa.easysal.ui;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -21,6 +21,7 @@ import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
 import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.calculators.EsCalculator;
+import com.asa.easysal.widget.CancelEditText2;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,15 +33,10 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     private EsCalculator mCalculator;
 
-    @Bind(R.id.main_wage_field)
-    EditText mWageField;
-    @Bind(R.id.main_wage_field_layout)
-    TextInputLayout mWageInputLayout;
-
-    @Bind(R.id.main_hours_field)
-    EditText mHoursField;
-    @Bind(R.id.main_hours_field_layout)
-    TextInputLayout mHoursInputLayout;
+    @Bind(R.id.salary_field_wage)
+    CancelEditText2 mFieldWage;
+    @Bind(R.id.salary_field_wage_hours)
+    CancelEditText2 mFieldHours;
 
     // Not keeping the reset button. TODO - Keep this in case I bring it back.
     // private Button resetButton;
@@ -56,7 +52,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     }
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
         mActivity = (EsHostActivityCompat) activity;
     }
@@ -80,10 +76,13 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         View v = inflater.inflate(R.layout.calculate_layout, container, false);
         ButterKnife.bind(this, v);
 
-        mHoursInputLayout.setHint(getString(mCalculator.getHoursHintText()));
-        mWageInputLayout.setHint(getString(mCalculator.getSalaryHintText()));
-        mHoursInputLayout.setErrorEnabled(true);
-        mWageInputLayout.setErrorEnabled(true);
+        mFieldHours.getTextInputLayout().setHint(getString(mCalculator.getHoursHintText()));
+        mFieldWage.getTextInputLayout().setHint(getString(mCalculator.getSalaryHintText()));
+        mFieldHours.getTextInputLayout().setErrorEnabled(true);
+        mFieldWage.getTextInputLayout().setErrorEnabled(true);
+
+        CancelEditText2 text = (CancelEditText2) v.findViewById(R.id.test);
+        text.getTextInputLayout().setErrorEnabled(true);
 
         return v;
     }
@@ -92,8 +91,8 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (!Utils.isHoneycombOrHigher()) {
-            mHoursField.setTextColor(Color.BLACK);
-            mWageField.setTextColor(Color.BLACK);
+            mFieldHours.getEditText().setTextColor(Color.BLACK);
+            mFieldWage.getEditText().setTextColor(Color.BLACK);
         }
     }
 
@@ -112,11 +111,11 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     }
 
     protected String getWageString() {
-        return mWageField.getText().toString().trim();
+        return mFieldWage.getEditText().getText().toString().trim();
     }
 
     protected String getHoursString() {
-        return mHoursField.getText().toString().trim();
+        return mFieldHours.getEditText().getText().toString().trim();
     }
 
     /**
@@ -133,20 +132,20 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @OnClick(R.id.button_calculate)
     protected void onCalculateClicked() {
         // Reset the errors:
-        mWageInputLayout.setError(" ");
-        mHoursInputLayout.setError(" ");
+        mFieldWage.getTextInputLayout().setError(" ");
+        mFieldHours.getTextInputLayout().setError(" ");
 
         // Check the entered wage/salary and don't let them proceed if wrong.
         String wageString = getWageString();
         if (!isStringValid(wageString)) {
-            mWageInputLayout.setError(getString(R.string.error_no_salary_entered));
-            Utils.performShakeOnView(mActivity, mWageInputLayout);
+            mFieldWage.getTextInputLayout().setError(getString(R.string.error_no_salary_entered));
+            Utils.performShakeOnView(mActivity, mFieldWage);
             return;
         }
         String hourString = getHoursString();
         if (!isStringValid(hourString)) {
-            mHoursInputLayout.setError(getString(R.string.error_no_hours_entered));
-            Utils.performShakeOnView(mActivity, mHoursInputLayout);
+            mFieldHours.getTextInputLayout().setError(getString(R.string.error_no_hours_entered));
+            Utils.performShakeOnView(mActivity, mFieldHours);
             return;
         }
 
