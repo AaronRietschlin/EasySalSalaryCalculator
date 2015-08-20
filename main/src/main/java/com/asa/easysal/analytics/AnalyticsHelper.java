@@ -64,4 +64,8 @@ public class AnalyticsHelper {
         sendEvent(context, "", AnalyticsContants.EVENT_OVERTIME_INFO_BTN_CLICKED, "");
     }
 
+    public static void sendClearFieldsToggled(@NonNull Context context, boolean value) {
+        sendEvent(context, "", AnalyticsContants.EVENT_CLEAR_FIELDS_TOGGLED, String.valueOf(value));
+    }
+
 }

@@ -91,6 +91,8 @@
     <string name="pref_options">Options</string>
     <string name="pref_title_open_source">Open Source Licenses</string>
     <string name="pref_message_open_source">Click to view the open source licenses used in the app.</string>
+    <string name="pref_title_clear_fields">Clear Fields</string>
+    <string name="pref_summary_clear_fields">Clear the fields when you click \"Calculate Again\".</string>
 
     <!-- Strings for the dialog popup. -->
     <string name="dialog_hourly_title">Hourly:</string>

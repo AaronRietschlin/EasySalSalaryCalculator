@@ -1,6 +1,7 @@
 package com.asa.easysal.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
+import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
 import com.asa.easysal.analytics.AnalyticsHelper;
@@ -190,6 +192,16 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     public void success(double[] results) {
         CalculateDialogFragment frag = CalculateDialogFragment.newInstance(R.string.results_dialog_title);
         frag.setResults(results);
+        frag.setOnClickListener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (SettingsUtil.shouldClearFields(mActivity)) {
+                    mHoursField.setText("");
+                    mWageField.setText("");
+                    mWageField.requestFocus();
+                }
+            }
+        });
         frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
     }
 

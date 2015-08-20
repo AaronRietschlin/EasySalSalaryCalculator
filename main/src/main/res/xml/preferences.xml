@@ -20,6 +20,11 @@
             android:summary="Select amount paid for overtime."
             android:title="Overtime Pay"/>
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="clear_fields"
+            android:summary="@string/pref_summary_clear_fields"
+            android:title="@string/pref_title_clear_fields"/>
         <!--         <CheckBoxPreference
                     android:defaultValue="false"
                     android:key="taxes"
