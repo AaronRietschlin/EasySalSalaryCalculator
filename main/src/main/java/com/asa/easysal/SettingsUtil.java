@@ -10,6 +10,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 
 import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.ui.PostHCPreferenceActivity;
@@ -24,6 +25,7 @@ public class SettingsUtil {
     public static final String PREFERENCES_OVERTIME_PAY = "overtimePay";
     public static final String PREFERENCES_LICENSES = "licenses";
     public static final String PREFERENCES_TAXES = "taxes";
+    public static final String PREFERENCES_CLEAR_FIELDS = "clear_fields";
 
     private static SharedPreferences defaultPrefs;
     private static boolean isOvertime;
@@ -92,6 +94,23 @@ public class SettingsUtil {
         });
     }
 
+    public static void setClearFieldsListener(final Context context, Preference preference) {
+        preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (newValue instanceof Boolean) {
+                    boolean result = (boolean) newValue;
+                    if (result) {
+                        AnalyticsHelper.sendClearFieldsToggled(context, result);
+                    } else {
+                        AnalyticsHelper.sendClearFieldsToggled(context, result);
+                    }
+                }
+                return true;
+            }
+        });
+    }
+
     public static void launchHome(final Context context,
                                   Preference homepagePreference) {
         homepagePreference
@@ -142,5 +161,10 @@ public class SettingsUtil {
         } catch (NumberFormatException e) {
             return 1.5;
         }
+    }
+
+    public static boolean shouldClearFields(@Nullable Context context) {
+        SharedPreferences prefs = getDefaultPreferences(context);
+        return prefs.getBoolean(PREFERENCES_CLEAR_FIELDS, false);
     }
 }

@@ -22,8 +22,9 @@ public class PreferencesFragment extends PreferenceFragment {
 		SettingsUtil.launchHome(getActivity(),
 				findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
 		SettingsUtil.setOvertimeListener(getActivity(), findPreference(SettingsUtil.PREFERENCES_OVERTIME));
-		SettingsUtil.setOvertimeValueListener(getActivity(), (ListPreference) findPreference(SettingsUtil.PREFERENCES_OVERTIME_PAY));
+		SettingsUtil.setOvertimeValueListener(getActivity(), (ListPreference) findPreference(SettingsUtil
+				.PREFERENCES_OVERTIME_PAY));
 		SettingsUtil.openLicenses(getActivity(), findPreference(SettingsUtil.PREFERENCES_LICENSES));
-
+		SettingsUtil.setClearFieldsListener(getActivity(), findPreference(SettingsUtil.PREFERENCES_CLEAR_FIELDS));
 	}
 }

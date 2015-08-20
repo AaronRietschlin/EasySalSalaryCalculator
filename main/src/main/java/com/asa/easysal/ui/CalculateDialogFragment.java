@@ -18,6 +18,8 @@ public class CalculateDialogFragment extends DialogFragment {
     private final static String EXTRA_DOUBLE_VALUES = "values";
     private final static String EXTRA_TITLE = "title";
 
+    private DialogInterface.OnClickListener mClickListener;
+
     public static CalculateDialogFragment newInstance(int title) {
         CalculateDialogFragment frag = new CalculateDialogFragment();
         Bundle args = new Bundle();
@@ -73,9 +75,16 @@ public class CalculateDialogFragment extends DialogFragment {
                 .setTitle(title)
                 .setPositiveButton(R.string.resultsCalculate, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        if (mClickListener != null) {
+                            mClickListener.onClick(dialog, whichButton);
+                        }
                         dialog.dismiss();
                     }
                 }).setView(view).create();
+    }
+
+    public void setOnClickListener(DialogInterface.OnClickListener listener) {
+        mClickListener = listener;
     }
 
     @Override

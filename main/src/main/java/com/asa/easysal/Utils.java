@@ -4,17 +4,11 @@ import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.view.inputmethod.InputMethodManager;
 
 
 public class Utils {
@@ -84,6 +78,11 @@ public class Utils {
         );
         ObjectAnimator.ofPropertyValuesHolder(view, pvhTranslateX).
                 setDuration(500).start();
+    }
+
+    public static void closeKeyboard(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

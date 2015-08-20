@@ -19,6 +19,7 @@ public class PreHCPreferenceActivity extends PreferenceActivity {
 		SettingsUtil.launchAbout(this, findPreference(SettingsUtil.PREFERENCES_ABOUT));
 		SettingsUtil.launchHome(this, findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
 		SettingsUtil.openLicenses(this, findPreference(SettingsUtil.PREFERENCES_LICENSES));
+		SettingsUtil.setClearFieldsListener(this, findPreference(SettingsUtil.PREFERENCES_CLEAR_FIELDS));
 
 		AnalyticsHelper.sendScreenView(this, AnalyticsContants.SCREEN_SETTINGS_SCREEN);
 	}
