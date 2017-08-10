@@ -9,33 +9,35 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
-
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    compileSdkVersion Integer.parseInt(ANDROID_COMPILE_SDK_VERSION)
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 23
+        minSdkVersion Integer.parseInt(ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_BUILD_TARGET_SDK_VERSION)
+
         versionCode 13
         versionName "3.0.0"
 
         def appName = "EasySal_"
 
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                def file = output.outputFile
-                if (!file.name.contains("debug")) {
-                    def newName = appName + "v" + versionName + "_" + new Date().format('MM-dd-yyyy') + ".apk"
-                    output.outputFile = new File(file.parent, newName)
-                }
-            }
-        }
+//        applicationVariants.all { variant ->
+//            variant.outputs.each { output ->
+//                def file = output.outputFile
+//                if (!file.name.contains("debug")) {
+//                    def newName = appName + "v" + versionName + "_" + new Date().format('MM-dd-yyyy') + ".apk"
+//                    output.outputFile = new File(file.parent, newName)
+//                }
+//            }
+//        }
     }
 
 
@@ -93,18 +95,19 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.0.0'
-    compile('com.android.support:design:22.2.1') {
+    api "com.android.support:appcompat-v7:$support_version"
+
+    api("com.android.support:design:$support_version") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    compile 'com.google.android.gms:play-services-ads:7.8.0'
+    api 'com.google.android.gms:play-services-ads:11.0.4'
 
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.jakewharton.timber:timber:3.1.0'
-    compile 'de.psdev.licensesdialog:licensesdialog:1.7.0'
+    api 'com.jakewharton:butterknife:7.0.1'
+    api 'com.jakewharton.timber:timber:4.5.1'
+    api 'de.psdev.licensesdialog:licensesdialog:1.7.0'
 
-    compile('com.crashlytics.sdk.android:crashlytics:2.4.0@aar') {
+    api('com.crashlytics.sdk.android:crashlytics:2.4.0@aar') {
         transitive = true;
     }
 }
