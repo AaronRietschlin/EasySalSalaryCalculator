@@ -46,3 +46,4 @@ local.properties
 
 *.hprof
 /app/*.hprof
+main/*/google-services.json
