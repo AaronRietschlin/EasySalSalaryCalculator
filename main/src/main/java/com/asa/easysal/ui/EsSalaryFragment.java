@@ -31,7 +31,7 @@ import butterknife.OnClick;
 public class EsSalaryFragment extends Fragment implements EsCalculator.CalculatorCallback {
     public static final String TAG = EsSalaryFragment.class.getSimpleName();
     private static final String EXTRA_CALCULATOR = "calculator";
-    protected EsHostActivityCompat mActivity;
+
     @BindView(R.id.main_wage_field)
     EditText mWageField;
     @BindView(R.id.main_wage_field_layout)
@@ -40,6 +40,8 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     EditText mHoursField;
     @BindView(R.id.main_hours_field_layout)
     TextInputLayout mHoursInputLayout;
+
+    protected EsHostActivityCompat mActivity;
     private EsCalculator mCalculator;
 
     public static EsSalaryFragment newInstance(EsCalculator calculator) {

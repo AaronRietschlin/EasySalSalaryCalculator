@@ -17,15 +17,16 @@
 
             <include layout="@layout/include_input_fields" />
 
-            <Button
-                android:id="@+id/button_calculate"
-                style="@style/Widget.Button.Borderless.Salary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/padding_small"
-                android:text="@string/button_calculate"
-                android:visibility="visible" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button_calculate"
+        style="?myButtonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:filterTouchesWhenObscured="true"
+        android:maxLines="2"
+        android:text="@string/button_calculate" />
 </android.support.design.widget.CoordinatorLayout>
