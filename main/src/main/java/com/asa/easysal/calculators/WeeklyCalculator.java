@@ -41,12 +41,6 @@ public class WeeklyCalculator implements EsCalculator {
         return R.string.daily_hours;
     }
 
-    @Override
-    public void sendAnalyticsCalculateClickedEvent(@NonNull Context context) {
-        AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
-                AnalyticsContants.CALC_TYPE_WEEKLY);
-    }
-
     @NonNull
     @Override
     public String getType() {

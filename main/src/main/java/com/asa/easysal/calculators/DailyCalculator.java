@@ -43,12 +43,6 @@ public class DailyCalculator implements EsCalculator {
     }
 
     @Override
-    public void sendAnalyticsCalculateClickedEvent(@NonNull Context context) {
-        AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
-                AnalyticsContants.CALC_TYPE_DAILY);
-    }
-
-    @Override
     @NonNull
     public String getType() {
         return "Daily";

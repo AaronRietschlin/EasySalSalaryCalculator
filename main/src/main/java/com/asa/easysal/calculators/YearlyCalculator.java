@@ -41,12 +41,6 @@ public class YearlyCalculator implements EsCalculator {
         return R.string.yearly_monthly_hours;
     }
 
-    @Override
-    public void sendAnalyticsCalculateClickedEvent(@NonNull Context context) {
-        AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
-                AnalyticsContants.CALC_TYPE_YEARLY);
-    }
-
     @NonNull
     @Override
     public String getType() {

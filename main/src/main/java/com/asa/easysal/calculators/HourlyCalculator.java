@@ -42,12 +42,6 @@ public class HourlyCalculator implements EsCalculator {
         return R.string.hours_worked;
     }
 
-    @Override
-    public void sendAnalyticsCalculateClickedEvent(@NonNull Context context) {
-        AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
-                AnalyticsContants.CALC_TYPE_HOURLY);
-    }
-
     @NonNull
     @Override
     public String getType() {

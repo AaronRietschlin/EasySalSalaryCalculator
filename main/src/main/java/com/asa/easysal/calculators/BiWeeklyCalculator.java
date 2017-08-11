@@ -42,12 +42,6 @@ public class BiWeeklyCalculator implements EsCalculator {
     }
 
     @Override
-    public void sendAnalyticsCalculateClickedEvent(@NonNull Context context) {
-        AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
-                AnalyticsContants.CALC_TYPE_BIWEEKLY);
-    }
-
-    @Override
     @NonNull
     public String getType() {
         return "BiWeekly";

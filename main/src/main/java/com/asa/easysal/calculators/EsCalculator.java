@@ -21,8 +21,6 @@ public interface EsCalculator extends Parcelable {
     @StringRes
     int getHoursHintText();
 
-    void sendAnalyticsCalculateClickedEvent(@NonNull Context context);
-
     @NonNull
     String getType();
 
