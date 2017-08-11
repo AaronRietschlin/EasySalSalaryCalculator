@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.EsException;
 import com.asa.easysal.R;
-import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.analytics.AnalyticsContants;
 import com.asa.easysal.analytics.AnalyticsHelper;
 
@@ -17,6 +16,24 @@ import timber.log.Timber;
  * Created by aaron on 7/14/15.
  */
 public class WeeklyCalculator implements EsCalculator {
+
+    public static final Creator<WeeklyCalculator> CREATOR = new Creator<WeeklyCalculator>() {
+        @Override
+        public WeeklyCalculator createFromParcel(Parcel in) {
+            return new WeeklyCalculator(in);
+        }
+
+        @Override
+        public WeeklyCalculator[] newArray(int size) {
+            return new WeeklyCalculator[size];
+        }
+    };
+
+    public WeeklyCalculator() {
+    }
+
+    protected WeeklyCalculator(Parcel in) {
+    }
 
     @Override
     public boolean canHaveOvertime(Context context) {
@@ -59,22 +76,4 @@ public class WeeklyCalculator implements EsCalculator {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
-
-    public WeeklyCalculator() {
-    }
-
-    protected WeeklyCalculator(Parcel in) {
-    }
-
-    public static final Creator<WeeklyCalculator> CREATOR = new Creator<WeeklyCalculator>() {
-        @Override
-        public WeeklyCalculator createFromParcel(Parcel in) {
-            return new WeeklyCalculator(in);
-        }
-
-        @Override
-        public WeeklyCalculator[] newArray(int size) {
-            return new WeeklyCalculator[size];
-        }
-    };
 }

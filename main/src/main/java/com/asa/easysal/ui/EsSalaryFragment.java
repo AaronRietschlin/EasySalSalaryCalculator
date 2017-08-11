@@ -31,23 +31,16 @@ import butterknife.OnClick;
 public class EsSalaryFragment extends Fragment implements EsCalculator.CalculatorCallback {
     public static final String TAG = EsSalaryFragment.class.getSimpleName();
     private static final String EXTRA_CALCULATOR = "calculator";
-
-    private EsCalculator mCalculator;
-
+    protected EsHostActivityCompat mActivity;
     @BindView(R.id.main_wage_field)
     EditText mWageField;
     @BindView(R.id.main_wage_field_layout)
     TextInputLayout mWageInputLayout;
-
     @BindView(R.id.main_hours_field)
     EditText mHoursField;
     @BindView(R.id.main_hours_field_layout)
     TextInputLayout mHoursInputLayout;
-
-    // Not keeping the reset button. TODO - Keep this in case I bring it back.
-    // private Button resetButton;
-
-    protected EsHostActivityCompat mActivity;
+    private EsCalculator mCalculator;
 
     public static EsSalaryFragment newInstance(EsCalculator calculator) {
         EsSalaryFragment fragment = new EsSalaryFragment();

@@ -9,9 +9,6 @@ import android.support.annotation.StringRes;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-/**
- * Created by aaron on 7/14/15.
- */
 public interface EsCalculator extends Parcelable {
 
     boolean canHaveOvertime(Context context);

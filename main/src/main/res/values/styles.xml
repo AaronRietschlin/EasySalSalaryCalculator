@@ -22,7 +22,7 @@
         <item name="myButtonBarStyle">@style/TextAppearance.EasySal.Button</item>
     </style>
 
-    <style name="TextAppearance.EasySal" parent="TextAppearance.AppCompat"/>
+    <style name="TextAppearance.EasySal" parent="TextAppearance.AppCompat" />
 
     <style name="TextAppearance.EasySal.Button" parent="TextAppearance.AppCompat.Button">
         <item name="android:textColor">@color/money_color_accent</item>
@@ -38,7 +38,7 @@
     </style>
 
     <!-- Styles -->
-    <style name="Results"/>
+    <style name="Results" />
 
     <style name="Results.Text">
         <item name="android:textStyle">bold</item>
@@ -54,7 +54,7 @@
         <item name="android:background">@color/money_bg_green_light</item>
     </style>
 
-    <style name="Text" parent="@android:style/TextAppearance"/>
+    <style name="Text" parent="@android:style/TextAppearance" />
 
     <style name="Text.Light">
         <item name="android:textColor">#000</item>

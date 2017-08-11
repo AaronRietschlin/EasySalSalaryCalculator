@@ -13,11 +13,9 @@ import android.widget.TextView;
 import com.asa.easysal.R;
 
 public class CalculateDialogFragment extends DialogFragment {
-    private double[] results;
-
     private final static String EXTRA_DOUBLE_VALUES = "values";
     private final static String EXTRA_TITLE = "title";
-
+    private double[] results;
     private DialogInterface.OnClickListener mClickListener;
 
     public static CalculateDialogFragment newInstance(int title) {

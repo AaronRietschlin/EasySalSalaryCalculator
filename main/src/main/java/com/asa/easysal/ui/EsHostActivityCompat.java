@@ -2,7 +2,6 @@ package com.asa.easysal.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,7 +27,6 @@ import com.asa.easysal.calculators.HourlyCalculator;
 import com.asa.easysal.calculators.MonthlyCalculator;
 import com.asa.easysal.calculators.WeeklyCalculator;
 import com.asa.easysal.calculators.YearlyCalculator;
-import com.asa.easysal.utils.AdUtils;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -44,9 +42,6 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.asa.easysal.BuildConfig.AD_UNIT_ID;
 import static com.google.android.gms.ads.AdSize.BANNER;
 
-/**
- * Created by aaron on 7/14/15.
- */
 public class EsHostActivityCompat extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
@@ -57,15 +52,8 @@ public class EsHostActivityCompat extends AppCompatActivity {
     ViewPager pager;
     @BindView(R.id.root)
     ViewGroup root;
-//    @BindView(R.id.adView)
-//    @Nullable
-//    AdView adViewXml;
-
-    private AdView adView;
 
     private EsPagerAdapter pagerAdapter;
-
-    private static final int POS_DAILY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

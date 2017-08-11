@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_buttons"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="vertical"
     android:paddingTop="16dip"
-    android:showDividers="beginning" >
+    android:showDividers="beginning">
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -15,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:measureWithLargestChild="true"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/leftSpacer"
@@ -24,16 +23,16 @@
             android:layout_weight="0.25"
             android:orientation="horizontal"
             android:visibility="gone" />
-<!-- 
-        <Button
-            android:id="@+id/button_reset"
-            style="?myButtonBarStyle"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:maxLines="2"
-            android:text="@string/button_reset" /> -->
+        <!--
+                <Button
+                    android:id="@+id/button_reset"
+                    style="?myButtonBarStyle"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:text="@string/button_reset" /> -->
 
         <Button
             android:id="@+id/button_calculate"

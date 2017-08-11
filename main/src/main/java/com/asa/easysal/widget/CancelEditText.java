@@ -12,7 +12,6 @@ import android.view.MotionEvent;
 import android.widget.EditText;
 
 import com.asa.easysal.R;
-import com.asa.easysal.Utils;
 
 /**
  * A cancelabled EditText. Based off of ClearEditText from OAK.

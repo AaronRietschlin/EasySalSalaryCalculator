@@ -17,6 +17,24 @@ import timber.log.Timber;
  */
 public class MonthlyCalculator implements EsCalculator {
 
+    public static final Creator<MonthlyCalculator> CREATOR = new Creator<MonthlyCalculator>() {
+        @Override
+        public MonthlyCalculator createFromParcel(Parcel in) {
+            return new MonthlyCalculator(in);
+        }
+
+        @Override
+        public MonthlyCalculator[] newArray(int size) {
+            return new MonthlyCalculator[size];
+        }
+    };
+
+    public MonthlyCalculator() {
+    }
+
+    protected MonthlyCalculator(Parcel in) {
+    }
+
     @Override
     public boolean canHaveOvertime(Context context) {
         return false;
@@ -58,22 +76,4 @@ public class MonthlyCalculator implements EsCalculator {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
-
-    public MonthlyCalculator() {
-    }
-
-    protected MonthlyCalculator(Parcel in) {
-    }
-
-    public static final Creator<MonthlyCalculator> CREATOR = new Creator<MonthlyCalculator>() {
-        @Override
-        public MonthlyCalculator createFromParcel(Parcel in) {
-            return new MonthlyCalculator(in);
-        }
-
-        @Override
-        public MonthlyCalculator[] newArray(int size) {
-            return new MonthlyCalculator[size];
-        }
-    };
 }

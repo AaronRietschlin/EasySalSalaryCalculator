@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 import static com.asa.easysal.calculators.EsCalculator.CalculatorType;
 
 public class CalculationUtils {
-    private static final String TAG = "CalculationUtils";
     // The following are the types that are used in this app.
     public static final int TYPE_HOURLY = 0;
     public static final int TYPE_DAILY = 1;
@@ -18,26 +17,23 @@ public class CalculationUtils {
     public static final int TYPE_BIWEEKLY = 3;
     public static final int TYPE_MONTHLY = 4;
     public static final int TYPE_YEARLY = 5;
-
-    // The following is the max values that is used in order to display the fun
-    // errors.
-    public static int MAX_WEEKLY = 168;
-    public static int MAX_DAILY = 24;
-
     // The following are the values to multiply for Overtime.
     public static final double OVERTIME_DOUBLE = 2;
     public static final double OVERTIME_TIME_HALF = 1.5;
-    // TODO - Get Overtime value from settings
-    public static double OVERTIME_VALUE;
     public static final int OVERTIME_VALUE_WEEK = 40;
     public static final int OVERTIME_VALUE_DAY = 8;
-
     // THe following are values t
     public static final int DAYS_IN_WEEK = 5;
     public static final int WEEKS_IN_YEAR = 52;
     public static final int WEEKS_IN_TWO = 2;
     public static final int MONTHS_IN_YEAR = 12;
-
+    private static final String TAG = "CalculationUtils";
+    // The following is the max values that is used in order to display the fun
+    // errors.
+    public static int MAX_WEEKLY = 168;
+    public static int MAX_DAILY = 24;
+    // TODO - Get Overtime value from settings
+    public static double OVERTIME_VALUE;
     private static Context mContext;
     private static boolean mIsOvertime;
     private static double mHours;
@@ -72,7 +68,7 @@ public class CalculationUtils {
         return null;
     }
 
-    public static void clear(){
+    public static void clear() {
         mContext = null;
     }
 
@@ -264,7 +260,7 @@ public class CalculationUtils {
      * returned for you to display to the user.
      */
     @StringRes
-    public static int checkIfHoursAreValid(double hours, @CalculatorType int type){
+    public static int checkIfHoursAreValid(double hours, @CalculatorType int type) {
         switch (type) {
             case CalculatorType.HOURLY:
                 if (hours > MAX_WEEKLY) {
