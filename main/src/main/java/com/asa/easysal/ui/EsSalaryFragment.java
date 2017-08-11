@@ -135,9 +135,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     @OnClick(R.id.button_calculate)
     protected void onCalculateClicked() {
-        // Reset the errors:
-        mWageInputLayout.setError(" ");
-        mHoursInputLayout.setError(" ");
+        resetErrors();
 
         // Check the entered wage/salary and don't let them proceed if wrong.
         String wageString = getWageString();
@@ -216,5 +214,10 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public void failure(@StringRes int errorResId) {
 
+    }
+
+    private void resetErrors() {
+        mWageInputLayout.setError("");
+        mHoursInputLayout.setError("");
     }
 }
