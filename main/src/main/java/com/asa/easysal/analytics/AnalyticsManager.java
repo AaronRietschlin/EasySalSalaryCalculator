@@ -75,7 +75,10 @@ public class AnalyticsManager {
 
     private Bundle createCalculationErrorBundle(AnalyticsEvent event) {
         Bundle bundle = new Bundle();
-        bundle.putString(AdditionalData.CALCULATION_ERROR_TYPE.toString(), (String) event.getData(AdditionalData.CALCULATION_ERROR_TYPE));
+        String errorType=  event.getData(AdditionalData.CALCULATION_ERROR_TYPE);
+        String calculatorType = event.getData(AdditionalData.CALCULATOR_TYPE);
+        bundle.putString(AdditionalData.CALCULATION_ERROR_TYPE.toString(), errorType );
+        bundle.putString(AdditionalData.CALCULATOR_TYPE.toString(), calculatorType );
         return bundle;
     }
 

@@ -218,6 +218,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     private void logCalculationFailure(String type) {
         analyticsManager.logEvent(AnalyticsEvent.eventName(EventName.CALCULATION_ERROR)
+                .data(AdditionalData.CALCULATOR_TYPE, mCalculator.getType())
                 .data(AdditionalData.CALCULATION_ERROR_TYPE, type).build());
     }
 
