@@ -85,4 +85,8 @@ public class Utils {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    public static String getDebugAdmobId() {
+        return "ca-app-pub-3940256099942544~3347511713";
+    }
+
 }

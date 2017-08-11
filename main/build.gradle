@@ -40,52 +40,61 @@ android {
 //        }
     }
 
-
     buildTypes {
+
+        def ADMOB_ID = "ADMOB_ID"
+        def AD_UNIT_ID = "AD_UNIT_ID"
+        def BOOL = "boolean"
+        def STRING = "String"
+
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
 
-            buildConfigField "boolean", "REPORT_CRASHES", "true"
-            buildConfigField "boolean", "IS_DEBUG", "false"
-            buildConfigField "boolean", "REPORT_ANALYTICS", "true"
-            buildConfigField "boolean", "SHOW_ADS", "true"
-            buildConfigField "boolean", "SHOW_PROD_AD", "true"
+            buildConfigField BOOL, "REPORT_CRASHES", "true"
+            buildConfigField BOOL, "IS_DEBUG", "false"
+            buildConfigField BOOL, "REPORT_ANALYTICS", "true"
+            buildConfigField BOOL, "SHOW_ADS", "true"
+            buildConfigField BOOL, "SHOW_PROD_AD", "true"
 
-            buildConfigField "String", "GA_TRACKING_ID", "\"" + ES_GA_TRACKING_ID + "\""
+            buildConfigField STRING, ADMOB_ID, "\"" + ES_ADMOB_ID + "\""
+            buildConfigField STRING, AD_UNIT_ID, "\"" + ES_ADMOB_AD_UNITID + "\""
         }
 
         debug {
-
             def SUFFIX = "debug"
+            debuggable true
             applicationIdSuffix "." + SUFFIX
             versionNameSuffix "_" + SUFFIX
             signingConfig signingConfigs.debug
 
-            buildConfigField "boolean", "REPORT_CRASHES", "false"
-            buildConfigField "boolean", "IS_DEBUG", "true"
-            buildConfigField "boolean", "REPORT_ANALYTICS", "false"
-            buildConfigField "boolean", "SHOW_ADS", "false"
-            buildConfigField "boolean", "SHOW_PROD_AD", "false"
+            buildConfigField BOOL, "REPORT_CRASHES", "false"
+            buildConfigField BOOL, "IS_DEBUG", "true"
+            buildConfigField BOOL, "REPORT_ANALYTICS", "false"
+            buildConfigField BOOL, "SHOW_ADS", "true"
+            buildConfigField BOOL, "SHOW_PROD_AD", "false"
 
-            buildConfigField "String", "GA_TRACKING_ID", "\"" + ES_GA_TRACKING_ID + "\""
-
+            // Debug App ID from docs
+            buildConfigField STRING, ADMOB_ID, "\"ca-app-pub-3940256099942544~3347511713\""
+            buildConfigField STRING, AD_UNIT_ID, "\"ca-app-pub-3940256099942544/6300978111\""
         }
 
         beta {
-
             def SUFFIX = "beta"
+            debuggable true
             applicationIdSuffix "." + SUFFIX
             versionNameSuffix "_" + SUFFIX
             signingConfig signingConfigs.debug
 
-            buildConfigField "boolean", "REPORT_CRASHES", "true"
-            buildConfigField "boolean", "IS_DEBUG", "false"
-            buildConfigField "boolean", "REPORT_ANALYTICS", "true"
-            buildConfigField "boolean", "SHOW_ADS", "true"
-            buildConfigField "boolean", "SHOW_PROD_AD", "false"
+            buildConfigField BOOL, "REPORT_CRASHES", "true"
+            buildConfigField BOOL, "IS_DEBUG", "false"
+            buildConfigField BOOL, "REPORT_ANALYTICS", "true"
+            buildConfigField BOOL, "SHOW_ADS", "true"
+            buildConfigField BOOL, "SHOW_PROD_AD", "false"
 
-            buildConfigField "String", "GA_TRACKING_ID", "\"" + ES_GA_TRACKING_ID + "\""
+            buildConfigField STRING, ADMOB_ID, "\"ca-app-pub-3940256099942544~3347511713\""
+            buildConfigField STRING, AD_UNIT_ID, "\"ca-app-pub-3940256099942544/6300978111\""
         }
     }
 

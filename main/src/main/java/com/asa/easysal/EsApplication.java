@@ -4,13 +4,11 @@ import android.app.Application;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.MobileAds;
 
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
-/**
- * Created by aaron on 7/17/15.
- */
 public class EsApplication extends Application {
 
     @Override
@@ -25,6 +23,7 @@ public class EsApplication extends Application {
             Timber.plant(new Timber.DebugTree());
         }
 
+        MobileAds.initialize(this, BuildConfig.DEBUG ? Utils.getDebugAdmobId() : BuildConfig.ADMOB_ID);
     }
 
     /**

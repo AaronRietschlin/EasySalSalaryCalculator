@@ -2,6 +2,7 @@ package com.asa.easysal.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.asa.easysal.BuildConfig;
 import com.asa.easysal.CalculationUtils;
@@ -36,21 +39,31 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static com.asa.easysal.BuildConfig.AD_UNIT_ID;
+import static com.google.android.gms.ads.AdSize.BANNER;
+
 /**
  * Created by aaron on 7/14/15.
  */
 public class EsHostActivityCompat extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
     @BindView(R.id.tab_layout)
-    TabLayout mTabLayout;
+    TabLayout tabLayout;
     @BindView(R.id.pager)
-    ViewPager mPager;
-    @BindView(R.id.adView)
-    AdView mAdView;
+    ViewPager pager;
+    @BindView(R.id.root)
+    ViewGroup root;
+//    @BindView(R.id.adView)
+//    @Nullable
+//    AdView adViewXml;
 
-    private EsPagerAdapter mPagerAdapter;
+    private AdView adView;
+
+    private EsPagerAdapter pagerAdapter;
 
     private static final int POS_DAILY = 0;
 
@@ -60,55 +73,60 @@ public class EsHostActivityCompat extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        if (mToolbar != null) {
-            setSupportActionBar(mToolbar);
-        }
-
-        if (mPagerAdapter == null) {
-            mPagerAdapter = new EsPagerAdapter(getSupportFragmentManager(), getApplicationContext());
-            addFragmentsToPager();
-            mPager.setAdapter(mPagerAdapter);
-            mTabLayout.setupWithViewPager(mPager);
-        }
-
         setupAds();
+
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+
+        if (pagerAdapter == null) {
+            pagerAdapter = new EsPagerAdapter(getSupportFragmentManager(), getApplicationContext());
+            addFragmentsToPager();
+            pager.setAdapter(pagerAdapter);
+            tabLayout.setupWithViewPager(pager);
+        }
+
         setupPagerListener();
     }
 
     private void addFragmentsToPager() {
         EsSalaryFragment frag = EsSalaryFragment.newInstance(new HourlyCalculator());
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_hourly));
+        pagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_hourly));
         frag = EsSalaryFragment.newInstance(new DailyCalculator());
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_daily));
+        pagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_daily));
         frag = EsSalaryFragment.newInstance(new WeeklyCalculator());
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_weekly));
+        pagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_weekly));
         frag = EsSalaryFragment.newInstance(new BiWeeklyCalculator());
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_biweekly));
+        pagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_biweekly));
         frag = EsSalaryFragment.newInstance(new MonthlyCalculator());
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_monthly));
+        pagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_monthly));
         frag = EsSalaryFragment.newInstance(new YearlyCalculator());
-        mPagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_yearly));
+        pagerAdapter.addTab(new EsPagerAdapter.TabInfo(this, frag, R.string.title_yearly));
     }
 
     private void setupAds() {
+        final AdView adView = new AdView(this);
+        // TODO - Add dagger and inject the ad unit id?
+        adView.setAdUnitId(AD_UNIT_ID);
+        adView.setAdSize(BANNER);
+        root.addView(adView, new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
         // TODO - check if ads enabled.
         if (!BuildConfig.SHOW_ADS) {
             return;
         }
-        AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
-        AdUtils.addTestAds(adRequestBuilder);
-        mAdView.setAdListener(new AdListener() {
+        adView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
-                mAdView.setVisibility(View.VISIBLE);
+                adView.setVisibility(View.VISIBLE);
             }
         });
-        mAdView.loadAd(adRequestBuilder.build());
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     private void setupPagerListener() {
-        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
