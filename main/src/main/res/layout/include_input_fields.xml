@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/calculate_layout">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/main_wage_field_layout"
+        style="@style/Widget.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.asa.easysal.widget.CancelEditText
+            android:id="@+id/main_wage_field"
+            style="?myText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="none"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/main_hours_field_layout"
+        style="@style/Widget.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.asa.easysal.widget.CancelEditText
+            android:id="@+id/main_hours_field"
+            style="?myText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="none"
+            android:ems="10"
+            android:hint="@string/hint_hours"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+</merge>
