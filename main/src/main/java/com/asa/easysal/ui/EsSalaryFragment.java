@@ -142,26 +142,21 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         if (!isStringValid(wageString)) {
             mWageInputLayout.setError(getString(R.string.error_no_salary_entered));
             Utils.performShakeOnView(mActivity, mWageInputLayout);
+            logCalculationFailure("wage");
             return;
         }
         String hourString = getHoursString();
         if (!isStringValid(hourString)) {
             mHoursInputLayout.setError(getString(R.string.error_no_hours_entered));
             Utils.performShakeOnView(mActivity, mHoursInputLayout);
+            logCalculationFailure("hours");
             return;
         }
 
-        double[] params = CalculationUtils.convertStringsToDoubles(
-                getWageString(), getHoursString());
+        double[] params = CalculationUtils.convertStringsToDoubles(getWageString(), getHoursString());
         mCalculator.performCalculation(mActivity.getApplicationContext(), params, this);
         mCalculator.sendAnalyticsCalculateClickedEvent(mActivity.getApplicationContext());
-        analyticsManager.logEvent(AnalyticsEvent.eventName(EventName.CALCULATION)
-                .data(AdditionalData.CALCULATOR_TYPE, mCalculator.getType())
-                .data(AdditionalData.SALARY, wageString)
-                .data(AdditionalData.HOURS, hourString)
-                .data(AdditionalData.OVERTIME_ON, SettingsUtil.isOvertime(getActivity()))
-                .data(AdditionalData.OVERTIME_VALUE, SettingsUtil.getOvertimePay(getActivity()))
-                .build());
+        logCalculationSuccess(wageString, hourString);
     }
 
     @Override
@@ -219,5 +214,20 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     private void resetErrors() {
         mWageInputLayout.setError("");
         mHoursInputLayout.setError("");
+    }
+
+    private void logCalculationFailure(String type) {
+        analyticsManager.logEvent(AnalyticsEvent.eventName(EventName.CALCULATION_ERROR)
+                .data(AdditionalData.CALCULATION_ERROR_TYPE, type).build());
+    }
+
+    private void logCalculationSuccess(String wageString, String hourString) {
+        analyticsManager.logEvent(AnalyticsEvent.eventName(EventName.CALCULATION)
+                .data(AdditionalData.CALCULATOR_TYPE, mCalculator.getType())
+                .data(AdditionalData.SALARY, wageString)
+                .data(AdditionalData.HOURS, hourString)
+                .data(AdditionalData.OVERTIME_ON, SettingsUtil.isOvertime(getActivity()))
+                .data(AdditionalData.OVERTIME_VALUE, SettingsUtil.getOvertimePay(getActivity()))
+                .build());
     }
 }

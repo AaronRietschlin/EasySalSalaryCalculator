@@ -41,6 +41,10 @@ public class AnalyticsManager {
                 bundle = createCalculationBundle(event);
                 logEvent(eventNameStr, bundle);
                 break;
+            case CALCULATION_ERROR:
+                bundle = createCalculationErrorBundle(event);
+                logEvent(eventNameStr, bundle);
+                break;
             case OVERTIME_TOGGLE:
                 logOvertimeAttribute(event);
                 break;
@@ -66,6 +70,12 @@ public class AnalyticsManager {
         bundle.putString(AdditionalData.HOURS.toString(), hours);
         bundle.putString(AdditionalData.CALCULATOR_TYPE.toString(), calculatorType);
         bundle.putBoolean(AdditionalData.OVERTIME_ON.toString(), overtimeOn);
+        return bundle;
+    }
+
+    private Bundle createCalculationErrorBundle(AnalyticsEvent event) {
+        Bundle bundle = new Bundle();
+        bundle.putString(AdditionalData.CALCULATION_ERROR_TYPE.toString(), (String) event.getData(AdditionalData.CALCULATION_ERROR_TYPE));
         return bundle;
     }
 

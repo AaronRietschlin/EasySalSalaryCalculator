@@ -5,6 +5,7 @@ public enum AdditionalData {
     HOURS,
     SALARY,
     CALCULATOR_TYPE,
+    CALCULATION_ERROR_TYPE,
     OVERTIME_ON,
     OVERTIME_VALUE;
 
