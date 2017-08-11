@@ -14,18 +14,6 @@ import timber.log.Timber;
 
 public class MonthlyCalculator implements EsCalculator {
 
-    public static final Creator<MonthlyCalculator> CREATOR = new Creator<MonthlyCalculator>() {
-        @Override
-        public MonthlyCalculator createFromParcel(Parcel in) {
-            return new MonthlyCalculator();
-        }
-
-        @Override
-        public MonthlyCalculator[] newArray(int size) {
-            return new MonthlyCalculator[size];
-        }
-    };
-
     @Override
     public boolean canHaveOvertime(Context context) {
         return false;
@@ -59,6 +47,12 @@ public class MonthlyCalculator implements EsCalculator {
                 AnalyticsContants.CALC_TYPE_MONTHLY);
     }
 
+    @NonNull
+    @Override
+    public String getType() {
+        return "Monthly";
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -67,4 +61,16 @@ public class MonthlyCalculator implements EsCalculator {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
+
+    public static final Creator<MonthlyCalculator> CREATOR = new Creator<MonthlyCalculator>() {
+        @Override
+        public MonthlyCalculator createFromParcel(Parcel in) {
+            return new MonthlyCalculator();
+        }
+
+        @Override
+        public MonthlyCalculator[] newArray(int size) {
+            return new MonthlyCalculator[size];
+        }
+    };
 }

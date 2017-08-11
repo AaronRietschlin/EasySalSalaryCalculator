@@ -14,18 +14,6 @@ import timber.log.Timber;
 
 public class BiWeeklyCalculator implements EsCalculator {
 
-    public static final Creator<BiWeeklyCalculator> CREATOR = new Creator<BiWeeklyCalculator>() {
-        @Override
-        public BiWeeklyCalculator createFromParcel(Parcel in) {
-            return new BiWeeklyCalculator();
-        }
-
-        @Override
-        public BiWeeklyCalculator[] newArray(int size) {
-            return new BiWeeklyCalculator[size];
-        }
-    };
-
     @Override
     public boolean canHaveOvertime(Context context) {
         return false;
@@ -60,6 +48,12 @@ public class BiWeeklyCalculator implements EsCalculator {
     }
 
     @Override
+    @NonNull
+    public String getType() {
+        return "BiWeekly";
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }
@@ -67,4 +61,16 @@ public class BiWeeklyCalculator implements EsCalculator {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
+
+    public static final Creator<BiWeeklyCalculator> CREATOR = new Creator<BiWeeklyCalculator>() {
+        @Override
+        public BiWeeklyCalculator createFromParcel(Parcel in) {
+            return new BiWeeklyCalculator();
+        }
+
+        @Override
+        public BiWeeklyCalculator[] newArray(int size) {
+            return new BiWeeklyCalculator[size];
+        }
+    };
 }

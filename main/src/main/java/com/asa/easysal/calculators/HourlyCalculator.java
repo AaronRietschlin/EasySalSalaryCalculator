@@ -15,18 +15,6 @@ import timber.log.Timber;
 
 public class HourlyCalculator implements EsCalculator {
 
-    public static final Creator<HourlyCalculator> CREATOR = new Creator<HourlyCalculator>() {
-        @Override
-        public HourlyCalculator createFromParcel(Parcel in) {
-            return new HourlyCalculator();
-        }
-
-        @Override
-        public HourlyCalculator[] newArray(int size) {
-            return new HourlyCalculator[size];
-        }
-    };
-
     @Override
     public boolean canHaveOvertime(Context context) {
         return SettingsUtil.isOvertime(context);
@@ -60,6 +48,12 @@ public class HourlyCalculator implements EsCalculator {
                 AnalyticsContants.CALC_TYPE_HOURLY);
     }
 
+    @NonNull
+    @Override
+    public String getType() {
+        return "Hourly";
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -68,4 +62,16 @@ public class HourlyCalculator implements EsCalculator {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
+
+    public static final Creator<HourlyCalculator> CREATOR = new Creator<HourlyCalculator>() {
+        @Override
+        public HourlyCalculator createFromParcel(Parcel in) {
+            return new HourlyCalculator();
+        }
+
+        @Override
+        public HourlyCalculator[] newArray(int size) {
+            return new HourlyCalculator[size];
+        }
+    };
 }

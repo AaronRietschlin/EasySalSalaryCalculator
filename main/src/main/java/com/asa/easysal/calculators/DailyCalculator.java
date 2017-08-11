@@ -15,18 +15,6 @@ import timber.log.Timber;
 
 public class DailyCalculator implements EsCalculator {
 
-    public static final Creator<DailyCalculator> CREATOR = new Creator<DailyCalculator>() {
-        @Override
-        public DailyCalculator createFromParcel(Parcel in) {
-            return new DailyCalculator();
-        }
-
-        @Override
-        public DailyCalculator[] newArray(int size) {
-            return new DailyCalculator[size];
-        }
-    };
-
     @Override
     public boolean canHaveOvertime(Context context) {
         return SettingsUtil.isOvertime(context);
@@ -61,6 +49,12 @@ public class DailyCalculator implements EsCalculator {
     }
 
     @Override
+    @NonNull
+    public String getType() {
+        return "Daily";
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }
@@ -68,4 +62,16 @@ public class DailyCalculator implements EsCalculator {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
+
+    public static final Creator<DailyCalculator> CREATOR = new Creator<DailyCalculator>() {
+        @Override
+        public DailyCalculator createFromParcel(Parcel in) {
+            return new DailyCalculator();
+        }
+
+        @Override
+        public DailyCalculator[] newArray(int size) {
+            return new DailyCalculator[size];
+        }
+    };
 }

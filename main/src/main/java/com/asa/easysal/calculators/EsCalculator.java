@@ -23,6 +23,9 @@ public interface EsCalculator extends Parcelable {
 
     void sendAnalyticsCalculateClickedEvent(@NonNull Context context);
 
+    @NonNull
+    String getType();
+
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({CalculatorType.HOURLY, CalculatorType.DAILY, CalculatorType.WEEKLY, CalculatorType.BIWEEKLY,
             CalculatorType.MONTHLY, CalculatorType.YEARLY})

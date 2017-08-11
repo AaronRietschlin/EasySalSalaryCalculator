@@ -14,18 +14,6 @@ import timber.log.Timber;
 
 public class YearlyCalculator implements EsCalculator {
 
-    public static final Creator<YearlyCalculator> CREATOR = new Creator<YearlyCalculator>() {
-        @Override
-        public YearlyCalculator createFromParcel(Parcel in) {
-            return new YearlyCalculator();
-        }
-
-        @Override
-        public YearlyCalculator[] newArray(int size) {
-            return new YearlyCalculator[size];
-        }
-    };
-
     @Override
     public boolean canHaveOvertime(Context context) {
         return false;
@@ -58,6 +46,24 @@ public class YearlyCalculator implements EsCalculator {
         AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
                 AnalyticsContants.CALC_TYPE_YEARLY);
     }
+
+    @NonNull
+    @Override
+    public String getType() {
+        return "Yearly";
+    }
+
+    public static final Creator<YearlyCalculator> CREATOR = new Creator<YearlyCalculator>() {
+        @Override
+        public YearlyCalculator createFromParcel(Parcel in) {
+            return new YearlyCalculator();
+        }
+
+        @Override
+        public YearlyCalculator[] newArray(int size) {
+            return new YearlyCalculator[size];
+        }
+    };
 
     @Override
     public int describeContents() {

@@ -14,18 +14,6 @@ import timber.log.Timber;
 
 public class WeeklyCalculator implements EsCalculator {
 
-    public static final Creator<WeeklyCalculator> CREATOR = new Creator<WeeklyCalculator>() {
-        @Override
-        public WeeklyCalculator createFromParcel(Parcel in) {
-            return new WeeklyCalculator();
-        }
-
-        @Override
-        public WeeklyCalculator[] newArray(int size) {
-            return new WeeklyCalculator[size];
-        }
-    };
-
     @Override
     public boolean canHaveOvertime(Context context) {
         return false;
@@ -58,6 +46,24 @@ public class WeeklyCalculator implements EsCalculator {
         AnalyticsHelper.sendEvent(context, "", AnalyticsContants.EVENT_CALCULATE_CLICKED,
                 AnalyticsContants.CALC_TYPE_WEEKLY);
     }
+
+    @NonNull
+    @Override
+    public String getType() {
+        return "Weekly";
+    }
+
+    public static final Creator<WeeklyCalculator> CREATOR = new Creator<WeeklyCalculator>() {
+        @Override
+        public WeeklyCalculator createFromParcel(Parcel in) {
+            return new WeeklyCalculator();
+        }
+
+        @Override
+        public WeeklyCalculator[] newArray(int size) {
+            return new WeeklyCalculator[size];
+        }
+    };
 
     @Override
     public int describeContents() {
