@@ -33,7 +33,7 @@ import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -41,13 +41,13 @@ import butterknife.ButterKnife;
  */
 public class EsHostActivityCompat extends AppCompatActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
-    @Bind(R.id.pager)
+    @BindView(R.id.pager)
     ViewPager mPager;
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
 
     private EsPagerAdapter mPagerAdapter;

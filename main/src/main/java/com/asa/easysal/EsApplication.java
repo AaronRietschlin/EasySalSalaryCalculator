@@ -4,9 +4,6 @@ import android.app.Application;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Logger;
-import com.google.android.gms.analytics.Tracker;
 
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
@@ -15,8 +12,6 @@ import timber.log.Timber;
  * Created by aaron on 7/17/15.
  */
 public class EsApplication extends Application {
-
-    private Tracker mTracker;
 
     @Override
     public void onCreate() {
@@ -30,25 +25,6 @@ public class EsApplication extends Application {
             Timber.plant(new Timber.DebugTree());
         }
 
-        startTracking();
-    }
-
-    public Tracker getTracker() {
-        startTracking();
-        return mTracker;
-    }
-
-    public void startTracking() {
-        if (mTracker == null) {
-            GoogleAnalytics ga = GoogleAnalytics.getInstance(this);
-            if (!BuildConfig.SHOW_PROD_AD) {
-                ga.setDryRun(true);
-            }
-            if (BuildConfig.IS_DEBUG) {
-                ga.getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
-            }
-            mTracker = ga.newTracker(BuildConfig.GA_TRACKING_ID);
-        }
     }
 
     /**

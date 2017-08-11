@@ -24,7 +24,7 @@ import com.asa.easysal.Utils;
 import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.calculators.EsCalculator;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -34,14 +34,14 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     private EsCalculator mCalculator;
 
-    @Bind(R.id.main_wage_field)
+    @BindView(R.id.main_wage_field)
     EditText mWageField;
-    @Bind(R.id.main_wage_field_layout)
+    @BindView(R.id.main_wage_field_layout)
     TextInputLayout mWageInputLayout;
 
-    @Bind(R.id.main_hours_field)
+    @BindView(R.id.main_hours_field)
     EditText mHoursField;
-    @Bind(R.id.main_hours_field_layout)
+    @BindView(R.id.main_hours_field_layout)
     TextInputLayout mHoursInputLayout;
 
     // Not keeping the reset button. TODO - Keep this in case I bring it back.
