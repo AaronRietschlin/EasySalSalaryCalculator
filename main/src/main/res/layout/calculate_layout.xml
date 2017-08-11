@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true"
-        android:padding="@dimen/padding_large">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,6 +26,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/main_wage_field_layout"
                 android:layout_width="match_parent"
+                style="@style/Widget.TextInput"
                 android:layout_height="wrap_content">
 
                 <com.asa.easysal.widget.CancelEditText
@@ -46,6 +46,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/main_hours_field_layout"
                 android:layout_width="match_parent"
+                style="@style/Widget.TextInput"
                 android:layout_height="wrap_content">
 
                 <com.asa.easysal.widget.CancelEditText
@@ -61,6 +62,15 @@
                     android:inputType="numberDecimal"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_marginEnd="@dimen/padding_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Calculate" />
         </LinearLayout>
     </ScrollView>
 
