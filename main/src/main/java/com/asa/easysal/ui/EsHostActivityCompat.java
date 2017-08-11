@@ -21,6 +21,7 @@ import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.analytics.AnalyticsContants;
 import com.asa.easysal.analytics.AnalyticsHelper;
+import com.asa.easysal.analytics.enums.AdditionalData;
 import com.asa.easysal.calculators.BiWeeklyCalculator;
 import com.asa.easysal.calculators.DailyCalculator;
 import com.asa.easysal.calculators.HourlyCalculator;
@@ -62,6 +63,8 @@ public class EsHostActivityCompat extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setupAds();
+
+        AdditionalData.CALCULATOR_TYPE.toString();
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);

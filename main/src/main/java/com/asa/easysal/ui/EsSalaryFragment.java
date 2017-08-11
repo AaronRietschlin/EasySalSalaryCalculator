@@ -21,7 +21,11 @@ import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
+import com.asa.easysal.analytics.AnalyticsEvent;
 import com.asa.easysal.analytics.AnalyticsHelper;
+import com.asa.easysal.analytics.AnalyticsManager;
+import com.asa.easysal.analytics.enums.AdditionalData;
+import com.asa.easysal.analytics.enums.EventName;
 import com.asa.easysal.calculators.EsCalculator;
 
 import butterknife.BindView;
@@ -43,6 +47,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     protected EsHostActivityCompat mActivity;
     private EsCalculator mCalculator;
+    private AnalyticsManager analyticsManager;
 
     public static EsSalaryFragment newInstance(EsCalculator calculator) {
         EsSalaryFragment fragment = new EsSalaryFragment();
@@ -69,6 +74,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
                 mCalculator = args.getParcelable(EXTRA_CALCULATOR);
             }
         }
+        analyticsManager = AnalyticsManager.getInstance();
     }
 
     @Override
@@ -151,6 +157,13 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
                 getWageString(), getHoursString());
         mCalculator.performCalculation(mActivity.getApplicationContext(), params, this);
         mCalculator.sendAnalyticsCalculateClickedEvent(mActivity.getApplicationContext());
+        analyticsManager.logEvent(AnalyticsEvent.eventName(EventName.CALCULATION)
+                .data(AdditionalData.CALCULATOR_TYPE, mCalculator.getType())
+                .data(AdditionalData.SALARY, wageString)
+                .data(AdditionalData.HOURS, hourString)
+                .data(AdditionalData.OVERTIME_ON, SettingsUtil.isOvertime(getActivity()))
+                .data(AdditionalData.OVERTIME_VALUE, SettingsUtil.getOvertimePay(getActivity()))
+                .build());
     }
 
     @Override

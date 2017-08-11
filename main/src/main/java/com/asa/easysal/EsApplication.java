@@ -3,6 +3,7 @@ package com.asa.easysal;
 import android.app.Application;
 import android.util.Log;
 
+import com.asa.easysal.analytics.AnalyticsManager;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.MobileAds;
 
@@ -24,6 +25,7 @@ public class EsApplication extends Application {
         }
 
         MobileAds.initialize(this, BuildConfig.DEBUG ? Utils.getDebugAdmobId() : BuildConfig.ADMOB_ID);
+        AnalyticsManager.initialize(this);
     }
 
     /**
