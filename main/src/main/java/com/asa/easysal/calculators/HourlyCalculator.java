@@ -13,15 +13,12 @@ import com.asa.easysal.analytics.AnalyticsHelper;
 
 import timber.log.Timber;
 
-/**
- * Created by aaron on 7/14/15.
- */
 public class HourlyCalculator implements EsCalculator {
 
     public static final Creator<HourlyCalculator> CREATOR = new Creator<HourlyCalculator>() {
         @Override
         public HourlyCalculator createFromParcel(Parcel in) {
-            return new HourlyCalculator(in);
+            return new HourlyCalculator();
         }
 
         @Override
@@ -29,12 +26,6 @@ public class HourlyCalculator implements EsCalculator {
             return new HourlyCalculator[size];
         }
     };
-
-    public HourlyCalculator() {
-    }
-
-    protected HourlyCalculator(Parcel in) {
-    }
 
     @Override
     public boolean canHaveOvertime(Context context) {

@@ -12,15 +12,12 @@ import com.asa.easysal.analytics.AnalyticsHelper;
 
 import timber.log.Timber;
 
-/**
- * Created by aaron on 7/14/15.
- */
 public class BiWeeklyCalculator implements EsCalculator {
 
     public static final Creator<BiWeeklyCalculator> CREATOR = new Creator<BiWeeklyCalculator>() {
         @Override
         public BiWeeklyCalculator createFromParcel(Parcel in) {
-            return new BiWeeklyCalculator(in);
+            return new BiWeeklyCalculator();
         }
 
         @Override
@@ -28,12 +25,6 @@ public class BiWeeklyCalculator implements EsCalculator {
             return new BiWeeklyCalculator[size];
         }
     };
-
-    public BiWeeklyCalculator() {
-    }
-
-    protected BiWeeklyCalculator(Parcel in) {
-    }
 
     @Override
     public boolean canHaveOvertime(Context context) {

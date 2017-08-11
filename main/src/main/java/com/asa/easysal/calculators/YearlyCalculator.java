@@ -12,15 +12,12 @@ import com.asa.easysal.analytics.AnalyticsHelper;
 
 import timber.log.Timber;
 
-/**
- * Created by aaron on 7/14/15.
- */
 public class YearlyCalculator implements EsCalculator {
 
     public static final Creator<YearlyCalculator> CREATOR = new Creator<YearlyCalculator>() {
         @Override
         public YearlyCalculator createFromParcel(Parcel in) {
-            return new YearlyCalculator(in);
+            return new YearlyCalculator();
         }
 
         @Override
@@ -28,12 +25,6 @@ public class YearlyCalculator implements EsCalculator {
             return new YearlyCalculator[size];
         }
     };
-
-    public YearlyCalculator() {
-    }
-
-    protected YearlyCalculator(Parcel in) {
-    }
 
     @Override
     public boolean canHaveOvertime(Context context) {

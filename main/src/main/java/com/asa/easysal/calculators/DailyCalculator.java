@@ -13,15 +13,12 @@ import com.asa.easysal.analytics.AnalyticsHelper;
 
 import timber.log.Timber;
 
-/**
- * Created by aaron on 7/14/15.
- */
 public class DailyCalculator implements EsCalculator {
 
     public static final Creator<DailyCalculator> CREATOR = new Creator<DailyCalculator>() {
         @Override
         public DailyCalculator createFromParcel(Parcel in) {
-            return new DailyCalculator(in);
+            return new DailyCalculator();
         }
 
         @Override
@@ -29,12 +26,6 @@ public class DailyCalculator implements EsCalculator {
             return new DailyCalculator[size];
         }
     };
-
-    public DailyCalculator() {
-    }
-
-    protected DailyCalculator(Parcel in) {
-    }
 
     @Override
     public boolean canHaveOvertime(Context context) {
