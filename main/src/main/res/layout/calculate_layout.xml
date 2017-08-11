@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,8 +7,7 @@
     <ScrollView
         android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
@@ -25,8 +24,8 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/main_wage_field_layout"
-                android:layout_width="match_parent"
                 style="@style/Widget.TextInput"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.asa.easysal.widget.CancelEditText
@@ -45,8 +44,8 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/main_hours_field_layout"
-                android:layout_width="match_parent"
                 style="@style/Widget.TextInput"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.asa.easysal.widget.CancelEditText
@@ -65,12 +64,13 @@
 
             <Button
                 android:id="@+id/button2"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_marginEnd="@dimen/padding_small"
+                style="@style/Widget.Button.Borderless.Salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="Calculate" />
+                android:layout_marginEnd="@dimen/padding_small"
+                android:text="@string/button_calculate"
+                android:visibility="visible" />
         </LinearLayout>
     </ScrollView>
 
@@ -79,8 +79,9 @@
         style="?myButtonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="bottom|center_horizontal"
         android:filterTouchesWhenObscured="true"
         android:maxLines="2"
-        android:text="@string/button_calculate" />
-</LinearLayout>
+        android:text="@string/button_calculate"
+        android:visibility="gone" />
+</android.support.design.widget.CoordinatorLayout>
