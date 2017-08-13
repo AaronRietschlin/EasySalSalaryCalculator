@@ -260,7 +260,8 @@ public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryF
 
     @Override
     public void onCalculationResults(double[] results) {
-
+        ResultsBottomSheetFragment bottomSheetFragment = ResultsBottomSheetFragment.newInstance(results);
+        bottomSheetFragment.show(getSupportFragmentManager(), ResultsBottomSheetFragment.TAG);
     }
 
 
