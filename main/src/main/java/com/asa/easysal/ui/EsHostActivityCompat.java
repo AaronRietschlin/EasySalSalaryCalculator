@@ -43,7 +43,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.asa.easysal.BuildConfig.AD_UNIT_ID;
 import static com.google.android.gms.ads.AdSize.BANNER;
 
-public class EsHostActivityCompat extends AppCompatActivity {
+public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryFragment.CalculationListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -256,6 +256,11 @@ public class EsHostActivityCompat extends AppCompatActivity {
                 this.title = title;
             }
         }
+    }
+
+    @Override
+    public void onCalculationResults(double[] results) {
+
     }
 
 

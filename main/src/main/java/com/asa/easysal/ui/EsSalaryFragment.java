@@ -1,6 +1,7 @@
 package com.asa.easysal.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,9 +47,14 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @BindView(R.id.main_hours_field_layout)
     TextInputLayout mHoursInputLayout;
 
-    protected EsHostActivityCompat mActivity;
+    protected AppCompatActivity mActivity;
     private EsCalculator mCalculator;
     private AnalyticsManager analyticsManager;
+    private CalculationListener calculationListener;
+
+    public interface CalculationListener {
+        void onCalculationResults(double[] results);
+    }
 
     public static EsSalaryFragment newInstance(EsCalculator calculator) {
         EsSalaryFragment fragment = new EsSalaryFragment();
@@ -57,10 +64,12 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         return fragment;
     }
 
+
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mActivity = (EsHostActivityCompat) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (AppCompatActivity) getActivity();
+        calculationListener = (CalculationListener) mActivity;
     }
 
     @Override
