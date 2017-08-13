@@ -128,4 +128,7 @@
     <!-- New erros -->
     <string name="default_error">Error performing calculation.</string>
 
+    <!-- New Results -->
+    <string name="results_title">Your Earnings</string>
+
 </resources>
