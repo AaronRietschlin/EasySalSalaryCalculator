@@ -119,9 +119,9 @@
     <string name="error_invalid_hours">There was an error converting your hours worked. Make sure to enter a valid number (e.g. only one decimal point).</string>
 
     <!-- Fun errors -->
-    <string name="fun_error_hourly_weeks">There aren\'t that many hours in the week! Oh well, curiosity never hurt anybody...</string>
+    <string name="fun_error_hourly_weeks">There aren\'t that many hours in the week! Oh well, curiosity never hurt anybody…</string>
     <string name="fun_error_hourly_days">What planet are you from? Here on Earth, there\'s only 24 hours in a day.</string>
-    <string name="fun_error_weekly">Um...yeah, there\'s only 168 hours in the week.</string>
+    <string name="fun_error_weekly">Um…yeah, there\'s only 168 hours in the week.</string>
     <string name="fun_error_biweekly">I highly doubt that you work more hours than there are in two weeks!</string>
     <string name="fun_error_monthly">Wow, really? Do you have the power of the Force? Working that many hours is insane!</string>
 
@@ -129,6 +129,6 @@
     <string name="default_error">Error performing calculation.</string>
 
     <!-- New Results -->
-    <string name="results_title">Your Earnings</string>
+    <string name="results_title">Your Earnings:</string>
 
 </resources>

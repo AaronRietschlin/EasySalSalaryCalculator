@@ -4,14 +4,8 @@ import android.content.Context;
 import android.os.Parcel;
 import android.support.annotation.NonNull;
 
-import com.asa.easysal.CalculationUtils;
-import com.asa.easysal.EsException;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
-import com.asa.easysal.analytics.AnalyticsContants;
-import com.asa.easysal.analytics.AnalyticsHelper;
-
-import timber.log.Timber;
 
 public class HourlyCalculator implements EsCalculator {
 
@@ -22,14 +16,7 @@ public class HourlyCalculator implements EsCalculator {
 
     @Override
     public void performCalculation(Context context, double[] values, CalculatorCallback callback) {
-        double[] results = CalculationUtils.performCalculation(context, CalculatorType.HOURLY,
-                canHaveOvertime(context), values);
-        if (results != null) {
-            callback.success(results);
-        } else {
-            Timber.e(new EsException(values), "");
-            callback.failure(R.string.default_error);
-        }
+        CalculatorCommon.performCalculation(context, values, callback, CalculatorType.HOURLY, canHaveOvertime(context));
     }
 
     @Override
