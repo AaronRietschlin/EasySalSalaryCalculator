@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,8 +20,7 @@
             android:paddingEnd="@dimen/padding_large"
             android:paddingStart="@dimen/padding_large"
             android:text="@string/results_title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <Button
             android:id="@+id/btn_calculate_again"
@@ -42,8 +42,9 @@
             android:text="@string/dialog_hourly_title" />
 
         <TextView
+            android:id="@+id/results_tv_results_hourly"
             style="@style/Widget.ResultsValue"
-            android:text="$20.00" />
+            tools:text="$20.00" />
 
     </LinearLayout>
 
@@ -57,8 +58,9 @@
             android:text="@string/dialog_daily_title" />
 
         <TextView
+            android:id="@+id/results_tv_results_daily"
             style="@style/Widget.ResultsValue"
-            android:text="$20.00" />
+            tools:text="$20.00" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,8 +73,9 @@
             android:text="@string/dialog_weekly_title" />
 
         <TextView
+            android:id="@+id/results_tv_results_weekly"
             style="@style/Widget.ResultsValue"
-            android:text="$20.00" />
+            tools:text="$20.00" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,8 +88,9 @@
             android:text="@string/dialog_biweekly_title" />
 
         <TextView
+            android:id="@+id/results_tv_results_biweekly"
             style="@style/Widget.ResultsValue"
-            android:text="$20.00" />
+            tools:text="$20.00" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,8 +103,9 @@
             android:text="@string/dialog_monthly_title" />
 
         <TextView
+            android:id="@+id/results_tv_results_monthly"
             style="@style/Widget.ResultsValue"
-            android:text="$20.00" />
+            tools:text="$20.00" />
     </LinearLayout>
 
     <LinearLayout
@@ -114,8 +119,9 @@
             android:text="@string/dialog_yearly_title" />
 
         <TextView
+            android:id="@+id/results_tv_results_yearly"
             style="@style/Widget.ResultsValue"
-            android:text="$20.00" />
+            tools:text="$20.00" />
 
     </LinearLayout>
 </LinearLayout>

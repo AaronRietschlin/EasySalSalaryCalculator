@@ -2,8 +2,10 @@ package com.asa.easysal.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.asa.easysal.R;
 import com.asa.easysal.ui.EsSalaryFragment.CalculationListener;
+import com.asa.easysal.utils.Formatter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +27,15 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
 
     @BindView(R.id.results_tv_title)
     TextView tvTitle;
+    @BindView(R.id.results_tv_results_hourly) TextView tvHourly;
+    @BindView(R.id.results_tv_results_daily) TextView tvDaily;
+    @BindView(R.id.results_tv_results_weekly) TextView tvWeekly;
+    @BindView(R.id.results_tv_results_biweekly) TextView tvBiweekly;
+    @BindView(R.id.results_tv_results_monthly) TextView tvMonthly;
+    @BindView(R.id.results_tv_results_yearly) TextView tvYearly;
 
     private CalculationListener calculationListener;
+    private Formatter formatter;
 
     public static ResultsBottomSheetFragment newInstance(double[] results) {
         ResultsBottomSheetFragment bottomSheetFragment = new ResultsBottomSheetFragment();
@@ -53,6 +63,12 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         calculationListener = (CalculationListener) context;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        formatter = new Formatter();
     }
 
     @Override
@@ -84,5 +100,18 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
         if (results == null) {
             throw new IllegalStateException("Results were null.");
         }
+        String hourly = formatter.format(results[0]);
+        String daily = formatter.format(results[1]);
+        String weekly = formatter.format(results[2]);
+        String biweekly = formatter.format(results[3]);
+        String monthly = formatter.format(results[4]);
+        String yearly = formatter.format(results[5]);
+        tvHourly.setText(hourly);
+        tvDaily.setText(daily);
+        tvWeekly.setText(weekly);
+        tvBiweekly.setText(biweekly);
+        tvMonthly.setText(monthly);
+        tvYearly.setText(yearly);
     }
+
 }
