@@ -53,6 +53,8 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
 
     public interface CalculationListener {
         void onCalculationResults(double[] results);
+
+        void onCalculateAgain();
     }
 
     public static EsSalaryFragment newInstance(EsCalculator calculator) {
@@ -218,6 +220,14 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public void failure(@StringRes int errorResId) {
 
+    }
+
+    public void calculateAgain(boolean reset) {
+        if (reset) {
+            mWageField.setText("");
+            mHoursField.setText("");
+        }
+        mWageField.requestFocus();
     }
 
     private void resetErrors() {

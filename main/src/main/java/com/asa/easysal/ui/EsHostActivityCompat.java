@@ -37,6 +37,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -202,6 +203,10 @@ public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryF
             return tab.getFragment();
         }
 
+        public EsSalaryFragment getSalaryFragment(int pos) {
+            return (EsSalaryFragment) getItem(pos);
+        }
+
         @Override
         public int getCount() {
             return tabs == null ? 0 : tabs.size();
@@ -262,6 +267,15 @@ public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryF
     public void onCalculationResults(double[] results) {
         ResultsBottomSheetFragment bottomSheetFragment = ResultsBottomSheetFragment.newInstance(results);
         bottomSheetFragment.show(getSupportFragmentManager(), ResultsBottomSheetFragment.TAG);
+    }
+
+    @Override
+    public void onCalculateAgain() {
+        boolean reset = SettingsUtil.shouldClearFields(getApplicationContext());
+        int fragmentPosition = pager.getCurrentItem();
+        Timber.d("Calculating again for position: %d; Reset? %b", fragmentPosition, reset);
+        EsSalaryFragment fragment = pagerAdapter.getSalaryFragment(pager.getCurrentItem());
+        fragment.calculateAgain(reset);
     }
 
 

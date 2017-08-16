@@ -1,6 +1,7 @@
 package com.asa.easysal.ui;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
@@ -10,9 +11,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.asa.easysal.R;
+import com.asa.easysal.ui.EsSalaryFragment.CalculationListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
 
@@ -21,6 +24,8 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
 
     @BindView(R.id.results_tv_title)
     TextView tvTitle;
+
+    private CalculationListener calculationListener;
 
     public static ResultsBottomSheetFragment newInstance(double[] results) {
         ResultsBottomSheetFragment bottomSheetFragment = new ResultsBottomSheetFragment();
@@ -45,6 +50,12 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
     };
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        calculationListener = (CalculationListener) context;
+    }
+
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         View contentView = View.inflate(getContext(), R.layout.results_bottomsheet, null);
@@ -60,6 +71,12 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
         }
 
         return dialog;
+    }
+
+    @OnClick(R.id.btn_calculate_again)
+    public void onCalculateAgainClicked() {
+        calculationListener.onCalculateAgain();
+        dismiss();
     }
 
     private void setupResults() {
