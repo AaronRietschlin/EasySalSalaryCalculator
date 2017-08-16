@@ -1,6 +1,5 @@
 package com.asa.easysal.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
