@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_large">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,7 +112,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_large"
         android:orientation="horizontal">
 
         <TextView
@@ -120,6 +120,23 @@
 
         <TextView
             android:id="@+id/results_tv_results_yearly"
+            style="@style/Widget.ResultsValue"
+            tools:text="$20.00" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/results_container_ot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/Widget.ResultsTitle"
+            android:text="@string/dialog_overtime_title" />
+
+        <TextView
+            android:id="@+id/results_tv_results_ot"
             style="@style/Widget.ResultsValue"
             tools:text="$20.00" />
 

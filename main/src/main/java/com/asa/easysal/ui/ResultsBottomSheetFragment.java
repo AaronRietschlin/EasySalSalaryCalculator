@@ -2,7 +2,6 @@ package com.asa.easysal.ui;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +9,7 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.asa.easysal.R;
@@ -20,6 +20,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
 
     public static final String TAG = "ResultsFragment";
@@ -27,12 +30,22 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
 
     @BindView(R.id.results_tv_title)
     TextView tvTitle;
-    @BindView(R.id.results_tv_results_hourly) TextView tvHourly;
-    @BindView(R.id.results_tv_results_daily) TextView tvDaily;
-    @BindView(R.id.results_tv_results_weekly) TextView tvWeekly;
-    @BindView(R.id.results_tv_results_biweekly) TextView tvBiweekly;
-    @BindView(R.id.results_tv_results_monthly) TextView tvMonthly;
-    @BindView(R.id.results_tv_results_yearly) TextView tvYearly;
+    @BindView(R.id.results_tv_results_hourly)
+    TextView tvHourly;
+    @BindView(R.id.results_tv_results_daily)
+    TextView tvDaily;
+    @BindView(R.id.results_tv_results_weekly)
+    TextView tvWeekly;
+    @BindView(R.id.results_tv_results_biweekly)
+    TextView tvBiweekly;
+    @BindView(R.id.results_tv_results_monthly)
+    TextView tvMonthly;
+    @BindView(R.id.results_tv_results_yearly)
+    TextView tvYearly;
+    @BindView(R.id.results_tv_results_ot)
+    TextView tvOvertime;
+    @BindView(R.id.results_container_ot)
+    LinearLayout containerOt;
 
     private CalculationListener calculationListener;
     private Formatter formatter;
@@ -112,6 +125,16 @@ public class ResultsBottomSheetFragment extends BottomSheetDialogFragment {
         tvBiweekly.setText(biweekly);
         tvMonthly.setText(monthly);
         tvYearly.setText(yearly);
+        setOvertime(results);
+    }
+
+    private void setOvertime(double[] results) {
+        if (results.length == 7 && results[6] > 0) {
+            tvOvertime.setText(formatter.format(results[6]));
+            containerOt.setVisibility(VISIBLE);
+        } else {
+            containerOt.setVisibility(GONE);
+        }
     }
 
 }
