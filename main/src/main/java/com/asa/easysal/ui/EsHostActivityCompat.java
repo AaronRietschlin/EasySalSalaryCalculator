@@ -20,8 +20,11 @@ import com.asa.easysal.CalculationUtils;
 import com.asa.easysal.R;
 import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.analytics.AnalyticsContants;
+import com.asa.easysal.analytics.AnalyticsEvent;
 import com.asa.easysal.analytics.AnalyticsHelper;
+import com.asa.easysal.analytics.AnalyticsManager;
 import com.asa.easysal.analytics.enums.AdditionalData;
+import com.asa.easysal.analytics.enums.EventName;
 import com.asa.easysal.calculators.BiWeeklyCalculator;
 import com.asa.easysal.calculators.DailyCalculator;
 import com.asa.easysal.calculators.HourlyCalculator;
@@ -42,6 +45,9 @@ import timber.log.Timber;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.asa.easysal.BuildConfig.AD_UNIT_ID;
+import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK;
+import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK_HELP;
+import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK_SETTINGS;
 import static com.google.android.gms.ads.AdSize.BANNER;
 
 public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryFragment.CalculationListener {
@@ -171,17 +177,24 @@ public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryF
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_help:
+                logSettings(MENU_CLICK_SETTINGS);
                 AlertDialogFragment fragment = AlertDialogFragment.newInstance(
                         R.string.help_title, R.string.help_content,
                         R.string.button_dismiss);
                 fragment.show(getSupportFragmentManager(), "help");
                 return true;
             case R.id.menu_settings:
+                logSettings(MENU_CLICK_HELP);
                 SettingsUtil.launchSettings(this);
                 AnalyticsHelper.sendSettingsClickedEvent(this);
                 return true;
         }
         return false;
+    }
+
+    private void logSettings(AdditionalData menuClickSettings) {
+        AnalyticsManager.getInstance().logEvent(AnalyticsEvent.eventName(EventName.MENU_CLICK)
+                .data(MENU_CLICK, menuClickSettings).build());
     }
 
     static class EsPagerAdapter extends FragmentPagerAdapter {

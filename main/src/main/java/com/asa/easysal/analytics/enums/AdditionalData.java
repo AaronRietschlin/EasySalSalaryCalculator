@@ -8,6 +8,9 @@ public enum AdditionalData {
     CALCULATOR_TYPE,
     CALCULATION_ERROR_TYPE,
     OVERTIME_ON,
+    MENU_CLICK,
+    MENU_CLICK_SETTINGS,
+    MENU_CLICK_HELP,
     OVERTIME_VALUE;
 
     @Override

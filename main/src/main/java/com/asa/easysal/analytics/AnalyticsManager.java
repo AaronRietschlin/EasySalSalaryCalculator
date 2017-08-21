@@ -48,6 +48,9 @@ public class AnalyticsManager {
             case OVERTIME_TOGGLE:
                 logOvertimeAttribute(event);
                 break;
+            case MENU_CLICK:
+                logMenuClick(event);
+                break;
         }
     }
 
@@ -99,6 +102,13 @@ public class AnalyticsManager {
     private double getOvertimeValue(AnalyticsEvent event) {
         Double value = event.getData(AdditionalData.OVERTIME_VALUE);
         return value == null ? -1 : value;
+    }
+
+    private void logMenuClick(AnalyticsEvent event) {
+        Bundle bundle = new Bundle();
+        AdditionalData data = event.getData(AdditionalData.MENU_CLICK);
+        bundle.putString(AdditionalData.MENU_CLICK.toString(), data.toString());
+        firebaseAnalytics.logEvent(EventName.MENU_CLICK.toString(), bundle);
     }
 
 }
