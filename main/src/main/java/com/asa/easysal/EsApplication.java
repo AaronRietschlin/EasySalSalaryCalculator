@@ -4,6 +4,8 @@ import android.app.Application;
 import android.util.Log;
 
 import com.asa.easysal.analytics.AnalyticsManager;
+import com.asa.easysal.firebase.RemoteConfigHandler;
+import com.asa.easysal.model.Injector;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.MobileAds;
 
@@ -12,9 +14,12 @@ import timber.log.Timber;
 
 public class EsApplication extends Application {
 
+    private RemoteConfigHandler remoteConfigHandler;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        setupRemoteConfigHandler();
 
         if (BuildConfig.REPORT_CRASHES) {
             final Fabric fabric = new Fabric.Builder(this).kits(new Crashlytics()).build();
@@ -26,6 +31,11 @@ public class EsApplication extends Application {
 
         MobileAds.initialize(this, BuildConfig.DEBUG ? Utils.getDebugAdmobId() : BuildConfig.ADMOB_ID);
         AnalyticsManager.initialize(this);
+    }
+
+    private void setupRemoteConfigHandler() {
+        remoteConfigHandler = Injector.provideRemoteConfigHandler();
+        remoteConfigHandler.initialize();
     }
 
     /**

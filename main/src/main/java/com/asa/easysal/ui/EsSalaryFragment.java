@@ -214,7 +214,6 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         });
         calculationListener.onCalculationResults(results);
         frag.show(mActivity.getSupportFragmentManager(), "calculation_result");
-
     }
 
     @Override
