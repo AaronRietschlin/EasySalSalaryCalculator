@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -28,6 +29,8 @@ import com.asa.easysal.analytics.AnalyticsManager;
 import com.asa.easysal.analytics.enums.AdditionalData;
 import com.asa.easysal.analytics.enums.EventName;
 import com.asa.easysal.calculators.EsCalculator;
+import com.asa.easysal.model.Injector;
+import com.asa.easysal.widget.ButtonType;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,6 +53,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     private EsCalculator mCalculator;
     private AnalyticsManager analyticsManager;
     private CalculationListener calculationListener;
+    private ButtonType buttonType;
 
     public interface CalculationListener {
         void onCalculationResults(double[] results);
@@ -71,6 +75,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         super.onAttach(context);
         mActivity = (AppCompatActivity) getActivity();
         calculationListener = (CalculationListener) mActivity;
+        buttonType = Injector.provideButtonType();
     }
 
     @Override
@@ -90,7 +95,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.calculate_layout, container, false);
+        View v = inflater.inflate(getLayoutFromButtonType(), container, false);
         ButterKnife.bind(this, v);
 
         mHoursInputLayout.setHint(getString(mCalculator.getHoursHintText()));
@@ -237,6 +242,7 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
     private void logCalculationFailure(String type) {
         analyticsManager.logEvent(AnalyticsEvent.eventName(EventName.CALCULATION_ERROR)
                 .data(AdditionalData.CALCULATOR_TYPE, mCalculator.getType())
+                .data(AdditionalData.BUTTON_TYPE, buttonType)
                 .data(AdditionalData.CALCULATION_ERROR_TYPE, type).build());
     }
 
@@ -247,6 +253,20 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
                 .data(AdditionalData.HOURS, hourString)
                 .data(AdditionalData.OVERTIME_ON, SettingsUtil.isOvertime(getActivity()))
                 .data(AdditionalData.OVERTIME_VALUE, SettingsUtil.getOvertimePay(getActivity()))
+                .data(AdditionalData.BUTTON_TYPE, buttonType)
                 .build());
+    }
+
+    @LayoutRes
+    private int getLayoutFromButtonType() {
+        if (buttonType == null) {
+            return R.layout.calculate_layout;
+        }
+        switch (buttonType) {
+            case FULL_WIDTH:
+                return R.layout.calculate_layout_full_width;
+            default:
+                return R.layout.calculate_layout;
+        }
     }
 }

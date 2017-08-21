@@ -3,6 +3,7 @@ package com.asa.easysal.analytics.enums;
 public enum AdditionalData {
 
     HOURS,
+    BUTTON_TYPE,
     SALARY,
     CALCULATOR_TYPE,
     CALCULATION_ERROR_TYPE,

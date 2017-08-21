@@ -61,6 +61,7 @@ public class AnalyticsManager {
         String salary = event.getData(AdditionalData.SALARY);
         String hours = event.getData(AdditionalData.HOURS);
         String calculatorType = event.getData(AdditionalData.CALCULATOR_TYPE);
+        String buttonType = event.getData(AdditionalData.BUTTON_TYPE).toString();
         boolean overtimeOn = getOvertimeOn(event);
         if (overtimeOn) {
             double overtimeValue = getOvertimeValue(event);
@@ -70,15 +71,18 @@ public class AnalyticsManager {
         bundle.putString(AdditionalData.HOURS.toString(), hours);
         bundle.putString(AdditionalData.CALCULATOR_TYPE.toString(), calculatorType);
         bundle.putBoolean(AdditionalData.OVERTIME_ON.toString(), overtimeOn);
+        bundle.putString(AdditionalData.BUTTON_TYPE.toString(), buttonType);
         return bundle;
     }
 
     private Bundle createCalculationErrorBundle(AnalyticsEvent event) {
         Bundle bundle = new Bundle();
-        String errorType=  event.getData(AdditionalData.CALCULATION_ERROR_TYPE);
+        String errorType = event.getData(AdditionalData.CALCULATION_ERROR_TYPE);
         String calculatorType = event.getData(AdditionalData.CALCULATOR_TYPE);
-        bundle.putString(AdditionalData.CALCULATION_ERROR_TYPE.toString(), errorType );
-        bundle.putString(AdditionalData.CALCULATOR_TYPE.toString(), calculatorType );
+        String buttonType = event.getData(AdditionalData.BUTTON_TYPE).toString();
+        bundle.putString(AdditionalData.CALCULATION_ERROR_TYPE.toString(), errorType);
+        bundle.putString(AdditionalData.CALCULATOR_TYPE.toString(), calculatorType);
+        bundle.putString(AdditionalData.BUTTON_TYPE.toString(), buttonType);
         return bundle;
     }
 
