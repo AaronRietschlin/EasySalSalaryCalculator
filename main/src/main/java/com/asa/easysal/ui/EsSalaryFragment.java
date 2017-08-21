@@ -24,7 +24,6 @@ import com.asa.easysal.SettingsUtil;
 import com.asa.easysal.SnackUtils;
 import com.asa.easysal.Utils;
 import com.asa.easysal.analytics.AnalyticsEvent;
-import com.asa.easysal.analytics.AnalyticsHelper;
 import com.asa.easysal.analytics.AnalyticsManager;
 import com.asa.easysal.analytics.enums.AdditionalData;
 import com.asa.easysal.analytics.enums.EventName;
@@ -37,6 +36,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.asa.easysal.analytics.enums.AdditionalData.CLEAR_FIELDS_VALUE;
+import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK;
+import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK_OT;
 import static com.asa.easysal.analytics.enums.EventName.CALCULATE_AGAIN_CLICKED;
 
 public class EsSalaryFragment extends Fragment implements EsCalculator.CalculatorCallback {
@@ -198,7 +199,8 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
                     if (snackbar != null) {
                         snackbar.show();
                     }
-                    AnalyticsHelper.sendOvertimeInfoButtonClickedEvent(mActivity);
+                    AnalyticsManager.getInstance().logEvent(AnalyticsEvent.eventName(EventName.MENU_CLICK)
+                            .data(MENU_CLICK, MENU_CLICK_OT).build());
                     return true;
                 }
                 break;

@@ -188,7 +188,6 @@ public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryF
             case R.id.menu_settings:
                 logSettings(MENU_CLICK_HELP);
                 SettingsUtil.launchSettings(this);
-                AnalyticsHelper.sendSettingsClickedEvent(this);
                 return true;
         }
         return false;

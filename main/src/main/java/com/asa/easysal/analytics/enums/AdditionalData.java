@@ -15,6 +15,7 @@ public enum AdditionalData {
     CLEAR_FIELDS_VALUE,
     MENU_CLICK_SETTINGS,
     MENU_CLICK_HELP,
+    MENU_CLICK_OT,
     OVERTIME_VALUE;
 
     @Override
