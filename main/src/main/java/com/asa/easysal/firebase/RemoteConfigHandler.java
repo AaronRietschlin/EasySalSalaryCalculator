@@ -29,10 +29,9 @@ public class RemoteConfigHandler {
         remoteConfig.setConfigSettings(configSettings);
         remoteConfig.setDefaults(R.xml.remote_config_defaults);
         setDefaultButtonType();
-        refresh();
     }
 
-    private void refresh() {
+    public void refresh() {
         long cacheExpiration = getCacheExpiration();
         remoteConfig.fetch(cacheExpiration).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

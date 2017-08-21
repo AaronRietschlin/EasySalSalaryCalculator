@@ -36,6 +36,7 @@ public class EsApplication extends Application {
     private void setupRemoteConfigHandler() {
         remoteConfigHandler = Injector.provideRemoteConfigHandler();
         remoteConfigHandler.initialize();
+        remoteConfigHandler.refresh();
     }
 
     /**
