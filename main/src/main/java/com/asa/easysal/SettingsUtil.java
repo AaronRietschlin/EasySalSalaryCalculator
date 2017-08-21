@@ -12,10 +12,20 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
+import com.asa.easysal.analytics.AnalyticsEvent;
 import com.asa.easysal.analytics.AnalyticsHelper;
+import com.asa.easysal.analytics.AnalyticsManager;
+import com.asa.easysal.analytics.enums.AdditionalData;
+import com.asa.easysal.analytics.enums.Constants;
+import com.asa.easysal.analytics.enums.EventName;
 import com.asa.easysal.ui.PostHCPreferenceActivity;
 import com.asa.easysal.ui.PreHCPreferenceActivity;
 import com.asa.easysal.utils.NoticeUtils;
+
+import static com.asa.easysal.analytics.enums.AdditionalData.SETTINGS_VALUE;
+import static com.asa.easysal.analytics.enums.Constants.SETTINGS_OS_LICENSE;
+import static com.asa.easysal.analytics.enums.Constants.SETTINGS_OT_OPTIONS_CLICKED;
+import static com.asa.easysal.analytics.enums.Constants.SETTINGS_OT_OPTIONS_SELECTED;
 
 public class SettingsUtil {
 
@@ -42,12 +52,10 @@ public class SettingsUtil {
 
     public static void launchAbout(final Context context,
                                    Preference aboutPreference) {
-        aboutPreference
-                .setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        aboutPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
                     public boolean onPreferenceClick(Preference preference) {
-                        AlertDialog.Builder aboutDialog = new AlertDialog.Builder(
-                                context);
-
+                        AnalyticsManager.getInstance().logEvent(getEvent(Constants.SETTINGS_ABOUT).build());
+                        AlertDialog.Builder aboutDialog = new AlertDialog.Builder(context);
                         aboutDialog
                                 .setMessage(R.string.about_content)
                                 .setCancelable(true)
@@ -71,11 +79,13 @@ public class SettingsUtil {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (newValue instanceof Boolean) {
-                    if (((boolean) newValue)) {
+                    boolean result = (boolean) newValue;
+                    if (result) {
                         AnalyticsHelper.sendOvertimeTurnedOnEvent(context);
                     } else {
                         AnalyticsHelper.sendOvertimeTurnedOffEvent(context);
                     }
+                    AnalyticsManager.getInstance().logEvent(getEvent(Constants.SETTINGS_OT_TOGGLED).data(SETTINGS_VALUE, result).build());
                 }
                 return true;
             }
@@ -87,9 +97,19 @@ public class SettingsUtil {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (newValue instanceof String) {
-                    AnalyticsHelper.sendOvertimeValueChangedEvent(context, (String) newValue);
+                    String value = (String) newValue;
+                    AnalyticsHelper.sendOvertimeValueChangedEvent(context, value);
+                    AnalyticsManager.getInstance().logEvent(getEvent(SETTINGS_OT_OPTIONS_SELECTED)
+                            .data(SETTINGS_VALUE, value).build());
                 }
                 return true;
+            }
+        });
+        preference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                AnalyticsManager.getInstance().logEvent(getEvent(SETTINGS_OT_OPTIONS_CLICKED).build());
+                return false;
             }
         });
     }
@@ -100,11 +120,10 @@ public class SettingsUtil {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (newValue instanceof Boolean) {
                     boolean result = (boolean) newValue;
-                    if (result) {
-                        AnalyticsHelper.sendClearFieldsToggled(context, result);
-                    } else {
-                        AnalyticsHelper.sendClearFieldsToggled(context, result);
-                    }
+                    AnalyticsHelper.sendClearFieldsToggled(context, result);
+                    AnalyticsEvent event = getEvent(Constants.SETTINGS_CLEAR_FIELDS_TOGGLED)
+                            .data(SETTINGS_VALUE, result).build();
+                    AnalyticsManager.getInstance().logEvent(event);
                 }
                 return true;
             }
@@ -122,6 +141,7 @@ public class SettingsUtil {
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(url));
                         context.startActivity(i);
+                        AnalyticsManager.getInstance().logEvent(getEvent(Constants.SETTINGS_HOMEPAGE).build());
                         return true;
                     }
                 });
@@ -141,6 +161,7 @@ public class SettingsUtil {
         licensePreference
                 .setOnPreferenceClickListener(new OnPreferenceClickListener() {
                     public boolean onPreferenceClick(Preference preference) {
+                        AnalyticsManager.getInstance().logEvent(getEvent(SETTINGS_OS_LICENSE).build());
                         NoticeUtils.showLicenseDialog(context);
                         return true;
                     }
@@ -166,5 +187,10 @@ public class SettingsUtil {
     public static boolean shouldClearFields(@Nullable Context context) {
         SharedPreferences prefs = getDefaultPreferences(context);
         return prefs.getBoolean(PREFERENCES_CLEAR_FIELDS, false);
+    }
+
+    public static AnalyticsEvent.Builder getEvent(String settingsConstants) {
+        return AnalyticsEvent.eventName(EventName.SETTINGS_CLICKED)
+                .data(AdditionalData.SETTINGS_TYPE, settingsConstants);
     }
 }

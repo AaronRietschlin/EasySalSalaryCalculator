@@ -5,6 +5,7 @@ public enum EventName {
     CALCULATION,
     CALCULATION_ERROR,
     MENU_CLICK,
+    SETTINGS_CLICKED,
     OVERTIME_TOGGLE;
 
     @Override

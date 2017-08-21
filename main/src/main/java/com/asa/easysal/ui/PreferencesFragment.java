@@ -17,10 +17,8 @@ public class PreferencesFragment extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.preferences);
 
-        SettingsUtil.launchAbout(getActivity(),
-                findPreference(SettingsUtil.PREFERENCES_ABOUT));
-        SettingsUtil.launchHome(getActivity(),
-                findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
+        SettingsUtil.launchAbout(getActivity(), findPreference(SettingsUtil.PREFERENCES_ABOUT));
+        SettingsUtil.launchHome(getActivity(), findPreference(SettingsUtil.PREFERENCES_HOMEPAGE));
         SettingsUtil.setOvertimeListener(getActivity(), findPreference(SettingsUtil.PREFERENCES_OVERTIME));
         SettingsUtil.setOvertimeValueListener(getActivity(), (ListPreference) findPreference(SettingsUtil
                 .PREFERENCES_OVERTIME_PAY));

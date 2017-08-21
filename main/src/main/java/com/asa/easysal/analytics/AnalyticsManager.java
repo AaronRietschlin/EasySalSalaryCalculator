@@ -51,6 +51,9 @@ public class AnalyticsManager {
             case MENU_CLICK:
                 logMenuClick(event);
                 break;
+            case SETTINGS_CLICKED:
+                logSettingsClick(event);
+                break;
         }
     }
 
@@ -109,6 +112,17 @@ public class AnalyticsManager {
         AdditionalData data = event.getData(AdditionalData.MENU_CLICK);
         bundle.putString(AdditionalData.MENU_CLICK.toString(), data.toString());
         firebaseAnalytics.logEvent(EventName.MENU_CLICK.toString(), bundle);
+    }
+
+    private void logSettingsClick(AnalyticsEvent event) {
+        Bundle bundle = new Bundle();
+        String settingsType = event.getData(AdditionalData.SETTINGS_TYPE);
+        Object settingsValue = event.getData(AdditionalData.SETTINGS_VALUE);
+        bundle.putString(AdditionalData.SETTINGS_TYPE.toString(), settingsType);
+        if (settingsValue != null) {
+            bundle.putString(AdditionalData.SETTINGS_VALUE.toString(), settingsValue.toString());
+        }
+        firebaseAnalytics.logEvent(EventName.SETTINGS_CLICKED.toString(), bundle);
     }
 
 }
