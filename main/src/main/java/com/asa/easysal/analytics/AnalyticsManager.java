@@ -9,6 +9,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import timber.log.Timber;
 
+import static com.asa.easysal.analytics.enums.AdditionalData.CLEAR_FIELDS_VALUE;
+
 public class AnalyticsManager {
 
     private static AnalyticsManager instance;
@@ -53,6 +55,9 @@ public class AnalyticsManager {
                 break;
             case SETTINGS_CLICKED:
                 logSettingsClick(event);
+                break;
+            case CALCULATE_AGAIN_CLICKED:
+                logCalculateAgainClicked(event);
                 break;
         }
     }
@@ -123,6 +128,15 @@ public class AnalyticsManager {
             bundle.putString(AdditionalData.SETTINGS_VALUE.toString(), settingsValue.toString());
         }
         firebaseAnalytics.logEvent(EventName.SETTINGS_CLICKED.toString(), bundle);
+    }
+
+    private void logCalculateAgainClicked(AnalyticsEvent event) {
+        Bundle bundle = new Bundle();
+        Object clearFieldsValue = event.getData(CLEAR_FIELDS_VALUE);
+        if (clearFieldsValue != null) {
+            bundle.putString(CLEAR_FIELDS_VALUE.toString(), clearFieldsValue.toString());
+        }
+        firebaseAnalytics.logEvent(EventName.CALCULATE_AGAIN_CLICKED.toString(), bundle);
     }
 
 }

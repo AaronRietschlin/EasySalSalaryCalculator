@@ -45,9 +45,11 @@ import timber.log.Timber;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.asa.easysal.BuildConfig.AD_UNIT_ID;
+import static com.asa.easysal.analytics.enums.AdditionalData.CLEAR_FIELDS_VALUE;
 import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK;
 import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK_HELP;
 import static com.asa.easysal.analytics.enums.AdditionalData.MENU_CLICK_SETTINGS;
+import static com.asa.easysal.analytics.enums.EventName.CALCULATE_AGAIN_CLICKED;
 import static com.google.android.gms.ads.AdSize.BANNER;
 
 public class EsHostActivityCompat extends AppCompatActivity implements EsSalaryFragment.CalculationListener {

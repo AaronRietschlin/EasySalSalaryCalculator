@@ -36,6 +36,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.asa.easysal.analytics.enums.AdditionalData.CLEAR_FIELDS_VALUE;
+import static com.asa.easysal.analytics.enums.EventName.CALCULATE_AGAIN_CLICKED;
+
 public class EsSalaryFragment extends Fragment implements EsCalculator.CalculatorCallback {
     public static final String TAG = EsSalaryFragment.class.getSimpleName();
     private static final String EXTRA_CALCULATOR = "calculator";
@@ -210,11 +213,8 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
         frag.setOnClickListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (SettingsUtil.shouldClearFields(mActivity)) {
-                    mHoursField.setText("");
-                    mWageField.setText("");
-                    mWageField.requestFocus();
-                }
+                boolean shouldClearFields = SettingsUtil.shouldClearFields(mActivity);
+                calculateAgain(shouldClearFields);
             }
         });
         calculationListener.onCalculationResults(results);
@@ -232,6 +232,9 @@ public class EsSalaryFragment extends Fragment implements EsCalculator.Calculato
             mHoursField.setText("");
         }
         mWageField.requestFocus();
+        AnalyticsManager.getInstance().logEvent(AnalyticsEvent.eventName(CALCULATE_AGAIN_CLICKED)
+                .data(CLEAR_FIELDS_VALUE, reset)
+                .build());
     }
 
     private void resetErrors() {
